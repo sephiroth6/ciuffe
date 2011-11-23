@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JToggleButton;
 import javax.xml.bind.Marshaller.Listener;
-import trainserver.*;
+import train.*;
 
 
 /**

@@ -1197,8 +1197,8 @@ public class guiCLI extends javax.swing.JFrame {
 //            } catch (IOException ex) {
 //                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-                Socket socket = new Socket("127.0.0.1", 5000);
-                supportCli newConn = new supportCli(socket.getInputStream(),socket.getOutputStream());
+                Socket socket = new Socket("127.0.0.1", 5001);
+//                supportCli newConn = new supportCli(socket.getInputStream(),socket.getOutputStream());
 
                 setEditableP();
         }
