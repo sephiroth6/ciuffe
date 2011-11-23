@@ -30,8 +30,9 @@ public class Listener implements Runnable {
         try {    
         
             while (true){
-            
+                System.out.println("In attesa di chiamate dai Client... ");
                 sh=ss.accept();
+                System.out.println("Ho ricevuto una chiamata di apertura da:\n" + sh);
                 new TrainServer(sh).start();
             }
         } catch (IOException ex) {}

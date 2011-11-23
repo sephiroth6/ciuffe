@@ -1288,6 +1288,7 @@ public class guiServ extends javax.swing.JFrame {
      //stop server
      private void stopSrv() throws IOException{
          s.close();
+        
          t.interrupt();
          
      }
