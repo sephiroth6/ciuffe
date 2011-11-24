@@ -182,8 +182,8 @@ public class Archivio {
                 && archivioTreni.get(i).getDataPartenza().getGiorno().equalsIgnoreCase(data.getGiorno())
                 && archivioTreni.get(i).getDataPartenza().getMese().equalsIgnoreCase(data.getMese())
                 && archivioTreni.get(i).getDataPartenza().getAnno().equalsIgnoreCase(data.getAnno())
-                && archivioTreni.get(i).getDataPartenza().getOra().equalsIgnoreCase(data.getOra())
-                && archivioTreni.get(i).getDataPartenza().getMinuti().equalsIgnoreCase(data.getMinuti())
+                && Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getOra())>= Data.convertiStringa(data.getOra())
+                && Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getMinuti())>=Data.convertiStringa(data.getMinuti())
                 ) { 
                     out.add(archivioTreni.get(i));
                   }

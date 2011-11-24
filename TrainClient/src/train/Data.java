@@ -10,7 +10,7 @@ public class Data implements Serializable {
     private String anno;
     private String ora;
     private String minuti;
-//hello world
+
     public Data(String g, String m, String a, String o, String mi) {
         giorno = g;
         mese = m;
