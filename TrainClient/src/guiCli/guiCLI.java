@@ -19,6 +19,7 @@ import javax.swing.JToggleButton;
 //import reti2.supportMsg.*;
 import java.io.*;
 import java.net.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,12 +31,14 @@ public class guiCLI extends javax.swing.JFrame {
     protected static int id = 0;
     private boolean flag;
     //protected static Socket socket;
+    Socket s;
 
     /** Creates new form gui */
     public guiCLI(/*InputStream i, OutputStream o*/) {
         super ("Client " + (id=id ++));
         initComponents();
         setResizable(false);
+        setLocation(550, 200);
 
     }
 
@@ -136,6 +139,7 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,7 +152,6 @@ public class guiCLI extends javax.swing.JFrame {
         jTextArea1.setForeground(new java.awt.Color(53, 146, 37));
         jTextArea1.setRows(5);
         jTextArea1.setText("asdasdasdasdsadasd");
-        jTextArea1.setAutoscrolls(true);
         jTextArea1.setDisabledTextColor(new java.awt.Color(44, 128, 39));
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -681,11 +684,10 @@ public class guiCLI extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
 
         jToggleButton2.setBackground(new java.awt.Color(61, 184, 55));
-        jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton2.setForeground(java.awt.Color.black);
         jToggleButton2.setText("posto 1");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton2.setOpaque(true);
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton2ActionPerformed(evt);
@@ -697,14 +699,12 @@ public class guiCLI extends javax.swing.JFrame {
         jToggleButton3.setForeground(java.awt.Color.black);
         jToggleButton3.setText("posto 1");
         jToggleButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton3.setOpaque(true);
 
         jToggleButton4.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton4.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton4.setForeground(java.awt.Color.black);
         jToggleButton4.setText("posto 1");
         jToggleButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton4.setOpaque(true);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -733,26 +733,23 @@ public class guiCLI extends javax.swing.JFrame {
         );
 
         jToggleButton5.setBackground(new java.awt.Color(61, 184, 55));
-        jToggleButton5.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jToggleButton5.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton5.setForeground(java.awt.Color.black);
         jToggleButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton5.setOpaque(true);
 
         jLabel24.setText("Disponibile");
 
         jToggleButton6.setBackground(new java.awt.Color(61, 184, 55));
-        jToggleButton6.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jToggleButton6.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton6.setForeground(java.awt.Color.black);
         jToggleButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton6.setOpaque(true);
 
         jLabel25.setText("Non Disponibile");
 
         jToggleButton7.setBackground(new java.awt.Color(61, 184, 55));
-        jToggleButton7.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jToggleButton7.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton7.setForeground(java.awt.Color.black);
         jToggleButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton7.setOpaque(true);
 
         jLabel43.setText("Selezionato per la prenotazione corrente");
 
@@ -814,6 +811,11 @@ public class guiCLI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jToggleButton1.setText("ConnectToServer");
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
@@ -858,33 +860,40 @@ public class guiCLI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jToggleButton1))
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(jButton4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addGap(120, 120, 120))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton2)))
-                .addContainerGap())
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(47, 47, 47)
+                                .addComponent(jToggleButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(6, 6, 6)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1)))
+                        .addGap(120, 120, 120)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jToggleButton1)
-                .addGap(62, 62, 62)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -907,7 +916,7 @@ public class guiCLI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -923,14 +932,17 @@ public class guiCLI extends javax.swing.JFrame {
 
     //bottone connessione al server
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        try {
-            connectDisconnect();
-            //statoBotton();
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            connectDisconnect();
+//            //statoBotton();
+//        } catch (UnknownHostException ex) {
+//            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        
+        
+        
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -1070,6 +1082,29 @@ public class guiCLI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    //connection to server
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        try {
+            s=new Socket(jTextField6.getText(), 5001);
+        
+            if(s!=null){
+                try {
+                    JOptionPane.showMessageDialog(this, "Connessione col server ok.", "Connessione", JOptionPane.INFORMATION_MESSAGE);
+                    s.close();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(this, "Errore in connessione. Riavviare l'applicazione.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {                // socket has not been created, so there's something wrong
+               JOptionPane.showMessageDialog(this, "Connessione col server non riuscita.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (UnknownHostException ex) {
+            JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jToggleButton1MouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -1161,6 +1196,7 @@ public class guiCLI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton1;
