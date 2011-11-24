@@ -39,16 +39,20 @@ public class TrainClient {
                 input = new DataInputStream(clientSocket.getInputStream());
                 output = new DataOutputStream(clientSocket.getOutputStream());
                 String choice = in.nextLine();
-                 
+                 System.out.println("prima dell outputWrite");
                 output.writeUTF(choice);
-                versoServer = new ObjectOutputStream(clientSocket.getOutputStream());
-                versoServer.writeObject(p);
+                System.out.println("dopo dell outputWrite");
+                //versoServer = new ObjectOutputStream(clientSocket.getOutputStream());
+                
+                //versoServer.writeObject(p);
+                
                 String inString = input.readUTF();
+                System.out.println("dopo inString");
                 
                 System.out.println(inString.toUpperCase());
-                if ("exit".equals(choice)) {
-                    t = false;
-                }
+//                if ("exit".equals(choice)) {
+//                    t = false;
+//                }
 
 
             }

@@ -22,27 +22,27 @@ public class TrainServer extends Thread {
             DataInputStream is = new DataInputStream(socket.getInputStream());
             DataOutputStream os = new DataOutputStream(socket.getOutputStream());
             while (true) {
-                Prenotazione p=null;
+                //Prenotazione p=null;
                 String userInput = is.readUTF();
-           ObjectInputStream objectInputStream =
-                       new ObjectInputStream(socket.getInputStream());
-                try {
-                    
-                     p = (Prenotazione)objectInputStream.readObject();
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
-                }
+//                ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+//                try {
+//                    p = (Prenotazione)objectInputStream.readObject();
+//                }
+//                catch (ClassNotFoundException ex) {
+//                    Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+                
                 if (userInput == null || userInput.equals("exit")) {
+                    System.out.println("entra nell if exit in server");
                     break;
                 }
                 os.writeUTF(userInput );
                 System.out.println("Il Client ha scritto: " + userInput);
-              p.stampaInfoTreno();
+              //p.stampaInfoTreno();
             }
             os.close();
             is.close();
-            System.out.println("Ho ricevuto una chiamata di chiusura da:\n"
-                    + socket + "\n");
+            System.out.println("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
             socket.close();
         } catch (IOException e) {
             System.out.println("IOException: " + e);
