@@ -31,7 +31,7 @@ public class TrainClient {
         boolean t = true;
         try {
 
-
+            // prova git
             clientSocket = new Socket("", 5001);  // connessione 
             // effettua la comunicazione con il server
 
