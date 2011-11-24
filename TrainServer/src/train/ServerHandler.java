@@ -16,7 +16,7 @@ import java.net.*;
 public class ServerHandler {
     
      public void start() throws Exception {
-         ServerSocket serverSocket = new ServerSocket(5000);
+         ServerSocket serverSocket = new ServerSocket(5001);
 
          //Ciclo infinito di ascolto dei Client
          while(true) {

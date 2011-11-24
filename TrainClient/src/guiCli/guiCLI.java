@@ -31,7 +31,11 @@ public class guiCLI extends javax.swing.JFrame {
     protected static int id = 0;
     private boolean flag;
     //protected static Socket socket;
-    Socket s;
+    private Socket s;
+    DataOutputStream output;
+    DataInputStream input;
+    private ObjectInputStream dalServer;
+    private ObjectOutputStream versoServer;
 
     /** Creates new form gui */
     public guiCLI(/*InputStream i, OutputStream o*/) {
@@ -140,6 +144,7 @@ public class guiCLI extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
+        jButton18 = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -854,6 +859,15 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jTextField6.setText("localhost");
+
+        jButton18.setText("Close");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -883,8 +897,10 @@ public class guiCLI extends javax.swing.JFrame {
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)))
-                        .addGap(120, 120, 120)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton18)
+                        .addGap(12, 12, 12)))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -892,7 +908,8 @@ public class guiCLI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton18))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -1084,23 +1101,27 @@ public class guiCLI extends javax.swing.JFrame {
 
     //connection to server
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        
         if(jTextField6.getText().equals(""))
                 JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
         else{
             try {
 
                 s=new Socket(jTextField6.getText(), 5001);
-
-                if(s!=null){
-                    try {
-                        JOptionPane.showMessageDialog(this, "Connessione col server ok.", "Connessione", JOptionPane.INFORMATION_MESSAGE);
-                        s.close();
-                    } catch (IOException ex) {
-                        JOptionPane.showMessageDialog(this, "Errore in connessione. Riavviare l'applicazione.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {                // socket has not been created, so there's something wrong
-                   JOptionPane.showMessageDialog(this, "Connessione col server non riuscita.", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+                input = new DataInputStream(s.getInputStream());
+                output = new DataOutputStream(s.getOutputStream());
+                
+                
+//                if(s!=null){
+//                    try {
+//                        JOptionPane.showMessageDialog(this, "Connessione col server ok.", "Connessione", JOptionPane.INFORMATION_MESSAGE);
+//                        //s.close();
+//                    } catch (IOException ex) {
+//                        JOptionPane.showMessageDialog(this, "Errore in connessione. Riavviare l'applicazione.", "Error", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                } else {                // socket has not been created, so there's something wrong
+//                   JOptionPane.showMessageDialog(this, "Connessione col server non riuscita.", "Error", JOptionPane.ERROR_MESSAGE);
+//                }
             } catch (UnknownHostException ex) {
                 JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (IOException ex) {
@@ -1108,6 +1129,14 @@ public class guiCLI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
+        try {
+            closeC();
+        } catch (IOException ex) {
+            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton18MouseClicked
 
     /**
     * @param args the command line arguments
@@ -1132,6 +1161,7 @@ public class guiCLI extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1319,6 +1349,21 @@ public class guiCLI extends javax.swing.JFrame {
         disableJT(jToggleButton5, jToggleButton6, jToggleButton7);
     }
 
+    
+    private void closeC() throws IOException{
+        String s = "exit";
+        output.writeUTF(s);
+        
+    }
 
+    
+    private void close2() throws IOException{
+        input = new DataInputStream(s.getInputStream());
+        output = new DataOutputStream(s.getOutputStream());
+        String s = "exit";
+        output.writeUTF(s);
+        
+        
+    }
 
 }
