@@ -1084,25 +1084,29 @@ public class guiCLI extends javax.swing.JFrame {
 
     //connection to server
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        try {
-            s=new Socket(jTextField6.getText(), 5001);
-        
-            if(s!=null){
-                try {
-                    JOptionPane.showMessageDialog(this, "Connessione col server ok.", "Connessione", JOptionPane.INFORMATION_MESSAGE);
-                    s.close();
-                } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(this, "Errore in connessione. Riavviare l'applicazione.", "Error", JOptionPane.ERROR_MESSAGE);
+        if(jTextField6.getText().equals(""))
+                JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
+        else{
+            try {
+
+                s=new Socket(jTextField6.getText(), 5001);
+
+                if(s!=null){
+                    try {
+                        JOptionPane.showMessageDialog(this, "Connessione col server ok.", "Connessione", JOptionPane.INFORMATION_MESSAGE);
+                        s.close();
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(this, "Errore in connessione. Riavviare l'applicazione.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {                // socket has not been created, so there's something wrong
+                   JOptionPane.showMessageDialog(this, "Connessione col server non riuscita.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            } else {                // socket has not been created, so there's something wrong
-               JOptionPane.showMessageDialog(this, "Connessione col server non riuscita.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (UnknownHostException ex) {
+                JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (UnknownHostException ex) {
-            JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     /**
