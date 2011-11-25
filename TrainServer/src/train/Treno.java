@@ -55,7 +55,10 @@ public class Treno implements Serializable {
         return postiTotali;
 
     }
-
+    public void setPostiDisponibili(int pB){
+        postiDisponibili = pB;
+    }
+    
     public int getPostiDisponibili() {
         return postiDisponibili;
     }

@@ -57,13 +57,27 @@ public class Prenotazione extends Treno implements Serializable {
     public String getCodicePrenotazione() {
         return codicePrenotazione;
     }
+    
+    public void setNomeCliente(String n){
+        nome = n;
+    }
 
     public String getNomeCliente() {
         return nome;
     }
+    
+    public void setPostoPrenotato(int p){
+        postoPrenotato=p;
+        
+    }
 
     public int getPostoPrenotato() {
         return postoPrenotato;
+    }
+    
+    @Override
+    public String getCodiceTreno(){
+        return super.getCodiceTreno();
     }
     @Override
     public String getStazionePartenza(){
@@ -76,6 +90,11 @@ public class Prenotazione extends Treno implements Serializable {
     @Override
     public Data getDataPartenza(){
         return super.getDataPartenza();
+    }
+    
+    @Override
+    public void setPostiDisponibili(int n){
+        super.setPostiDisponibili(n);
     }
     @Override
     public int getPostiTotali(){

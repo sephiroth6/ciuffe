@@ -3,6 +3,7 @@ package train;
 //Importo i package
 import java.net.*;
 import java.io.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,8 +12,15 @@ public class TrainServer extends Thread {
 
     private Socket socket;
 
-    public TrainServer(Socket socket) {
+    public TrainServer(Socket socket) throws FileNotFoundException {
         this.socket = socket;
+        Archivio archivio=new Archivio();
+         archivio.creaArchivioTreni();
+         archivio.creaArchvioPrenotazioni();
+         ArrayList<Treno> treni = new ArrayList();
+         treni = archivio.getArchivioTreni();
+         ArrayList<Prenotazione> prenotazioni = new ArrayList();
+         prenotazioni = archivio.getArchivioPrenotazioni();
     }
 
     //esecuzione del Thread sul Socket
@@ -43,7 +51,7 @@ public class TrainServer extends Thread {
            
               
             }
-            p.stampaInfoTreno();
+            
             os.close();
             is.close();
             System.out.println("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
