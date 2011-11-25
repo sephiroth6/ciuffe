@@ -36,8 +36,7 @@ public class Archivio {
             int postiTotali = 0;
             int postiDisponibili = 0;
             String temp;
-            
-            FileReader archivio = new FileReader("/Users/albyreturns/Desktop/Archivio.txt");
+            FileReader archivio = new FileReader("Archivio.txt");
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
             
@@ -85,7 +84,7 @@ public class Archivio {
             String temp;
             Prenotazione p;
             
-            FileReader archivio = new FileReader("/Users/albyreturns/Desktop/Archivio2.txt");
+            FileReader archivio = new FileReader("Archivio2.txt");
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
             while (!"FINE DATABASE".equals(temp)) {

@@ -871,7 +871,7 @@ public class guiServ extends javax.swing.JFrame {
         jButton3.setText("start");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                jButton3MouseClicked1(evt);
             }
         });
 
@@ -1030,6 +1030,7 @@ public class guiServ extends javax.swing.JFrame {
     //start server
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
                 try {
+
                         start2();
                         jButton18.setEnabled(true);
                         jButton3.setEnabled(false);
@@ -1066,6 +1067,17 @@ public class guiServ extends javax.swing.JFrame {
 //            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }//GEN-LAST:event_jButton18MouseClicked
+
+    private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
+        try {
+
+                        start2();
+                        jButton18.setEnabled(true);
+                        jButton3.setEnabled(false);
+                    } catch (Exception ex) {
+                        Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+    }//GEN-LAST:event_jButton3MouseClicked1
 
 
     

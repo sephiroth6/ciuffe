@@ -20,6 +20,7 @@ import javax.swing.JToggleButton;
 import java.io.*;
 import java.net.*;
 import javax.swing.JOptionPane;
+import train.*;
 
 /**
  *
@@ -36,7 +37,10 @@ public class guiCLI extends javax.swing.JFrame {
     DataInputStream input;
     private ObjectInputStream dalServer;
     private ObjectOutputStream versoServer;
+    private Prenotazione p =null;
 
+    //User
+    private String User = null;
     /** Creates new form gui */
     public guiCLI(/*InputStream i, OutputStream o*/) {
         super ("Client " + (id=id ++));
@@ -135,16 +139,15 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jTextField6 = new javax.swing.JTextField();
         jButton18 = new javax.swing.JButton();
+        jLabel44 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -821,22 +824,14 @@ public class guiCLI extends javax.swing.JFrame {
                 jToggleButton1MouseClicked(evt);
             }
         });
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+
+        jButton2.setText("Annulla Prenotazione");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-
-        jButton1.setText("Cerca Treno");
-        jButton1.setEnabled(false);
-
-        jButton2.setText("Disdetta Prenotazione");
-        jButton2.setEnabled(false);
-
-        jLabel1.setText("Inserisci numero treno:");
-        jLabel1.setEnabled(false);
-
-        jTextField1.setEnabled(false);
 
         jButton3.setText("Cronologia Server");
         jButton3.setEnabled(false);
@@ -853,76 +848,77 @@ public class guiCLI extends javax.swing.JFrame {
 
         jButton4.setText("Effettua una prenonazione");
         jButton4.setEnabled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
             }
         });
 
         jTextField6.setText("localhost");
 
-        jButton18.setText("Close");
+        jButton18.setText("Disconnect");
         jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton18MouseClicked(evt);
             }
         });
 
+        jLabel44.setText("Nome Utente:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(392, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel44)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                .addGap(178, 178, 178))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jToggleButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton18)
+                .addContainerGap(106, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jButton4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jToggleButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(6, 6, 6)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton18)
-                        .addGap(12, 12, 12)))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel44)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton18))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(58, 58, 58)
+                .addGap(47, 47, 47)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addGap(114, 114, 114)
                 .addComponent(jButton3)
                 .addContainerGap())
         );
@@ -948,21 +944,6 @@ public class guiCLI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //bottone connessione al server
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-//        try {
-//            connectDisconnect();
-//            //statoBotton();
-//        } catch (UnknownHostException ex) {
-//            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IOException ex) {
-//            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
-        
-        
-
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     
     //abilita log finestra logs server
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -974,17 +955,6 @@ public class guiCLI extends javax.swing.JFrame {
 
     
     //apertura finestra per effettuare una ricerca di un treno ed eventualmente la prentazione
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-        
-        FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 480, 340, jPanel2);
-        setFrame(GestorePreno);
-        setNoEditableP();
-        jToggleButton1.setEnabled(false);
-        jButton3.setEnabled(true);
-        if(flag) jFrame1.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     
     //apertura finestra risultato ricerca
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1108,8 +1078,12 @@ public class guiCLI extends javax.swing.JFrame {
             try {
 
                 s=new Socket(jTextField6.getText(), 5001);
-                input = new DataInputStream(s.getInputStream());
-                output = new DataOutputStream(s.getOutputStream());
+//              input = new DataInputStream(s.getInputStream());
+//              output = new DataOutputStream(s.getOutputStream());
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                User = jTextField7.getText();
+                setEditableP();
+                jTextField7.setEditable(false);
                 
                 
 //                if(s!=null){
@@ -1133,10 +1107,25 @@ public class guiCLI extends javax.swing.JFrame {
     private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
         try {
             closeC();
+            setNoEditableP();
         } catch (IOException ex) {
             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton18MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    //make a prenotation
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 480, 340, jPanel2);
+        setFrame(GestorePreno);
+        setNoEditableP();
+        jToggleButton1.setEnabled(false);
+        jButton3.setEnabled(true);
+        if(flag) jFrame1.setVisible(true);
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
     * @param args the command line arguments
@@ -1152,7 +1141,6 @@ public class guiCLI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1173,7 +1161,6 @@ public class guiCLI extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1211,6 +1198,7 @@ public class guiCLI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1225,12 +1213,12 @@ public class guiCLI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton1;
@@ -1293,11 +1281,10 @@ public class guiCLI extends javax.swing.JFrame {
 
 
     private void setEditableP(){
-        jButton1.setEnabled(true);
+        
             jButton2.setEnabled(true);
             jButton3.setEnabled(true);
-            jLabel1.setEnabled(true);
-            jTextField1.setEnabled(true);
+        
             jLabel2.setEnabled(true);
             jTextField2.setEnabled(true);
             jButton4.setEnabled(true);
@@ -1306,12 +1293,11 @@ public class guiCLI extends javax.swing.JFrame {
 
 
     private void setNoEditableP(){
-        jButton1.setEnabled(false);
+       
             jButton2.setEnabled(false);
             jButton3.setEnabled(false);
             jFrame1.setVisible(false);
-            jLabel1.setEnabled(false);
-            jTextField1.setEnabled(false);
+       
             jLabel2.setEnabled(false);
             jTextField2.setEnabled(false);
             jButton4.setEnabled(false);
