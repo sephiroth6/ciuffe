@@ -113,6 +113,9 @@ public class Data implements Serializable {
 
     public boolean verificaData() {
 
+        if(giorno.equals("") || mese.equals("") || anno.equals("") || ora.equals("") || minuti.equals(""))
+            return false;
+        
         int g = convertiStringa(giorno);
         int m = convertiStringa(mese);
         int a = convertiStringa(anno);
@@ -120,7 +123,7 @@ public class Data implements Serializable {
         int mi = convertiStringa(minuti);
 
 
-        if (g < 0 || m < 0 || a < 0 || o < 0 || mi < 0) {
+        if (g <= 0 || m <= 0 || a <= 0 || o <= 0 || mi <= 0) {
             return false;
         } else if (o > 23 || mi > 59) {
             return false;
