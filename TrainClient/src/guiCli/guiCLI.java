@@ -1182,6 +1182,19 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         close();
         FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 480, 420, jPanel3);
         setFrame(VisualizzaTreni);
+        /*
+            # String cP ->codice prenotazione
+            # String n -> nome (ma dell'operatore che mettiamo sul client o un nuovo nome?)
+            # int pP -> posto prenotato
+            # String nT -> nome treno
+            # String c -> codice treno
+            #String sP -> stazione partenza
+            # String sA -> stazione arrivo
+            # Data dP -> data giorno
+            # int pT -> posti totali
+            # int pD -> posti disponibili
+         */
+        p = new Prenotazione(User, User, id, User, User, User, User, date, id, id);
         
     }
         
