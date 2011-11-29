@@ -11,16 +11,18 @@ import java.util.logging.Logger;
 public class TrainServer extends Thread {
 
     private Socket socket;
+    Archivio archivio = new Archivio(); //archivio totale
+    ArrayList<Treno> treni = new ArrayList();
+    ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
+    ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
 
     public TrainServer(Socket socket) throws FileNotFoundException {
         this.socket = socket;
-        Archivio archivio=new Archivio();
-         archivio.creaArchivioTreni();
-         archivio.creaArchvioPrenotazioni();
-         ArrayList<Treno> treni = new ArrayList();
-         treni = archivio.getArchivioTreni();
-         ArrayList<Prenotazione> prenotazioni = new ArrayList();
-         prenotazioni = archivio.getArchivioPrenotazioni();
+        
+        archivio.creaArchivioTreni();
+        archivio.creaArchvioPrenotazioni();
+        treni = archivio.getArchivioTreni();
+        prenotazioni = archivio.getArchivioPrenotazioni();
     }
 
     //esecuzione del Thread sul Socket
@@ -39,6 +41,15 @@ public class TrainServer extends Thread {
                
                 try {
                     p = (Prenotazione)objectInputStream.readObject();
+                    if(p!=null){
+                        if(p.getCodicePrenotazione().equals("")){
+                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza());
+                            ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
+                            obOs.writeObject(ricercaTreni);
+                        }
+                        
+                        
+                    }
                 }
                 catch (ClassNotFoundException ex) {
                     Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,4 +71,9 @@ public class TrainServer extends Thread {
             System.out.println("IOException: " + e);
         }
     }
+    
+    
+    
+    
+    
 }
