@@ -244,6 +244,9 @@
         <Component class="javax.swing.JTextField" name="jTextField4">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField5">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JustNumber justNumbers = new JustNumber();&#xa;jTextField5.setDocument(justNumbers);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -288,12 +291,24 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField10">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JustNumber justNumbers2 = new JustNumber();&#xa;jTextField10.setDocument(justNumbers2);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField11">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JustNumber justNumbers3 = new JustNumber();&#xa;jTextField11.setDocument(justNumbers3);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField12">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JustNumber justNumbers4 = new JustNumber();&#xa;jTextField12.setDocument(justNumbers4);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField13">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JustNumber justNumbers5 = new JustNumber();&#xa;jTextField13.setDocument(justNumbers5);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel45">
           <Properties>

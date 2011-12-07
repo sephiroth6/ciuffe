@@ -24,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import train.*;
 
+
 /**
  *
  * @author angelo
@@ -42,6 +43,7 @@ public class guiCLI extends javax.swing.JFrame {
     private Prenotazione p = null;
     private Data date = null;
     ArrayList<Treno> ricercaTreni = new ArrayList();
+    
     //User
     private String User = null;
 
@@ -359,6 +361,17 @@ public class guiCLI extends javax.swing.JFrame {
                     .addComponent(jButton5))
                 .addContainerGap())
         );
+
+        JustNumber justNumbers = new JustNumber();
+        jTextField5.setDocument(justNumbers);
+        JustNumber justNumbers2 = new JustNumber();
+        jTextField10.setDocument(justNumbers2);
+        JustNumber justNumbers3 = new JustNumber();
+        jTextField11.setDocument(justNumbers3);
+        JustNumber justNumbers4 = new JustNumber();
+        jTextField12.setDocument(justNumbers4);
+        JustNumber justNumbers5 = new JustNumber();
+        jTextField13.setDocument(justNumbers5);
 
         jLabel10.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jLabel10.setText("Sono stati trovati");
