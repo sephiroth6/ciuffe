@@ -19,7 +19,6 @@ import javax.swing.JToggleButton;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
