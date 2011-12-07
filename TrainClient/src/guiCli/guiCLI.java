@@ -39,9 +39,16 @@ public class guiCLI extends javax.swing.JFrame {
     DataInputStream input;
     private ObjectInputStream dalServer;
     private ObjectOutputStream versoServer;
+<<<<<<< HEAD
     private Prenotazione p = null;
     private Data date = null;
     ArrayList<Treno> ricercaTreni = new ArrayList();
+=======
+    private Prenotazione p =null;
+    private Data date=null;
+    ArrayList<Treno> ricercaTreni = new ArrayList();
+
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     //User
     private String User = null;
 
@@ -359,13 +366,13 @@ public class guiCLI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel10.setFont(new java.awt.Font("Ubuntu", 1, 15));
+        jLabel10.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel10.setText("Sono stati trovati");
 
-        jLabel11.setFont(new java.awt.Font("Ubuntu", 1, 15));
+        jLabel11.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel11.setText("n°");
 
-        jLabel12.setFont(new java.awt.Font("Ubuntu", 1, 15));
+        jLabel12.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel12.setText("treni disponibili!");
 
         jLabel15.setText("Nome:");
@@ -1048,11 +1055,23 @@ public class guiCLI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jLabel44)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                 .addGap(186, 186, 186))
+=======
+                .addContainerGap(413, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel44)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                .addGap(178, 178, 178))
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jToggleButton1)
@@ -1060,7 +1079,11 @@ public class guiCLI extends javax.swing.JFrame {
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton18)
+<<<<<<< HEAD
                 .addContainerGap(119, Short.MAX_VALUE))
+=======
+                .addContainerGap(110, Short.MAX_VALUE))
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1130,6 +1153,12 @@ public class guiCLI extends javax.swing.JFrame {
 
     //apertura finestra per effettuare una ricerca di un treno ed eventualmente la prentazione
     //apertura finestra risultato ricerca
+<<<<<<< HEAD
+=======
+    
+    
+    
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     //torna indietro lasciando i dati inseriti invariati
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
@@ -1183,6 +1212,10 @@ public class guiCLI extends javax.swing.JFrame {
         jFrame1.setVisible(false);
     }//GEN-LAST:event_jButton13ActionPerformed
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     //annulla ed esci i posti selezionati
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
 
@@ -1196,8 +1229,19 @@ public class guiCLI extends javax.swing.JFrame {
         jFrame2.setVisible(false);
     }//GEN-LAST:event_jButton17ActionPerformed
 
+<<<<<<< HEAD
 //cambia colore
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+=======
+    
+//cambia colore
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        
+       
+
+
+
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     //connection to server
@@ -1256,16 +1300,22 @@ public class guiCLI extends javax.swing.JFrame {
         setNoEditableP();
         jToggleButton1.setEnabled(false);
         jButton3.setEnabled(true);
+<<<<<<< HEAD
         if (flag) {
             jFrame1.setVisible(true);
         }
 
+=======
+        if(flag) jFrame1.setVisible(true);
+        
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     }//GEN-LAST:event_jButton4MouseClicked
 
     //cerca prenotazione
 private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
 
     date = new Data(jTextField5.getText(), jTextField10.getText(), jTextField11.getText(), jTextField12.getText(), jTextField13.getText());
+<<<<<<< HEAD
 
     if (checkValueP()) {
         try {
@@ -1298,6 +1348,40 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
 //               dalServer = new ObjectInputStream(s.getInputStream());
+=======
+    
+    if(checkValueP()){
+           // try {
+                
+                /*
+                    # String cP ->codice prenotazione
+                    # String n -> nome (ma dell'operatore che mettiamo sul client o un nuovo nome?)
+                    # int pP -> posto prenotato
+                    # String nT -> nome treno
+                    # String c -> codice treno
+                    #String sP -> stazione partenza
+                    # String sA -> stazione arrivo
+                    # Data dP -> data giorno
+                    # int pT -> posti totali
+                    # int pD -> posti disponibili
+                 */                     
+                
+                p = new Prenotazione(
+                        "",   //codice preno 
+                        User,   //nome operatore
+                        0,     //posto prenotato
+                        "",   //nome treno
+                        "",   //codice treno
+                        jTextField3.getText(),  //stazione partenza
+                        jTextField4.getText(),   //stazione arrivo
+                        date,   //data
+                        0,     //posti totali
+                        0      //posti dispo
+                        );
+//                versoServer = new ObjectOutputStream(s.getOutputStream());
+//                versoServer.writeObject(p);
+//                dalServer = new ObjectInputStream(s.getInputStream());
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
 //                try {
 //                    ricercaTreni = (ArrayList<Treno>) dalServer.readObject();
 //                    ricercaTreni.get(0).stampaInfoTreno();
@@ -1305,6 +1389,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 //                } catch (ClassNotFoundException ex) {
 //                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
 //                }
+<<<<<<< HEAD
             close();
             FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 600, 480, jPanel3);
             VisualizzaTreni.setSize(700, 480);
@@ -1313,6 +1398,16 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 //                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+=======
+                close();
+                FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 600, 480, jPanel3);
+                VisualizzaTreni.setSize(700, 480);
+                setFrame(VisualizzaTreni);
+//            } catch (IOException ex) {
+//                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            //}
+        
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     }
 
 }//GEN-LAST:event_jButton5MouseClicked
@@ -1330,7 +1425,11 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
         jFrame2.setVisible(true);
         jFrame2.setLocation(550, 10);
         jFrame2.setSize(500, 370);
@@ -1340,6 +1439,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     //apertura finestra riepilogo prenotazione
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         close();
+<<<<<<< HEAD
         FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilogo prenotazione", 30, 50, 480, 420, jPanel4);
         setFrame(RiepilogoPreno);
     }//GEN-LAST:event_jButton7MouseClicked
@@ -1348,6 +1448,12 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+=======
+        FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
+        setFrame(RiepilogoPreno);
+    }//GEN-LAST:event_jButton7MouseClicked
+
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     /**
      * @param args the command line arguments
      */
@@ -1576,7 +1682,27 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         String s = "exit";
         output.writeUTF(s);
     }
+    
+    private static void setTableSearchTrain (JTable t, ArrayList<Treno> a) {
+        
+        int n = a.size();
+        Treno train;
+        setJTableTrain(t, n);
+        
+        for(int i = 0; i < n; i++) { // take infos from every train object
+            train = a.get(i);
+            t.setValueAt(train.getNomeTreno(), i, 0);
+            t.setValueAt(train.getCodiceTreno(), i, 1);
+            t.setValueAt(train.getStazionePartenza(), i, 2);
+            t.setValueAt(train.getStazioneArrivo(), i, 3);
+            t.setValueAt(train.getDataPartenza().getOra()+train.getDataPartenza().getMinuti(), i, 4);
+            t.setValueAt(train.getPostiDisponibili(), i, 5);
+            t.setValueAt(train.getPostiTotali(), i, 6);
+        }
+        
+    }
 
+<<<<<<< HEAD
     private static void setTableSearchTrain(JTable t, ArrayList<Treno> a) {
 
         int n = a.size();
@@ -1601,6 +1727,13 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         if (!date.verificaData()) {
             JOptionPane.showMessageDialog(this, "Controllare data ed ora!", "Data e ora Errati", JOptionPane.WARNING_MESSAGE);
             return false;
+=======
+    private boolean checkValueP(){
+        
+        if(!date.verificaData()){
+                JOptionPane.showMessageDialog(this, "Controllare data ed ora!", "Data e ora Errati", JOptionPane.WARNING_MESSAGE);
+                return false;
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
         }
         if (jTextField3.getText().equals("") || jTextField4.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Inserire una città per la partenza e l'arrivo.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1612,6 +1745,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         }
         return true;
     }
+<<<<<<< HEAD
 
     private static void setJTableTrain(JTable jt, int n) {
         String[] columnNames = new String[]{"Nome Treno", "Codice", "Città P.nza", "Città A.vo", "Orario P.za", "Posti disp", "Posti tot"};
@@ -1628,4 +1762,21 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
         jt.setModel(model);
     }
+=======
+    
+    private static void setJTableTrain(JTable jt, int n){
+        String[] columnNames = new String[]{"Nome Treno", "Codice", "Città P.nza", "Città A.vo", "Orario P.za", "Posti disp", "Posti tot"};
+        
+        DefaultTableModel model = new DefaultTableModel(columnNames, n){
+        
+            private static final long serialVersionUID = 1L;
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        jt.setModel(model);
+}
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
 }

@@ -113,7 +113,11 @@ public class Data implements Serializable {
 
     public boolean verificaData() {
 
+<<<<<<< HEAD
         if (giorno.equals("") || mese.equals("") || anno.equals("") || ora.equals("") || minuti.equals("")) {
+=======
+        if(giorno.equals("") || mese.equals("") || anno.equals("") || ora.equals("") || minuti.equals("")){
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
             System.out.println("sto al punto 1");
             return false;
         }
@@ -124,6 +128,7 @@ public class Data implements Serializable {
         int mi = convertiStringa(minuti);
 
 
+<<<<<<< HEAD
         if (g <= 0 || m <= 0 || a <= 0 || o < 0 || mi < 0) {
           
             return false;
@@ -137,9 +142,20 @@ public class Data implements Serializable {
             return false;
         } else if ((m == 11 || m == 4 || m == 6 || m == 9) && g > 30) {
            
+=======
+        if (g <= 0 || m <= 0 || a <= 0 || o <= 0 || mi < 0) {
+             System.out.println("sto al punto 2");
+            return false;
+        } else if (o > 23 || mi > 59) {
+             System.out.println("sto al punto 3");
+            return false;
+        } else if ((m == 11 || m == 4 || m == 6 || m == 9) && g > 30) {
+             System.out.println("sto al punto 4");
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
             return false;
 
         } else if (m == 2 && g > 28) {
+<<<<<<< HEAD
            
             return false;
         } else if ((m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && g > 31) {
@@ -147,6 +163,15 @@ public class Data implements Serializable {
             return false;
         } else {
            
+=======
+             System.out.println("sto al punto 5");
+            return false;
+        } else if ((m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && g > 31) {
+             System.out.println("sto al punto 6");
+            return false;
+        } else {
+             System.out.println("sto al punto 7");
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
             return true;
         }
     }

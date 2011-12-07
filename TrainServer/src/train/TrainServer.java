@@ -15,7 +15,10 @@ public class TrainServer extends Thread {
     ArrayList<Treno> treni = new ArrayList();
     ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
     ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
+<<<<<<< HEAD
     ObjectInputStream objectInputStream;
+=======
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
 
     public TrainServer(Socket socket) throws FileNotFoundException {
         this.socket = socket;
@@ -24,7 +27,10 @@ public class TrainServer extends Thread {
         archivio.creaArchvioPrenotazioni();
         treni = archivio.getArchivioTreni();
         prenotazioni = archivio.getArchivioPrenotazioni();
+<<<<<<< HEAD
         
+=======
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
     }
 
     //esecuzione del Thread sul Socket
@@ -44,6 +50,7 @@ public class TrainServer extends Thread {
                 try {
                     
                     p = (Prenotazione)objectInputStream.readObject();
+<<<<<<< HEAD
                    
                     if(p!=null){
                         p.stampaPrenotazione();
@@ -52,6 +59,14 @@ public class TrainServer extends Thread {
                           //  ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
                          //   obOs.writeObject(ricercaTreni);
                        // }
+=======
+                    if(p!=null){
+                        if(p.getCodicePrenotazione().equals("")){
+                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza());
+                            ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
+                            obOs.writeObject(ricercaTreni);
+                        }
+>>>>>>> 5cb68f2da6eb7629bc75e7db3e22e1e312de37a5
                         
                         
                     }
