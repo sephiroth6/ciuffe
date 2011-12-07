@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextArea;
 
 //Creazione di una classe per il Multrithreading
 public class TrainServer extends Thread {
@@ -15,10 +16,11 @@ public class TrainServer extends Thread {
     ArrayList<Treno> treni = new ArrayList();
     ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
     ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
+    JTextArea jt;
 
-    public TrainServer(Socket socket) throws FileNotFoundException {
+    public TrainServer(Socket socket, JTextArea text) throws FileNotFoundException {
         this.socket = socket;
-        
+        jt = text;
         archivio.creaArchivioTreni();
         archivio.creaArchvioPrenotazioni();
         treni = archivio.getArchivioTreni();
@@ -31,21 +33,27 @@ public class TrainServer extends Thread {
         boolean run = true;
         
         try {
-            DataInputStream is = new DataInputStream(socket.getInputStream());
-            DataOutputStream os = new DataOutputStream(socket.getOutputStream());
+            
             Prenotazione p=null;
             while (run) {
-                //
                 
-               ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+               
                
                 try {
+                    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione)objectInputStream.readObject();
+                    
+                    
+                    
                     if(p!=null){
-                        if(p.getCodicePrenotazione().equals("")){
-                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza());
+                        if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
+                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
                             ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(ricercaTreni);
+                            obOs.writeObject(ricercaTreni); 
+                            
+                        }
+                        else if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
+                            
                         }
                         
                         
@@ -55,25 +63,24 @@ public class TrainServer extends Thread {
                     Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                if (p!=null) {
+                if (p==null) {
                    
                     run = false;
+                    
                 }
            
               
             }
             
-            os.close();
-            is.close();
-            System.out.println("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
+            
+            jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
             socket.close();
         } catch (IOException e) {
-            System.out.println("IOException: " + e);
+            jt.append("IOException: " + e +"\n");
         }
     }
     
     
-    
-    
-    
 }
+    
+    

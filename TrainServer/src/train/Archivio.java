@@ -172,7 +172,7 @@ public class Archivio {
         
     }
     
-    public Prenotazione prenota(int posto, Prenotazione p, Treno t) {
+    public Prenotazione prenotaSingleton(int posto, Prenotazione p, Treno t, String codicePrenotazione) {
         
         Prenotazione out=null;
         
@@ -183,9 +183,9 @@ public class Archivio {
             //  String sA, Data dP, int pT, int pD)
             int temp = t.getPostiDisponibili() - 1;
             t.setPostiDisponibili(temp);
-            String codicePrenotazione = generaCodicePrenotazione();
+            
             out = new Prenotazione(codicePrenotazione, p.getNomeCliente(), posto, t.getNomeTreno(), t.getCodiceTreno(),
-                    p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), t.getPostiTotali(), temp);
+            p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), t.getPostiTotali(), temp);
             for (int i = 0; i < archivioTreni.size(); i++) {
                 if (t.getCodiceTreno().equals(archivioTreni.get(i).getCodiceTreno())) {
                     archivioTreni.get(i).setPostiDisponibili(temp);
@@ -197,7 +197,20 @@ public class Archivio {
         
     }
     
-    public ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data) {
+    public ArrayList<Prenotazione> prenotaMultipla(int[] posti, Prenotazione p, Treno t){
+        ArrayList<Prenotazione> out= new ArrayList();
+        String codicePrenotazione = generaCodicePrenotazione();
+        for(int i=0; i<posti.length; i++){
+            out.add(prenotaSingleton(posti[i], p, t, codicePrenotazione));
+            
+        }
+        return out;
+        
+    }
+    
+    
+    
+    public ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data, int posti) {
         
         
         ArrayList<Treno> out = new ArrayList();
@@ -209,7 +222,8 @@ public class Archivio {
                     && archivioTreni.get(i).getDataPartenza().getMese().equalsIgnoreCase(data.getMese())
                     && archivioTreni.get(i).getDataPartenza().getAnno().equalsIgnoreCase(data.getAnno())
                     && Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getOra()) >= Data.convertiStringa(data.getOra())
-                    && Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getMinuti()) >= Data.convertiStringa(data.getMinuti())) {
+                    && Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getMinuti()) >= Data.convertiStringa(data.getMinuti())
+                    && archivioPrenotazioni.get(i).getPostiDisponibili() >= posti){
                 out.add(archivioTreni.get(i));
             }
         }
@@ -230,6 +244,16 @@ public class Archivio {
         return listaPrenotazione;
         
     }
+    
+    public boolean verificaDisponibilitàPosti(Treno t, int posti) {
+        if(t.getPostiDisponibili()< posti){
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
     
     public boolean verificaDisponibilitàPosto(Treno t, int posto) {   // ritorna true se è disponibile
         if (t.getPostiDisponibili() == 0) {

@@ -7,8 +7,7 @@ package guiSrv;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JTextArea;
 import train.*;
 
 /**
@@ -19,9 +18,11 @@ public class Listener implements Runnable {
     
     private ServerSocket ss;
     private Socket sh;
+    private JTextArea jt;
         
-    public Listener(ServerSocket ss) {
+    public Listener(ServerSocket ss, JTextArea text) {
         this.ss = ss;
+        jt = text;
         
     }
     
@@ -30,13 +31,24 @@ public class Listener implements Runnable {
         try {    
         
             while (true){
-                System.out.println("In attesa di chiamate dai Client... ");
+                jt.append("In attesa di chiamate dai Client...\n");
                 sh=ss.accept();
-                System.out.println("Ho ricevuto una chiamata di apertura da:\n" + sh);
-                new TrainServer(sh).start();
+                jt.append("Ho ricevuto una chiamata di apertura da:\n" + sh + "\n");
+                
+                new TrainServer(sh, jt).start();
+                
+                if (sh.isClosed())
+                  jt.append("Ho ricevuto una chiamata di chiusura da:\n" + sh + "\n");  
             }
         } catch (IOException ex) {}
     } 
+    
+    public void closeAll() throws IOException{
+        ss.close();
+        sh.close();
+    }
+
+    
         
 }
     

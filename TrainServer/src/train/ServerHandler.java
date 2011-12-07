@@ -27,8 +27,8 @@ public class ServerHandler {
              System.out.println("In attesa di chiamate dai Client... ");
              Socket socket = serverSocket.accept();
              System.out.println("Ho ricevuto una chiamata di apertura da:\n" + socket);
-             TrainServer server = new TrainServer(socket);
-             server.start();
+             //TrainServer server = new TrainServer(socket);
+             //server.start();
            }
      }
 

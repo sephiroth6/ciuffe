@@ -689,7 +689,6 @@ public class guiServ extends javax.swing.JFrame {
 
         jToggleButton2.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton2.setForeground(java.awt.Color.black);
         jToggleButton2.setText("posto 1");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -700,13 +699,11 @@ public class guiServ extends javax.swing.JFrame {
 
         jToggleButton3.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton3.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton3.setForeground(java.awt.Color.black);
         jToggleButton3.setText("posto 1");
         jToggleButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jToggleButton4.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton4.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton4.setForeground(java.awt.Color.black);
         jToggleButton4.setText("posto 1");
         jToggleButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -738,21 +735,18 @@ public class guiServ extends javax.swing.JFrame {
 
         jToggleButton5.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton5.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton5.setForeground(java.awt.Color.black);
         jToggleButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel24.setText("Disponibile");
 
         jToggleButton6.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton6.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton6.setForeground(java.awt.Color.black);
         jToggleButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel25.setText("Non Disponibile");
 
         jToggleButton7.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton7.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton7.setForeground(java.awt.Color.black);
         jToggleButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel43.setText("Selezionato per la prenotazione corrente");
@@ -910,10 +904,11 @@ public class guiServ extends javax.swing.JFrame {
 
         jButton18.setEnabled(false);
 
-        jLabel44.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel44.setFont(new java.awt.Font("Dialog", 1, 18));
         jLabel44.setText("Server");
 
         jTextArea2.setColumns(20);
+        jTextArea2.setEditable(false);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -928,8 +923,8 @@ public class guiServ extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel44)
-                    .addComponent(jLabel45)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -939,9 +934,9 @@ public class guiServ extends javax.swing.JFrame {
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel45)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -1095,6 +1090,11 @@ public class guiServ extends javax.swing.JFrame {
         try {
 
                         start2();
+//                        if(jTextArea2.getText().equals(""))
+//                            jTextArea2.setText("In attesa di chiamate dai Client...");
+//                        else
+//                            jTextArea2.setText(jTextArea2.getText()+"\nIn attesa di chiamate dai Client...");
+                       
                         jButton18.setEnabled(true);
                         jButton3.setEnabled(false);
                     } catch (Exception ex) {
@@ -1321,7 +1321,7 @@ public class guiServ extends javax.swing.JFrame {
              System.out.println("In attesa di chiamate dai Client... ");
              Socket socket = serverSocket.accept();
              System.out.println("Ho ricevuto una chiamata di apertura da:\n" + socket);
-             t = new TrainServer(socket);
+             t = new TrainServer(socket, jTextArea2);
              //t = new Thread(new Listener(serverSocket, socket) {});
              t.start();
           // }
@@ -1331,7 +1331,7 @@ public class guiServ extends javax.swing.JFrame {
     
     private void start2() throws IOException{
         s = new ServerSocket(5001);
-        t = new Thread(new guiSrv.Listener(this.s));
+        t = new Thread(new guiSrv.Listener(this.s, jTextArea2));
         t.start();
         
     }
@@ -1340,14 +1340,22 @@ public class guiServ extends javax.swing.JFrame {
     
      //stop server
      private void stopSrv() throws IOException{
-         s.close();
+        s.close();
+        t.interrupt();
+        jTextArea2.append("Server disconnesso"+s.isClosed()+t+"\n");
         
-         t.interrupt();
+        
          
      }
      
      private void positionView(){
          
+     }
+     
+     private void logs(){
+         while(true){
+             
+         }
      }
     
 

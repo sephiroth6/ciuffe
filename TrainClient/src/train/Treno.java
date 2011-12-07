@@ -8,7 +8,6 @@ package train;
  *
  * @author albyreturns
  */
-
 import java.io.*;
 public class Treno implements Serializable {
 
@@ -19,7 +18,6 @@ public class Treno implements Serializable {
     private Data dataPartenza; // data ed ora di partenza
     private int postiTotali;
     private int postiDisponibili;
-    
 
     public Treno(String n, String c, String sP, String sA, Data dP, int pT, int pD) {
         nomeTreno = n;
@@ -29,11 +27,6 @@ public class Treno implements Serializable {
         dataPartenza = dP;
         postiTotali = pT;
         postiDisponibili = pD;
-        
-
-
-
-
     }
 
     public String getNomeTreno() {
@@ -57,11 +50,16 @@ public class Treno implements Serializable {
     public Data getDataPartenza() {
         return dataPartenza;
     }
-      public int getPostiTotali() {
+
+    public int getPostiTotali() {
         return postiTotali;
 
     }
-       public int getPostiDisponibili() {
+    public void setPostiDisponibili(int pB){
+        postiDisponibili = pB;
+    }
+    
+    public int getPostiDisponibili() {
         return postiDisponibili;
     }
 
