@@ -18,6 +18,8 @@ public class Archivio {
     
     private ArrayList<Treno> archivioTreni;
     private ArrayList<Prenotazione> archivioPrenotazioni;
+    private FileReader archivio = createDB("archivio/Archivio.txt");
+    private FileReader prenotazioni = createDB("archivio/Prenotazioni.txt");
     
     public Archivio() throws FileNotFoundException {
         
@@ -36,7 +38,7 @@ public class Archivio {
             int postiTotali = 0;
             int postiDisponibili = 0;
             String temp;
-            FileReader archivio = new FileReader("Archivio.txt");
+            //FileReader archivio = new FileReader("/home/angelo/ciuffe/TrainServer/src/train/archivio/Archivio.txt");
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
             
@@ -84,8 +86,8 @@ public class Archivio {
             String temp;
             Prenotazione p;
             
-            FileReader archivio = new FileReader("Archivio2.txt");
-            BufferedReader archivioL = new BufferedReader(archivio);
+            //FileReader prenotazioni = new FileReader("/home/angelo/ciuffe/TrainServer/src/train/archivio/Prenotazioni.txt");
+            BufferedReader archivioL = new BufferedReader(prenotazioni);
             temp = archivioL.readLine();
             while (!"FINE DATABASE".equals(temp)) {
                 temp = archivioL.readLine();
@@ -244,14 +246,27 @@ public class Archivio {
         }
         return trovato;
     }
-  /*  public Prenotazione selezionaOperazione(Prenotazione prenotazione){
-        Prenotazione out=null;
-        ArrayList<Treno> treni = new ArrayList(); 
-        if (prenotazione.getCodiceTreno()==null){
-           treni = getArrayListTratta(prenotazione.getStazionePartenza(), prenotazione.getStazioneArrivo(), prenotazione.getDataPartenza());
-           
-        }
-    }   */
     
+    public void selezionaOperazione(Prenotazione p){
+        if(p.getCodicePrenotazione().equals("")){
+            
+            
+            
+        }else{}
+            
+           
+        
+    }
+       
+  
+    protected static FileReader createDB(String path) throws FileNotFoundException {
+        java.net.URL imgURL = Archivio.class.getResource(path);
+        if (imgURL != null) {
+            return new FileReader(imgURL.getPath());
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
     
 }

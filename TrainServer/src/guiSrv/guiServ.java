@@ -140,6 +140,9 @@ public class guiServ extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel44 = new javax.swing.JLabel();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -685,7 +688,6 @@ public class guiServ extends javax.swing.JFrame {
 
         jToggleButton2.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton2.setForeground(java.awt.Color.black);
         jToggleButton2.setText("posto 1");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -696,13 +698,11 @@ public class guiServ extends javax.swing.JFrame {
 
         jToggleButton3.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton3.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton3.setForeground(java.awt.Color.black);
         jToggleButton3.setText("posto 1");
         jToggleButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jToggleButton4.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton4.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton4.setForeground(java.awt.Color.black);
         jToggleButton4.setText("posto 1");
         jToggleButton4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -734,21 +734,18 @@ public class guiServ extends javax.swing.JFrame {
 
         jToggleButton5.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton5.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton5.setForeground(java.awt.Color.black);
         jToggleButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel24.setText("Disponibile");
 
         jToggleButton6.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton6.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton6.setForeground(java.awt.Color.black);
         jToggleButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel25.setText("Non Disponibile");
 
         jToggleButton7.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton7.setFont(new java.awt.Font("Ubuntu", 1, 15));
-        jToggleButton7.setForeground(java.awt.Color.black);
         jToggleButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel43.setText("Selezionato per la prenotazione corrente");
@@ -874,6 +871,11 @@ public class guiServ extends javax.swing.JFrame {
                 jButton3MouseClicked1(evt);
             }
         });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/ConnectNO.png"))); // NOI18N
         jButton18.setText("Stop");
@@ -888,39 +890,52 @@ public class guiServ extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addContainerGap()
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton18)
-                .addGap(115, 115, 115))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jButton18))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jButton18)))
         );
 
         jButton18.setEnabled(false);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        jLabel44.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel44.setText("SERVER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel44)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -1079,6 +1094,10 @@ public class guiServ extends javax.swing.JFrame {
                     }
     }//GEN-LAST:event_jButton3MouseClicked1
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     
     //apertura finestra risultato ricerca
@@ -1174,6 +1193,7 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1188,7 +1208,9 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
