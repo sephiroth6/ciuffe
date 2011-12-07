@@ -3,7 +3,7 @@ package train;
 import java.lang.Object.*;
 import java.io.*;
 
-public class Data implements Serializable {
+public class Data implements Serializable{
 
     private String giorno;
     private String mese;
@@ -17,10 +17,10 @@ public class Data implements Serializable {
         anno = a;
         ora = o;
         minuti = mi;
-
+        
     }
-
-    public Data() {
+    public Data(){
+        
     }
 
     public String getGiorno() {
@@ -113,10 +113,6 @@ public class Data implements Serializable {
 
     public boolean verificaData() {
 
-        if (giorno.equals("") || mese.equals("") || anno.equals("") || ora.equals("") || minuti.equals("")) {
-           
-            return false;
-        }
         int g = convertiStringa(giorno);
         int m = convertiStringa(mese);
         int a = convertiStringa(anno);
@@ -124,28 +120,17 @@ public class Data implements Serializable {
         int mi = convertiStringa(minuti);
 
 
-        if (g <= 0 || m <= 0 || a <= 0 || o < 0 || mi < 0) {
-            
+        if (g < 0 || m < 0 || a < 0 || o < 0 || mi < 0) {
             return false;
         } else if (o > 23 || mi > 59) {
-          
-            return false;
-
-        } else if (m > 12) {
-          
             return false;
         } else if ((m == 11 || m == 4 || m == 6 || m == 9) && g > 30) {
-          
             return false;
-
         } else if (m == 2 && g > 28) {
-         
             return false;
         } else if ((m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) && g > 31) {
-           
             return false;
         } else {
-           
             return true;
         }
     }
