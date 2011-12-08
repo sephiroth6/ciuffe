@@ -17,6 +17,7 @@ public class TrainServer extends Thread {
     ArrayList<Treno> treni = new ArrayList();
     ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
     ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
+    ArrayList<Prenotazione> prenotazioniEff = new ArrayList();//ricerca preno
     JTextArea jt;
 
     public TrainServer(Socket socket, JTextArea text) throws FileNotFoundException {
@@ -44,17 +45,29 @@ public class TrainServer extends Thread {
                     ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione)objectInputStream.readObject();
                     
-                    
+                    p.stampaPrenotazione();
                     
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
                             ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
+                            
                             ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
                             obOs.writeObject(ricercaTreni); 
                             
                         }
-                        else if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
+                        if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
+                            System.out.println("sto qui");
+                            Treno trenino=null;
+                            for(int i=0; i<treni.size();i++){
+                                if(treni.get(i).getCodiceTreno().equals(p.getCodiceTreno()))
+                                    trenino=treni.get(i);
+                                System.out.println(i);
+                            }
+                            prenotazioniEff = archivio.prenotaMultipla(p.getPostoPrenotato(), p, trenino);
                             
+                            ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
+                            obOs.writeObject(prenotazioniEff); 
+                        
                         }
                         
                         

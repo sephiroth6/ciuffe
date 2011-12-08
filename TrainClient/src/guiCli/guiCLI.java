@@ -43,6 +43,8 @@ public class guiCLI extends javax.swing.JFrame {
     private Prenotazione p = null;
     private Data date = null;
     ArrayList<Treno> ricercaTreni = new ArrayList();
+    ArrayList<Prenotazione> risultatoPrenotazioni = new ArrayList();
+    private Treno t;
     
     //User
     private String User = null;
@@ -114,21 +116,24 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jButton14 = new javax.swing.JButton();
         jLabel46 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jFrame2 = new javax.swing.JFrame();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
@@ -233,6 +238,12 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel8.setText("Data di partenza:");
 
+        jTextField3.setText("milano");
+
+        jTextField4.setText("roma");
+
+        jTextField5.setText("20");
+
         jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 10));
         jLabel9.setText("formato: gg/mm/aaaa");
 
@@ -253,6 +264,14 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel1.setText("Quantità posti:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "---", "1 posto", "2 posti", "3 posti", "4 posti" }));
+
+        jTextField10.setText("12");
+
+        jTextField11.setText("2000");
+
+        jTextField12.setText("10");
+
+        jTextField13.setText("10");
 
         jLabel45.setFont(new java.awt.Font("Ubuntu", 0, 10));
         jLabel45.setText("formato: hh/mm/");
@@ -500,6 +519,11 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel28.setText("Data ed orario di partenza:");
 
         jButton10.setText("Finalizza prenotazione");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -519,8 +543,6 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel32.setText("roma");
 
-        jLabel33.setText("Orario");
-
         jLabel29.setText("Nome:");
 
         jLabel34.setText("Nome");
@@ -529,13 +551,9 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel36.setText("Cognome:");
 
-        jLabel37.setText("Posti prenotati:");
+        jLabel37.setText("Quantità posti prenotati:");
 
         jLabel38.setText("Numero posti prenotati:");
-
-        jLabel39.setText("Numero prenotazione*:");
-
-        jLabel40.setText("Numero prenotazione*:");
 
         jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 12));
         jLabel41.setText("* per eventuali disdette.");
@@ -546,6 +564,10 @@ public class guiCLI extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
+
+        jLabel33.setText("roma");
+
+        jLabel39.setText("Treno:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -558,22 +580,34 @@ public class guiCLI extends javax.swing.JFrame {
                         .addComponent(jLabel23))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel30))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel31))))
+                        .addComponent(jLabel41)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                        .addComponent(jButton12))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton10)
+                        .addGap(86, 86, 86)
+                        .addComponent(jButton11))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel33))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel30))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel31))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel33))
+                        .addComponent(jLabel32))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel29)
@@ -588,22 +622,7 @@ public class guiCLI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel38))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel39)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel40))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel41)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                        .addComponent(jButton12))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton10)
-                        .addGap(86, 86, 86)
-                        .addComponent(jButton11)))
+                        .addComponent(jLabel38)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -611,36 +630,35 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel23)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel30))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel31))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jLabel32)
-                    .addComponent(jLabel33))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(jLabel34))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(jLabel36))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(jLabel38))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel39)
-                    .addComponent(jLabel40))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jButton11))
@@ -651,7 +669,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel42.setText("La prenotazione è stata");
+        jLabel42.setText("La prenotazione è stata ");
 
         jButton14.setText("OK");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -660,7 +678,15 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
-        jLabel46.setText("cancellata/effettuata!");
+        jLabel46.setText("effettuata!");
+
+        jLabel14.setText("Codice prenotazione:");
+
+        jLabel18.setText("jLabel18");
+
+        jLabel19.setText("Posti prenotati:");
+
+        jLabel20.setText("jLabel20");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -668,25 +694,45 @@ public class guiCLI extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel42)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel46)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(326, Short.MAX_VALUE)
-                .addComponent(jButton14)
-                .addContainerGap())
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel42)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel46)
+                        .addGap(120, 120, 120))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addComponent(jButton14)
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18)
+                        .addContainerGap(163, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
                     .addComponent(jLabel46))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
+                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addComponent(jButton14)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jFrame2.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1283,9 +1329,10 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 0 //posti dispo
                 );
             try {
-               
+               versoServer = new ObjectOutputStream(s.getOutputStream());
                 versoServer.writeObject(p);
-              
+
+
                 
             } catch (IOException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1345,34 +1392,43 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
     //apertura finestra riepilogo prenotazione
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        
-        int sel = jTable1.getSelectedRow();
-        
-        Treno t = ricercaTreni.get(sel);
-        
-        p = new Prenotazione(
-                "", //codice preno 
-                jTextField8.getText()+" "+jTextField9.getText(), //nome operatore
-                jComboBox2.getSelectedIndex(), //posto prenotato
-                t.getNomeTreno(), //nome treno
-                t.getCodiceTreno(), //codice treno
-                t.getStazionePartenza(), //stazione partenza
-                t.getStazioneArrivo(), //stazione arrivo
-                t.getDataPartenza(), //data
-                0, //posti totali
-                0 //posti dispo
-                );
-        
-        try {
-            versoServer.writeObject(p);
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        if(jTextField8.getText().equals("") || jTextField9.getText().equals("")){
+            JOptionPane.showMessageDialog(jPanel3, "Controllare nome e cognome.", "Errore!", JOptionPane.WARNING_MESSAGE);
+        }else{
+//            int row=0;
+//            row=jTable1.getRowCount();
+//            for(int i=0;i<row;i++){
+//                if(jTable1.isRowSelected(i))
+//                    
+//            }
+            
+            
+                int sel = -1;
+                sel = jTable1.getSelectedRow();
+            if(sel!=-1){
+                t = ricercaTreni.get(sel);
+
+
+
+        //       
+        //        
+
+                close();
+
+                jLabel33.setText(t.getNomeTreno()+" "+t.getCodiceTreno());//trenoinfo
+                jLabel30.setText(t.getStazionePartenza());//citt partenza
+                jLabel31.setText(t.getStazioneArrivo());//citt arrivo
+                jLabel32.setText(t.getDataPartenza().getGiorno()+"/"+t.getDataPartenza().getMese()+"/"+t.getDataPartenza().getAnno()+" - "+t.getDataPartenza().getOra()+":"+t.getDataPartenza().getMinuti());//data ora partenza
+                jLabel36.setText(jTextField9.getText());//cognome
+                jLabel34.setText(jTextField8.getText());//nome
+                jLabel38.setText(jComboBox2.getSelectedIndex()+"");//quantità posti preno
+
+                FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
+                setFrame(RiepilogoPreno);
+            }
+            else
+                JOptionPane.showMessageDialog(jPanel3, "Selezionare un treno", "Errore!", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
-        close();
-        FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
-        setFrame(RiepilogoPreno);
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1388,6 +1444,53 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             }
         }
     }//GEN-LAST:event_jToggleButton8MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        
+         p = new Prenotazione(
+                    "", //codice preno 
+                    jLabel34.getText()+" "+jLabel36.getText(), //nome cliente
+                    jComboBox2.getSelectedIndex(), //posti prenotato
+                    "",//t.getNomeTreno(), //nome treno
+                    t.getCodiceTreno(), //codice treno
+                    "",//t.getStazionePartenza(), //stazione partenza
+                    "",//t.getStazioneArrivo(), //stazione arrivo
+                    null,//t.getDataPartenza(), //data
+                    0, //posti totali
+                    0 //posti dispo
+                    );
+            
+            try {
+              versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        try {
+            dalServer = new ObjectInputStream(s.getInputStream());
+            try {
+                risultatoPrenotazioni = (ArrayList<Prenotazione>) dalServer.readObject();
+                int size=risultatoPrenotazioni.size();
+                String posti=null;
+                for(int i=0; i<size; i++){
+                    posti=posti+risultatoPrenotazioni.get(i).getPostoPrenotato()+" ";
+                }
+                jLabel18.setText(risultatoPrenotazioni.get(0).getCodicePrenotazione());
+                jLabel20.setText(posti);
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+                    
+       
+            
+            
+            
+    }//GEN-LAST:event_jButton10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1430,10 +1533,14 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1453,7 +1560,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
@@ -1685,7 +1791,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                     jTextArea2.append("Client connesso a: " + s + "\n");
                     //              input = new DataInputStream(s.getInputStream());
                     //              output = new DataOutputStream(s.getOutputStream());
-                    versoServer = new ObjectOutputStream(s.getOutputStream());
+                    
                     User = jTextField7.getText();
                     setEditableP();
                     jTextField7.setEditable(false);
