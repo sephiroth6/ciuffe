@@ -11,6 +11,7 @@ package train;
 import java.util.*;
 import java.io.*;
 import java.net.*;
+import lib.*;
 
 public class TrainClient {
 
