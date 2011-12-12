@@ -1811,9 +1811,11 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private void stopC() throws IOException {
         if (jToggleButton8.isEnabled()) {
             jTextArea2.append("Client disconnesso da: " + s + "\n");
+            versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(null);
-
-
+            versoServer.flush();
+            versoServer.close();
+            
             s.close();
             jToggleButton8.setEnabled(false);
             jToggleButton8.setSelected(true);

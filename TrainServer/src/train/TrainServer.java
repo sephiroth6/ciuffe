@@ -46,7 +46,7 @@ public class TrainServer extends Thread {
                     ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione)objectInputStream.readObject();
                     
-                    p.stampaPrenotazione();
+                   
                     
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
