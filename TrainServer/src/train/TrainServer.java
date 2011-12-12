@@ -63,7 +63,7 @@ public class TrainServer extends Thread {
                             
                         }
                         if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
-                            
+                            p.stampaPrenotazione();
                             Treno trenino=null;
                             for(int i=0; i<treni.size();i++){
                                 if(treni.get(i).getCodiceTreno().equals(p.getCodiceTreno()))
