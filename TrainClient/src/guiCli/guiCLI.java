@@ -1324,7 +1324,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         try {
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
-
+            
 
 
         } catch (IOException ex) {
@@ -1339,7 +1339,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
             try {
                 ricercaTreni = (ArrayList<Treno>) dalServer.readObject();
-
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1348,7 +1348,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
+        
 
         close();
         FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 600, 480, jPanel3);
@@ -1458,6 +1458,8 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         try {
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
+            
+            
         } catch (IOException ex) {
             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1470,9 +1472,10 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 for (int i = 0; i < size; i++) {
                     posti = posti + risultatoPrenotazioni.get(i).getPostoPrenotato() + " ";
                 }
+                jLabel46.setText("effettuata!");
                 jLabel18.setText(risultatoPrenotazioni.get(0).getCodicePrenotazione());
                 jLabel20.setText(posti);
-
+                
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
                 
@@ -1481,8 +1484,10 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
-
+        close();
+        FinestraSwing Finalizzazione = new FinestraSwing("Esito prenotazione", 30, 50, 375, 115, jPanel5);
+        setFrame(Finalizzazione);
+        
 
 
 
