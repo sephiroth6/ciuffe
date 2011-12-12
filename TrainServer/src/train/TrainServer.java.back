@@ -18,8 +18,6 @@ public class TrainServer extends Thread {
     ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
     ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
     ArrayList<Prenotazione> prenotazioniEff = new ArrayList();//ricerca preno
-    ArrayList<Prenotazione> visualizzaPrenotazioni = new ArrayList(); // per visualizzare e poi annullare
-    ArrayList<Prenotazione> eliminaPrenotazioni = new ArrayList(); //cancella preno
     JTextArea jt;
 
     public TrainServer(Socket socket, JTextArea text, Archivio arch) throws FileNotFoundException {
@@ -36,10 +34,6 @@ public class TrainServer extends Thread {
     @Override
     public void run () {
         boolean run = true;
-        ObjectInputStream objectInputStream;
-        ObjectOutputStream obOs;
-        int a=0;
-        int b=0;
         
         try {
             
@@ -49,66 +43,33 @@ public class TrainServer extends Thread {
                
                
                 try {
-                    objectInputStream = new ObjectInputStream(socket.getInputStream());
+                    ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione)objectInputStream.readObject();
-                //    objectInputStream.close();
-                   
+                    
+                    p.stampaPrenotazione();
                     
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
-                            
                             ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
-                          
-                             obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(ricercaTreni); 
-                            obOs.flush();
                             
+                            ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
+                            obOs.writeObject(ricercaTreni); 
                             
                         }
                         if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
-                           
+                            System.out.println("sto qui");
                             Treno trenino=null;
                             for(int i=0; i<treni.size();i++){
                                 if(treni.get(i).getCodiceTreno().equals(p.getCodiceTreno()))
                                     trenino=treni.get(i);
-                                
+                                System.out.println(i);
                             }
                             prenotazioniEff = archivio.prenotaMultipla(p.getPostoPrenotato(), p, trenino);
                             
-                            obOs = new ObjectOutputStream(socket.getOutputStream());
+                            ObjectOutputStream obOs = new ObjectOutputStream(socket.getOutputStream());
                             obOs.writeObject(prenotazioniEff); 
-                       
-                             obOs.flush();
-                           
                         
                         }
-                         if(!p.getCodicePrenotazione().equals("") && !p.getCodicePrenotazione().equals("conferma")){
-                           
-                            visualizzaPrenotazioni = archivio.visualizzaPrenotazione(p);
-                            
-                            obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(visualizzaPrenotazioni); 
-                       
-                            obOs.flush();
-                           
-                        
-                        }
-                         
-                         if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")){
-                           
-                            eliminaPrenotazioni = archivio.eliminaPrenotazione(p);
-                            
-                            obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(eliminaPrenotazioni); 
-                       
-                            obOs.flush();
-                           
-                        
-                        }
-                        
-                        
-                        
-                        
                         
                         
                     }
