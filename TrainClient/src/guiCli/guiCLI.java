@@ -1244,6 +1244,7 @@ public class guiCLI extends javax.swing.JFrame {
 
                     startC();
                     jTextField6.setEditable(false);
+                    
 
 
 
@@ -1323,7 +1324,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         try {
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
-            versoServer.close();
 
 
 
@@ -1339,7 +1339,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
             try {
                 ricercaTreni = (ArrayList<Treno>) dalServer.readObject();
-                dalServer.close();
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1459,7 +1458,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         try {
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
-            versoServer.close();
         } catch (IOException ex) {
             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1474,7 +1472,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 }
                 jLabel18.setText(risultatoPrenotazioni.get(0).getCodicePrenotazione());
                 jLabel20.setText(posti);
-                dalServer.close();
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
