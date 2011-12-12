@@ -56,14 +56,15 @@ public class TrainServer extends Thread {
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
                             
                             ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
-                            System.out.println("Ricerca Treni: " + a);
+                          
                              obOs = new ObjectOutputStream(socket.getOutputStream());
                             obOs.writeObject(ricercaTreni); 
-                            a++;
+                            obOs.flush();
+                            
                             
                         }
                         if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
-                            p.stampaPrenotazione();
+                           
                             Treno trenino=null;
                             for(int i=0; i<treni.size();i++){
                                 if(treni.get(i).getCodiceTreno().equals(p.getCodiceTreno()))
@@ -74,8 +75,9 @@ public class TrainServer extends Thread {
                             
                             obOs = new ObjectOutputStream(socket.getOutputStream());
                             obOs.writeObject(prenotazioniEff); 
-                            System.out.println("Prenotazione Treni: " + b);
-                            b++;
+                       
+                             obOs.flush();
+                           
                         
                         }
                         
