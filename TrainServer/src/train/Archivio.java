@@ -237,12 +237,12 @@ public class Archivio {
                 codiceTreno = archivioPrenotazioni.get(i).getCodiceTreno();
                 out.add(archivioPrenotazioni.get(i));
 
-
+//ciao
                 archivioPrenotazioni.remove(i);
                 archivioPrenotazioni.trimToSize();
                 postiDisponibili++;
                
-                    i--;
+                    
                 }
 
             }
