@@ -22,6 +22,8 @@ public class Archivio {
     private ArrayList<Prenotazione> archivioPrenotazioni;
     private FileReader archivio = createDB("archivio/Archivio.txt");
     private FileReader prenotazioni = createDB("archivio/Prenotazioni.txt");
+    private FileWriter archivioOut;
+    private FileWriter prenotazioniOut;
 
     public Archivio() throws FileNotFoundException {
 
@@ -242,13 +244,13 @@ public class Archivio {
                 archivioPrenotazioni.remove(i);
                 archivioPrenotazioni.trimToSize();
                 postiDisponibili++;
-               
-                    
-                }
+
 
             }
 
-        
+        }
+
+
 
 
         for (int i = 0; i < archivioTreni.size(); i++) {
@@ -371,5 +373,18 @@ public class Archivio {
             System.err.println("Couldn't find file: " + path);
             return null;
         }
+    }
+
+    public void scriviArchivio() throws FileNotFoundException, IOException {
+
+
+        
+
+        PrintWriter writer =
+                new PrintWriter(
+                new BufferedWriter(
+                new FileWriter("/Users/albyreturns/Desktop/Archivio.txt")));
+        writer.println("PRROVVVA");
+
     }
 }

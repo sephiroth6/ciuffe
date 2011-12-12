@@ -48,8 +48,10 @@ public class Listener implements Runnable {
     } 
     
     public void closeAll() throws IOException{
+        
         ss.close();
         sh.close();
+        
     }
 
     
