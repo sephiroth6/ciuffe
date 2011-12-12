@@ -1406,7 +1406,7 @@ public class guiCLI extends javax.swing.JFrame {
 
                     startC();
                     jTextField6.setEditable(false);
-
+//hello
 
 
 
