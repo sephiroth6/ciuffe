@@ -128,7 +128,7 @@ public class TrainServer extends Thread {
             
             
             jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
-            archivio.scriviArchivio();
+           
             socket.close() ;
         } catch (IOException e) {
             jt.append("IOException: " + e +"\n");
