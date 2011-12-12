@@ -238,6 +238,7 @@ public class Archivio {
                 out.add(archivioPrenotazioni.get(i));
 
 //ciao
+                //asd
                 archivioPrenotazioni.remove(i);
                 archivioPrenotazioni.trimToSize();
                 postiDisponibili++;
