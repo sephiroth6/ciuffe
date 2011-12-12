@@ -1243,6 +1243,7 @@ public class guiCLI extends javax.swing.JFrame {
                 try {
 
                     startC();
+                    jTextField6.setEditable(false);
 
 
 
@@ -1427,6 +1428,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             try {
                 stopC();
                 setNoEditableP();
+                jTextField6.setEditable(true);
             } catch (IOException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1668,6 +1670,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jLabel2.setEnabled(true);
         jButton4.setEnabled(true);
         jToggleButton8.setEnabled(true);
+        
     }
 
     private void setNoEditableP() {
