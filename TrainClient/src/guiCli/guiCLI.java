@@ -276,9 +276,9 @@ public class guiCLI extends javax.swing.JFrame {
         });
 
         jButton6.setText("Annulla");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
             }
         });
 
@@ -432,9 +432,9 @@ public class guiCLI extends javax.swing.JFrame {
         });
 
         jButton8.setText("Indietro");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
             }
         });
 
@@ -1091,9 +1091,9 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel72.setText("Numero posti prenotati:");
 
         jButton23.setText("Indietro");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+        jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton23MouseClicked(evt);
             }
         });
 
@@ -1329,19 +1329,7 @@ public class guiCLI extends javax.swing.JFrame {
     //apertura finestra per effettuare una ricerca di un treno ed eventualmente la prentazione
     //apertura finestra risultato ricerca
     //torna indietro lasciando i dati inseriti invariati
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-
-        close();
-        FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 480, 340, jPanel2);
-        setFrame(GestorePreno);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     //torna alla schermata iniziale
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
-        statoIniziale();
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     //torna alla schermata iniziale
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
@@ -1366,6 +1354,7 @@ public class guiCLI extends javax.swing.JFrame {
         close();
         FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 480, 420, jPanel3);
         setFrame(VisualizzaTreni);
+        VisualizzaTreni.setSize(700, 480);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     //chiudi logs server
@@ -1406,12 +1395,6 @@ public class guiCLI extends javax.swing.JFrame {
 
                     startC();
                     jTextField6.setEditable(false);
-//hello
-
-
-
-
-
 
                 } catch (UnknownHostException ex) {
                     JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1518,6 +1501,8 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         VisualizzaTreni.setSize(700, 480);
         setFrame(VisualizzaTreni);
         setTableSearchTrain(jTable1, ricercaTreni);
+        jTextField8.setText("");
+        jTextField9.setText("");
 //            } catch (IOException ex) {
 //                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         //}
@@ -1711,8 +1696,9 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                             FinestraSwing EliminaPreno = new FinestraSwing("", 30, 50, 410, 389, jPanel8);
                             EliminaPreno.setSize(410, 389);
                             setFrame(EliminaPreno);
+                            setNoEditableP();
                         } else {
-                            JOptionPane.showMessageDialog(jPanel1, "Nessuna prenotazione trovata!", "Errore!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(jPanel1, "Nessuna prenotazione trovata!", "Errore!", JOptionPane.WARNING_MESSAGE);
                         }
                     } catch (ClassNotFoundException ex) {
                         Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1772,9 +1758,20 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         
     }//GEN-LAST:event_jButton15MouseClicked
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton23ActionPerformed
+    private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
+        statoIniziale();
+    }//GEN-LAST:event_jButton23MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        close();
+        FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 480, 340, jPanel2);
+        setFrame(GestorePreno);
+        GestorePreno.setSize(520, 340);
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        statoIniziale();
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
