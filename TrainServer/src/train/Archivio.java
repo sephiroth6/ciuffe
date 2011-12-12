@@ -256,7 +256,7 @@ public class Archivio {
 
             }
 
-            System.out.println("solo for" + i);
+           
         }
         return out;
 
