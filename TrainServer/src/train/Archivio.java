@@ -29,9 +29,6 @@ public class Archivio {
         archivioPrenotazioni = new ArrayList();
 
     }
-    
-   
-    
 
     public void creaArchivioTreni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
         try {
@@ -213,14 +210,55 @@ public class Archivio {
 
     }
 
+    public ArrayList<Prenotazione> visualizzaPrenotazione(Prenotazione p) {
+
+        ArrayList<Prenotazione> out = new ArrayList();
+        for (int i = 0; i < archivioPrenotazioni.size(); i++) {
+            if (archivioPrenotazioni.get(i).getCodicePrenotazione().equals(p.getCodicePrenotazione())) {
+                out.add(archivioPrenotazioni.get(i));
+            }
+
+
+        }
+
+        return out;
+
+    }
+
+    public ArrayList<Prenotazione> eliminaPrenotazione(Prenotazione p) {
+
+        String codiceTreno = "";
+        int postiDisponibili = 0;
+        ArrayList<Prenotazione> out = new ArrayList();
+        for (int i = 0; i < archivioPrenotazioni.size(); i++) {
+            if (archivioPrenotazioni.get(i).getCodicePrenotazione().equals(p.getCodicePrenotazione())) {
+                codiceTreno = archivioPrenotazioni.get(i).getCodiceTreno();
+                out.add(archivioPrenotazioni.get(i));
+                archivioPrenotazioni.remove(i);
+                postiDisponibili++;
+            }
+        }
+        for (int i = 0; i < archivioTreni.size(); i++) {
+            if (archivioTreni.get(i).getCodiceTreno().equals(codiceTreno)) {
+                postiDisponibili = archivioTreni.get(i).getPostiDisponibili() + postiDisponibili;
+                archivioTreni.get(i).setPostiDisponibili(postiDisponibili);
+            }
+
+
+        }
+
+        return out;
+
+    }
+
     public ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data, int posti) {
 
 
         ArrayList<Treno> out = new ArrayList();
 
         for (int i = 0; i < archivioTreni.size(); i++) {
-            
-            
+
+
 
             if (archivioTreni.get(i).getStazionePartenza().equalsIgnoreCase(partenza)) {
 
@@ -236,14 +274,14 @@ public class Archivio {
 
                                     if (Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getMinuti()) >= Data.convertiStringa(data.getMinuti())) {
 
-                                        if (archivioTreni.get(i).getPostiDisponibili() >= posti && archivioTreni.get(i).getPostiDisponibili()>0) {
+                                        if (archivioTreni.get(i).getPostiDisponibili() >= posti && archivioTreni.get(i).getPostiDisponibili() > 0) {
 
                                             out.add(archivioTreni.get(i));
 
                                         }
                                     }
                                 } else if (Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getOra()) > Data.convertiStringa(data.getOra())) {
-                                    if (archivioTreni.get(i).getPostiDisponibili() >= posti&& archivioTreni.get(i).getPostiDisponibili()>0) {
+                                    if (archivioTreni.get(i).getPostiDisponibili() >= posti && archivioTreni.get(i).getPostiDisponibili() > 0) {
 
                                         out.add(archivioTreni.get(i));
 
@@ -256,7 +294,7 @@ public class Archivio {
 
             }
 
-           
+
         }
         return out;
 

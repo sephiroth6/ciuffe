@@ -18,6 +18,7 @@ public class TrainServer extends Thread {
     ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
     ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
     ArrayList<Prenotazione> prenotazioniEff = new ArrayList();//ricerca preno
+    ArrayList<Prenotazione> visualizzaPrenotazioni = new ArrayList(); // per visualizzare e poi annullare
     JTextArea jt;
 
     public TrainServer(Socket socket, JTextArea text, Archivio arch) throws FileNotFoundException {
@@ -80,6 +81,21 @@ public class TrainServer extends Thread {
                            
                         
                         }
+                         if(!p.getCodicePrenotazione().equals("")){
+                           
+                            visualizzaPrenotazioni = archivio.visualizzaPrenotazione(p);
+                            
+                            obOs = new ObjectOutputStream(socket.getOutputStream());
+                            obOs.writeObject(visualizzaPrenotazioni); 
+                       
+                             obOs.flush();
+                           
+                        
+                        }
+                        
+                        
+                        
+                        
                         
                         
                     }
