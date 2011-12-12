@@ -21,6 +21,7 @@ import java.net.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import lib.*;
 
@@ -1056,9 +1057,9 @@ public class guiCLI extends javax.swing.JFrame {
 
         jButton2.setText("Visualizza una prenotazione");
         jButton2.setEnabled(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
 
@@ -1067,11 +1068,6 @@ public class guiCLI extends javax.swing.JFrame {
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
-            }
-        });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
             }
         });
 
@@ -1099,7 +1095,7 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1274,19 +1270,19 @@ public class guiCLI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     //make a prenotation
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 520, 340, jPanel2);
-        setFrame(GestorePreno);
-        setNoEditableP();
-        jToggleButton1.setEnabled(false);
-
-        if (flag) {
-            jFrame1.setVisible(true);
+        if(jButton4.isEnabled()){
+            FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 520, 340, jPanel2);
+            setFrame(GestorePreno);
+            setNoEditableP();
+            jToggleButton1.setEnabled(false);
+            disableJTextF(jTextField5, jTextField10, jTextField11, jTextField12, jTextField13, jTextField3, jTextField4);
+            jComboBox2.setSelectedIndex(0);
+            
+            if (flag) {
+                jFrame1.setVisible(true);
+            }
         }
 
     }//GEN-LAST:event_jButton4MouseClicked
@@ -1427,14 +1423,11 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         }
     }//GEN-LAST:event_jButton7MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jToggleButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton8MouseClicked
         if (jToggleButton8.isEnabled()) {
             try {
                 stopC();
+                setNoEditableP();
             } catch (IOException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1476,6 +1469,9 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                jLabel46.setText("non effettuata!");
+                jLabel8.setText("");
+                jLabel20.setText("");
             }
         } catch (IOException ex) {
             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
@@ -1487,6 +1483,12 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
 
     }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        if(jButton2.isEnabled()){
+            
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1662,20 +1664,14 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private void setEditableP() {
 
         jButton2.setEnabled(true);
-
-
         jLabel2.setEnabled(true);
-
         jButton4.setEnabled(true);
-        jToggleButton1.setEnabled(true);
+        jToggleButton8.setEnabled(true);
     }
 
     private void setNoEditableP() {
-
         jButton2.setEnabled(false);
-
         jFrame1.setVisible(false);
-
         jButton4.setEnabled(false);
     }
 
@@ -1823,4 +1819,11 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             jToggleButton1.setSelected(false);
         }
     }
+    
+    private static void disableJTextF(JTextField... b) {
+        for (int i = 0; i < b.length; i++) {
+            b[i].setText("");
+        }
+    }
+    
 }
