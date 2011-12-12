@@ -4,6 +4,7 @@
  */
 package guiSrv;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,11 +20,14 @@ public class Listener implements Runnable {
     private ServerSocket ss;
     private Socket sh;
     private JTextArea jt;
+    Archivio archivio;
         
-    public Listener(ServerSocket ss, JTextArea text) {
+    public Listener(ServerSocket ss, JTextArea text) throws FileNotFoundException {
         this.ss = ss;
         jt = text;
-        
+        archivio = new Archivio();
+        archivio.creaArchivioTreni();
+        archivio.creaArchvioPrenotazioni();
     }
     
     @Override
@@ -35,7 +39,7 @@ public class Listener implements Runnable {
                 sh=ss.accept();
                 jt.append("Ho ricevuto una chiamata di apertura da:\n" + sh + "\n");
                 
-                new TrainServer(sh, jt).start();
+                new TrainServer(sh, jt, archivio).start();
                 
                 if (sh.isClosed())
                   jt.append("Ho ricevuto una chiamata di chiusura da:\n" + sh + "\n");  

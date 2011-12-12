@@ -29,6 +29,9 @@ public class Archivio {
         archivioPrenotazioni = new ArrayList();
 
     }
+    
+   
+    
 
     public void creaArchivioTreni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
         try {
@@ -216,7 +219,8 @@ public class Archivio {
         ArrayList<Treno> out = new ArrayList();
 
         for (int i = 0; i < archivioTreni.size(); i++) {
-
+            
+            
 
             if (archivioTreni.get(i).getStazionePartenza().equalsIgnoreCase(partenza)) {
 
@@ -232,14 +236,14 @@ public class Archivio {
 
                                     if (Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getMinuti()) >= Data.convertiStringa(data.getMinuti())) {
 
-                                        if (archivioPrenotazioni.get(i).getPostiDisponibili() >= posti) {
+                                        if (archivioTreni.get(i).getPostiDisponibili() >= posti && archivioTreni.get(i).getPostiDisponibili()>0) {
 
                                             out.add(archivioTreni.get(i));
 
                                         }
                                     }
                                 } else if (Data.convertiStringa(archivioTreni.get(i).getDataPartenza().getOra()) > Data.convertiStringa(data.getOra())) {
-                                    if (archivioPrenotazioni.get(i).getPostiDisponibili() >= posti) {
+                                    if (archivioTreni.get(i).getPostiDisponibili() >= posti&& archivioTreni.get(i).getPostiDisponibili()>0) {
 
                                         out.add(archivioTreni.get(i));
 

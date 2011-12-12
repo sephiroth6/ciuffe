@@ -35,7 +35,7 @@ public class guiServ extends javax.swing.JFrame {
     //comunication server
     ServerSocket serverSocket = null;
     Thread t = null;
-    
+    Archivio archivio = null;
     ServerSocket s = null;
     
     /** Creates new form gui */
@@ -1321,7 +1321,7 @@ public class guiServ extends javax.swing.JFrame {
              System.out.println("In attesa di chiamate dai Client... ");
              Socket socket = serverSocket.accept();
              System.out.println("Ho ricevuto una chiamata di apertura da:\n" + socket);
-             t = new TrainServer(socket, jTextArea2);
+             t = new TrainServer(socket, jTextArea2, archivio);
              //t = new Thread(new Listener(serverSocket, socket) {});
              t.start();
           // }

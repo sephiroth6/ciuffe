@@ -13,18 +13,19 @@ import lib.*;
 public class TrainServer extends Thread {
 
     private Socket socket;
-    Archivio archivio = new Archivio(); //archivio totale
+    Archivio archivio; //archivio totale
     ArrayList<Treno> treni = new ArrayList();
     ArrayList<Treno> ricercaTreni = new ArrayList();//contiene tutti i treni
     ArrayList<Prenotazione> prenotazioni = new ArrayList(); //tutte le prenotazioni
     ArrayList<Prenotazione> prenotazioniEff = new ArrayList();//ricerca preno
     JTextArea jt;
 
-    public TrainServer(Socket socket, JTextArea text) throws FileNotFoundException {
+    public TrainServer(Socket socket, JTextArea text, Archivio arch) throws FileNotFoundException {
         this.socket = socket;
         jt = text;
-        archivio.creaArchivioTreni();
-        archivio.creaArchvioPrenotazioni();
+        archivio = arch;
+      //  archivio.creaArchivioTreni();
+      //  archivio.creaArchvioPrenotazioni();
         treni = archivio.getArchivioTreni();
         prenotazioni = archivio.getArchivioPrenotazioni();
     }
