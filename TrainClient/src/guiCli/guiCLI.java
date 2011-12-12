@@ -1973,6 +1973,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jLabel2.setEnabled(true);
         jButton4.setEnabled(true);
         jToggleButton8.setEnabled(true);
+        jTextField1.setEditable(true);
 
     }
 
@@ -1980,6 +1981,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jButton2.setEnabled(false);
         jFrame1.setVisible(false);
         jButton4.setEnabled(false);
+        jTextField1.setEditable(false);
     }
 
     private void statoIniziale() {
