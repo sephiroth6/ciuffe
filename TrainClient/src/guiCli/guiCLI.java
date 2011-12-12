@@ -1395,11 +1395,11 @@ public class guiCLI extends javax.swing.JFrame {
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         if (jToggleButton1.isEnabled()) {
             if (jTextField7.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Nome Operatore Mancante, inserire il nome cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(jPanel1, "Nome Operatore Mancante, inserire il nome cliente.", "Error", JOptionPane.ERROR_MESSAGE);
                 jToggleButton1.setSelected(false);
 
             } else if (jTextField6.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
                 jToggleButton1.setSelected(false);
             } else {
                 try {
@@ -1414,7 +1414,7 @@ public class guiCLI extends javax.swing.JFrame {
 
 
                 } catch (UnknownHostException ex) {
-                    JOptionPane.showMessageDialog(this, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
                 } catch (IOException ex) {
                     Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -2048,15 +2048,15 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private boolean checkValueP() {
 
         if (!date.verificaData()) {
-            JOptionPane.showMessageDialog(this, "Controllare data ed ora!", "Data e ora Errati", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel2, "Controllare data ed ora!", "Data e ora Errati", JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (jTextField3.getText().equals("") || jTextField4.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Inserire una città per la partenza e l'arrivo.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel2, "Inserire una città per la partenza e l'arrivo.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (jComboBox2.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Selezionare la quantità dei posti.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel2, "Selezionare la quantità dei posti.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         return true;
