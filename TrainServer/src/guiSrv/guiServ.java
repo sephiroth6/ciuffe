@@ -1061,14 +1061,15 @@ public class guiServ extends javax.swing.JFrame {
 
     //stop server
     private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
-        try {
-            stopSrv();
-            jButton18.setEnabled(false);
-            jButton3.setEnabled(true);
-        } catch (IOException ex) {
-            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+        if(jButton18.isEnabled()){
+            try {
+                stopSrv();
+                jButton18.setEnabled(false);
+                jButton3.setEnabled(true);
+            } catch (IOException ex) {
+                Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
 
 //        try {
 //            
