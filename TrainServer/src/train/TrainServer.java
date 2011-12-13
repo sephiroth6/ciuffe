@@ -82,7 +82,7 @@ public class TrainServer extends Thread {
                            
                         
                         }
-                         if(!p.getCodicePrenotazione().equals("") && !p.getCodicePrenotazione().equals("conferma")){
+                         if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")){
                            
                             visualizzaPrenotazioni = archivio.visualizzaPrenotazione(p);
                             
