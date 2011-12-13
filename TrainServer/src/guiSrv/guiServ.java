@@ -8,7 +8,6 @@
  *
  * Created on Oct 26, 2010, 7:21:51 AM
  */
-
 package guiSrv;
 
 import java.awt.Color;
@@ -20,7 +19,6 @@ import javax.swing.JToggleButton;
 import javax.xml.bind.Marshaller.Listener;
 import train.*;
 
-
 /**
  *
  * @author angelo
@@ -29,15 +27,13 @@ public class guiServ extends javax.swing.JFrame {
 
     //view
     private FinestraSwing frame;
-
     private boolean flag;
-
     //comunication server
     ServerSocket serverSocket = null;
     Thread t = null;
     Archivio archivio = null;
     ServerSocket s = null;
-    
+
     /** Creates new form gui */
     public guiServ() {
         initComponents();
@@ -945,18 +941,18 @@ public class guiServ extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //bottone connessione al server
-    
     //abilita log finestra logs server
-    
     //apertura finestra per effettuare una ricerca di un treno ed eventualmente la prentazione
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        
+
         FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 480, 340, jPanel2);
         setFrame(GestorePreno);
         setNoEditableP();
 
-        if(flag) jFrame1.setVisible(true);
+        if (flag) {
+            jFrame1.setVisible(true);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -1040,43 +1036,40 @@ public class guiServ extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         //cambia colore
-
-
-
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     //start server
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-                try {
+        try {
 
-                        start2();
-                        jButton18.setEnabled(true);
-                        jButton3.setEnabled(false);
-                    } catch (Exception ex) {
-                        Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-        
-        
+            start2();
+            jButton18.setEnabled(true);
+            jButton3.setEnabled(false);
+        } catch (Exception ex) {
+            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
 //        try {
 //            s.start();     
 //            
 //        } catch (Exception ex) {
 //            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-                    
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     //stop server
     private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
-                try {
-                        stopSrv();
-                        jButton18.setEnabled(false);
-                        jButton3.setEnabled(true);
-                    } catch (IOException ex) {
-                        Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-        
-        
+        try {
+            stopSrv();
+            jButton18.setEnabled(false);
+            jButton3.setEnabled(true);
+        } catch (IOException ex) {
+            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
 //        try {
 //            
 //                    s.stop();
@@ -1089,54 +1082,42 @@ public class guiServ extends javax.swing.JFrame {
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
         try {
 
-                        start2();
+            start2();
 //                        if(jTextArea2.getText().equals(""))
 //                            jTextArea2.setText("In attesa di chiamate dai Client...");
 //                        else
 //                            jTextArea2.setText(jTextArea2.getText()+"\nIn attesa di chiamate dai Client...");
-                       
-                        jButton18.setEnabled(true);
-                        jButton3.setEnabled(false);
-                    } catch (Exception ex) {
-                        Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
+            jButton18.setEnabled(true);
+            jButton3.setEnabled(false);
+        } catch (Exception ex) {
+            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3MouseClicked1
 
-
-    
     //apertura finestra risultato ricerca
-    
     //apertura finestra riepilogo prenotazione
-    
     //torna indietro lasciando i dati inseriti invariati
-    
     //torna alla schermata iniziale
-
     //torna alla schermata iniziale
-    
-    
     //torna alla schermata iniziale
-    
     //esito prenotazione
-
     //stato iniziale esito prenotazione/disdetta
-    
     //torna allo stato precedente, con i dati già precompilati
-    
     //chiudi logs server
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new guiServ().setVisible(true);
-                
-                
+
+
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1231,72 +1212,61 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton7;
     // End of variables declaration//GEN-END:variables
 
-
-
     private void setFrame(FinestraSwing frame) {
-		this.frame = frame;
+        this.frame = frame;
     }
-
-
 
     private void close() {
-            if (frame != null) {
-                frame.setVisible(false);
-                frame.pack();
-                frame = null;
-            }
+        if (frame != null) {
+            frame.setVisible(false);
+            frame.pack();
+            frame = null;
+        }
     }
 
-
-
-    private void setEditableP(){
+    private void setEditableP() {
         jButton1.setEnabled(true);
-            jButton2.setEnabled(true);
-            jLabel1.setEnabled(true);
-            jTextField1.setEnabled(true);
-            jLabel2.setEnabled(true);
-            jTextField2.setEnabled(true);
-            jButton4.setEnabled(true);
+        jButton2.setEnabled(true);
+        jLabel1.setEnabled(true);
+        jTextField1.setEnabled(true);
+        jLabel2.setEnabled(true);
+        jTextField2.setEnabled(true);
+        jButton4.setEnabled(true);
     }
 
-
-    private void setNoEditableP(){
+    private void setNoEditableP() {
         jButton1.setEnabled(false);
-            jButton2.setEnabled(false);
-            jFrame1.setVisible(false);
-            jLabel1.setEnabled(false);
-            jTextField1.setEnabled(false);
-            jLabel2.setEnabled(false);
-            jTextField2.setEnabled(false);
-            jButton4.setEnabled(false);
+        jButton2.setEnabled(false);
+        jFrame1.setVisible(false);
+        jLabel1.setEnabled(false);
+        jTextField1.setEnabled(false);
+        jLabel2.setEnabled(false);
+        jTextField2.setEnabled(false);
+        jButton4.setEnabled(false);
     }
 
-    private void statoIniziale(){
+    private void statoIniziale() {
         close();
         setEditableP();
     }
 
-
-
-   private static void postiDispo (JToggleButton ... b) {
-        for (int i = 0; i < b.length; i++){
+    private static void postiDispo(JToggleButton... b) {
+        for (int i = 0; i < b.length; i++) {
             b[i].setBackground(Color.RED);
             //if(b[i].isSelected())
             disableJT(b[i]);
         }
 
     }
-    
 
-    private static void disableJT(JToggleButton ... b){
-        for (int i = 0; i < b.length; i++)
+    private static void disableJT(JToggleButton... b) {
+        for (int i = 0; i < b.length; i++) {
             b[i].setEnabled(false);
+        }
     }
 
-
-
-    private void legenda(){
-        jToggleButton5.setBackground(new Color(61,184,55));
+    private void legenda() {
+        jToggleButton5.setBackground(new Color(61, 184, 55));
         jToggleButton6.setBackground(Color.RED);
         jToggleButton7.setSelected(true);
         disableJT(jToggleButton5, jToggleButton6, jToggleButton7);
@@ -1311,55 +1281,50 @@ public class guiServ extends javax.swing.JFrame {
 //                    Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
 //                }
 //    }
-
-    
     //start server
     private void startSrv(ServerSocket s) throws Exception {
         serverSocket = s;
-         //Ciclo infinito di ascolto dei Client
-         //while(true) {
-             System.out.println("In attesa di chiamate dai Client... ");
-             Socket socket = serverSocket.accept();
-             System.out.println("Ho ricevuto una chiamata di apertura da:\n" + socket);
-             t = new TrainServer(socket, jTextArea2, archivio);
-             //t = new Thread(new Listener(serverSocket, socket) {});
-             t.start();
-          // }
-             
-           
-     }
-    
-    private void start2() throws IOException{
-        s = new ServerSocket(5001);
-        t = new Thread(new guiSrv.Listener(this.s, jTextArea2));
+        //Ciclo infinito di ascolto dei Client
+        //while(true) {
+        System.out.println("In attesa di chiamate dai Client... ");
+        Socket socket = serverSocket.accept();
+        System.out.println("Ho ricevuto una chiamata di apertura da:\n" + socket);
+        t = new TrainServer(socket, jTextArea2, archivio);
+        //t = new Thread(new Listener(serverSocket, socket) {});
         t.start();
-        
+        // }
+
+
     }
-    
-    
-    
-     //stop server
-     private void stopSrv() throws IOException{
-     
-         
+
+    private void start2() throws IOException {
+        s = new ServerSocket(5001);
+        guiSrv.Listener l = new guiSrv.Listener(this.s, jTextArea2);
+        t = new Thread(l);
+        t.start();
+        archivio = l.getArch();
+
+    }
+
+    //stop server
+    private void stopSrv() throws IOException {
+
+        archivio.stampaSuFile();
+
         s.close();
         t.interrupt();
-        jTextArea2.append("Server disconnesso"+s.isClosed()+t+"\n");
-  
-        
-        
-         
-     }
-     
-     private void positionView(){
-         
-     }
-     
-     private void logs(){
-         while(true){
-             
-         }
-     }
-    
+        jTextArea2.append("Server disconnesso" + "\n");
 
+
+
+
+    }
+
+    private void positionView() {
+    }
+
+    private void logs() {
+        while (true) {
+        }
+    }
 }

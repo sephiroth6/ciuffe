@@ -22,8 +22,6 @@ public class Archivio {
     private ArrayList<Prenotazione> archivioPrenotazioni;
     private FileReader archivio = createDB("archivio/Archivio.txt");
     private FileReader prenotazioni = createDB("archivio/Prenotazioni.txt");
-    private FileWriter archivioOut;
-    
 
     public Archivio() throws FileNotFoundException {
 
@@ -341,7 +339,7 @@ public class Archivio {
 
 
         int posto = 1;
-        boolean trovato = false;
+
         String codice = t.getCodiceTreno();
 
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
@@ -375,5 +373,38 @@ public class Archivio {
         }
     }
 
+    public void stampaSuFile() throws FileNotFoundException {
+        FileOutputStream prova = new FileOutputStream("/Users/albyreturns/Desktop/Archivio.txt");
+        PrintStream scrivi = new PrintStream(prova);
+        scrivi.println("DATABASE");
+        for (int i = 0; i < archivioTreni.size(); i++) {
+            scrivi.println("TRENO");
+            scrivi.println(archivioTreni.get(i).getNomeTreno());
+            scrivi.println(archivioTreni.get(i).getCodiceTreno());
+            scrivi.println(archivioTreni.get(i).getStazionePartenza());
+            scrivi.println(archivioTreni.get(i).getStazioneArrivo());
+            scrivi.print(archivioTreni.get(i).getDataPartenza().getGiorno() + "/");
+            scrivi.print(archivioTreni.get(i).getDataPartenza().getMese() + "/");
+            scrivi.print(archivioTreni.get(i).getDataPartenza().getAnno() + "-");
+            scrivi.print(archivioTreni.get(i).getDataPartenza().getOra() + ":");
+            scrivi.print(archivioTreni.get(i).getDataPartenza().getMinuti() + "\n");
+            scrivi.println(archivioTreni.get(i).getPostiTotali());
+            scrivi.println(archivioTreni.get(i).getPostiDisponibili());
 
+        }
+        scrivi.println("FINE DATABASE");
+        prova = new FileOutputStream("/Users/albyreturns/Desktop/Prenotazioni.txt");
+        scrivi = new PrintStream(prova);
+        scrivi.println("DATABASE");
+
+        for (int i = 0; i < archivioPrenotazioni.size(); i++) {
+            scrivi.println("PRENOTAZIONE");
+            scrivi.println(archivioPrenotazioni.get(i).getCodicePrenotazione());
+            scrivi.println(archivioPrenotazioni.get(i).getCodiceTreno());
+            scrivi.println(archivioPrenotazioni.get(i).getNomeCliente());
+            scrivi.println(archivioPrenotazioni.get(i).getPostoPrenotato());
+        }
+        scrivi.println("FINE DATABASE");
+
+    }
 }
