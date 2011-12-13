@@ -372,9 +372,19 @@ public class Archivio {
             return null;
         }
     }
+    
+    protected static FileOutputStream createDBW(String path) throws FileNotFoundException {
+        java.net.URL imgURL = Archivio.class.getResource(path);
+        if (imgURL != null) {
+            return new FileOutputStream(imgURL.getPath());
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
 
     public void stampaSuFile() throws FileNotFoundException {
-        FileOutputStream prova = new FileOutputStream("/Users/albyreturns/Desktop/Archivio.txt");
+        FileOutputStream prova = createDBW("archivio/Archivio.txt");
         PrintStream scrivi = new PrintStream(prova);
         scrivi.println("DATABASE");
         for (int i = 0; i < archivioTreni.size(); i++) {
