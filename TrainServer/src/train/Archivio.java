@@ -42,7 +42,7 @@ public class Archivio {
             int postiTotali = 0;
             int postiDisponibili = 0;
             String temp;
-            //FileReader archivio = new FileReader("/home/angelo/ciuffe/TrainServer/src/train/archivio/Archivio.txt");
+           
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
 
@@ -90,7 +90,6 @@ public class Archivio {
             String temp;
             Prenotazione p;
 
-            //FileReader prenotazioni = new FileReader("/home/angelo/ciuffe/TrainServer/src/train/archivio/Prenotazioni.txt");
             BufferedReader archivioL = new BufferedReader(prenotazioni);
             temp = archivioL.readLine();
             while (!"FINE DATABASE".equals(temp)) {
@@ -182,7 +181,6 @@ public class Archivio {
         int posto = 0;
 
         for (int i = 0; i < posti; i++) {
-            // trovare primo posto disponibile
             posto = verificaDisponibilitàPosto(t);
 
             int pDis = t.getPostiDisponibili() - posti;
@@ -194,9 +192,6 @@ public class Archivio {
         decrementaPosto(t, posti);
 
 
-//        for (int u = 0; u < archivioPrenotazioni.size(); u++) {
-//            archivioPrenotazioni.get(u).stampaPrenotazione();
-//        }
         return out;
     }
 
@@ -240,8 +235,7 @@ public class Archivio {
                 
                 out.add(archivioPrenotazioni.get(i));
 
-//ciao
-                //asd
+
                 archivioPrenotazioni.remove(i);
                
                 postiDisponibili++;
@@ -261,7 +255,6 @@ public class Archivio {
             if (archivioTreni.get(i).getCodiceTreno().equals(codiceTreno)) {
                 int temp = archivioTreni.get(i).getPostiDisponibili();
                 postiDisponibili = temp + postiDisponibili;
-                System.out.print(archivioTreni.get(i).getCodiceTreno()+" ///// nuovi posti disponibili" + postiDisponibili);
                 archivioTreni.get(i).setPostiDisponibili(postiDisponibili);
 
             }
@@ -353,7 +346,7 @@ public class Archivio {
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
             if (archivioPrenotazioni.get(i).getCodiceTreno().equalsIgnoreCase(codice)
                     && archivioPrenotazioni.get(i).getPostoPrenotato() == posto) {
-                //trovato = true;
+             
                 posto++;
 
             }
@@ -399,7 +392,6 @@ public class Archivio {
 
     public void stampaSuFile() throws FileNotFoundException {
         archivioW = createDBW("archivio/Archivio.txt");
-        //FileOutputStream prova = new FileOutputStream("/home/angelo/ciuffe/TrainServer/src/train/archivio/Archivio.txt");
         PrintStream scrivi = new PrintStream(archivioW);
         scrivi.println("DATABASE");
         for (int i = 0; i < archivioTreni.size(); i++) {
@@ -415,12 +407,11 @@ public class Archivio {
             scrivi.print(archivioTreni.get(i).getDataPartenza().getMinuti() + "\n");
             scrivi.println(archivioTreni.get(i).getPostiTotali());
             scrivi.println(archivioTreni.get(i).getPostiDisponibili());
-            System.out.println("ciclo: "+i);
 
         }
         scrivi.println("FINE DATABASE");
         prenoW = createDBW("archivio/Prenotazioni.txt");
-        //prova = new FileOutputStream("/home/angelo/ciuffe/TrainServer/src/train/archivio/Prenotazioni.txt");
+        
         scrivi = null;
         scrivi = new PrintStream(prenoW);
         scrivi.println("DATABASE");

@@ -26,8 +26,7 @@ public class TrainServer extends Thread {
         this.socket = socket;
         jt = text;
         archivio = arch;
-      //  archivio.creaArchivioTreni();
-      //  archivio.creaArchvioPrenotazioni();
+     
         treni = archivio.getArchivioTreni();
         prenotazioni = archivio.getArchivioPrenotazioni();
     }

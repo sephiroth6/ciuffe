@@ -16,7 +16,6 @@ import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JToggleButton;
-import javax.xml.bind.Marshaller.Listener;
 import train.*;
 
 /**
@@ -940,9 +939,7 @@ public class guiServ extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //bottone connessione al server
-    //abilita log finestra logs server
-    //apertura finestra per effettuare una ricerca di un treno ed eventualmente la prentazione
+   
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
 
@@ -1050,13 +1047,6 @@ public class guiServ extends javax.swing.JFrame {
         }
 
 
-//        try {
-//            s.start();     
-//            
-//        } catch (Exception ex) {
-//            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
     }//GEN-LAST:event_jButton3MouseClicked
 
     //stop server
@@ -1071,24 +1061,14 @@ public class guiServ extends javax.swing.JFrame {
             }
         }
 
-//        try {
-//            
-//                    s.stop();
-//                    
-//        } catch (IOException ex) {
-//            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
     }//GEN-LAST:event_jButton18MouseClicked
 
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
         try {
 
             start2();
-//                        if(jTextArea2.getText().equals(""))
-//                            jTextArea2.setText("In attesa di chiamate dai Client...");
-//                        else
-//                            jTextArea2.setText(jTextArea2.getText()+"\nIn attesa di chiamate dai Client...");
-
+                       
             jButton18.setEnabled(true);
             jButton3.setEnabled(false);
         } catch (Exception ex) {
@@ -1096,22 +1076,14 @@ public class guiServ extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3MouseClicked1
 
-    //apertura finestra risultato ricerca
-    //apertura finestra riepilogo prenotazione
-    //torna indietro lasciando i dati inseriti invariati
-    //torna alla schermata iniziale
-    //torna alla schermata iniziale
-    //torna alla schermata iniziale
-    //esito prenotazione
-    //stato iniziale esito prenotazione/disdetta
-    //torna allo stato precedente, con i dati già precompilati
-    //chiudi logs server
+   
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            @Override
             public void run() {
                 new guiServ().setVisible(true);
 
@@ -1254,7 +1226,7 @@ public class guiServ extends javax.swing.JFrame {
     private static void postiDispo(JToggleButton... b) {
         for (int i = 0; i < b.length; i++) {
             b[i].setBackground(Color.RED);
-            //if(b[i].isSelected())
+        
             disableJT(b[i]);
         }
 
@@ -1273,30 +1245,8 @@ public class guiServ extends javax.swing.JFrame {
         disableJT(jToggleButton5, jToggleButton6, jToggleButton7);
     }
 
-//    private void avviaserver(){
-//        //avvio connessione del server
-//
-//                try {
-//                    new supportSrv();
-//                } catch (IOException ex) {
-//                    Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//    }
-    //start server
-    private void startSrv(ServerSocket s) throws Exception {
-        serverSocket = s;
-        //Ciclo infinito di ascolto dei Client
-        //while(true) {
-        System.out.println("In attesa di chiamate dai Client... ");
-        Socket socket = serverSocket.accept();
-        System.out.println("Ho ricevuto una chiamata di apertura da:\n" + socket);
-        t = new TrainServer(socket, jTextArea2, archivio);
-        //t = new Thread(new Listener(serverSocket, socket) {});
-        t.start();
-        // }
 
 
-    }
 
     private void start2() throws IOException {
         s = new ServerSocket(5001);
@@ -1321,8 +1271,7 @@ public class guiServ extends javax.swing.JFrame {
 
     }
 
-    private void positionView() {
-    }
+
 
     private void logs() {
         while (true) {
