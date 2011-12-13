@@ -17,7 +17,7 @@
 
 	echo -n "Inserire il testo del commit: "
 	read p
-	git commit -m p
+	git commit -m $p
 	git push
 	echo "total push effettuato"
 	exit 0
