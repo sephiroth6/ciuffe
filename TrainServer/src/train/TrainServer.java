@@ -51,8 +51,7 @@ public class TrainServer extends Thread {
                 try {
                     objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione)objectInputStream.readObject();
-                //    objectInputStream.close();
-                   
+         
                     
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
@@ -62,6 +61,7 @@ public class TrainServer extends Thread {
                              obOs = new ObjectOutputStream(socket.getOutputStream());
                             obOs.writeObject(ricercaTreni); 
                             obOs.flush();
+                            
                             
                             
                         }
@@ -90,7 +90,7 @@ public class TrainServer extends Thread {
                             obOs.writeObject(visualizzaPrenotazioni); 
                        
                             obOs.flush();
-                           
+                        
                         
                         }
                          
@@ -103,7 +103,7 @@ public class TrainServer extends Thread {
                        
                             obOs.flush();
                            
-                        
+                       
                         }
                         
                         
@@ -111,18 +111,18 @@ public class TrainServer extends Thread {
                         
                         
                         
-                    }
-                }
-                catch (ClassNotFoundException ex) {
-                    Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
-                if (p==null) {
+                    }  if (p==null) {
                    
                     run = false;
                     
                 }
            
+                }
+                catch (ClassNotFoundException ex) {
+                    Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+               
               
             }
             
