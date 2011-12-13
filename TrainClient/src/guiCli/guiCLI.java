@@ -2040,7 +2040,10 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             t.setValueAt(train.getPostiDisponibili(), i, 5);
             t.setValueAt(train.getPostiTotali(), i, 6);
         }
-        t.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  
+        t.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        t.setCellSelectionEnabled(false);
+        t.setColumnSelectionAllowed(false);
+        t.setRowSelectionAllowed(true);
 
     }
 
