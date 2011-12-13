@@ -1650,7 +1650,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             } else {
                 p = new Prenotazione(
                         jTextField1.getText(), //codice preno 
-                        "", //nome cliente
+                        "prenota", //nome cliente
                         0, //posti prenotato
                         "",//t.getNomeTreno(), //nome treno
                         "", //codice treno

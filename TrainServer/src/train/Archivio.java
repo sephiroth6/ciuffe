@@ -234,18 +234,22 @@ public class Archivio {
         ArrayList<Prenotazione> out = new ArrayList();
 
 
-        for (int i = 0; i < archivioPrenotazioni.size(); i++) {
+        for (int i = 0; i < archivioPrenotazioni.size(); ) {
             if (archivioPrenotazioni.get(i).getCodicePrenotazione().equals(p.getCodicePrenotazione())) {
                 codiceTreno = archivioPrenotazioni.get(i).getCodiceTreno();
+                
                 out.add(archivioPrenotazioni.get(i));
 
 //ciao
                 //asd
                 archivioPrenotazioni.remove(i);
-                archivioPrenotazioni.trimToSize();
+               
                 postiDisponibili++;
 
 
+            }
+            else {
+            i++;
             }
 
         }
@@ -255,7 +259,8 @@ public class Archivio {
 
         for (int i = 0; i < archivioTreni.size(); i++) {
             if (archivioTreni.get(i).getCodiceTreno().equals(codiceTreno)) {
-                postiDisponibili = archivioTreni.get(i).getPostiDisponibili() + postiDisponibili;
+                int temp = archivioTreni.get(i).getPostiDisponibili();
+                postiDisponibili = temp + postiDisponibili;
                 archivioTreni.get(i).setPostiDisponibili(postiDisponibili);
 
             }
