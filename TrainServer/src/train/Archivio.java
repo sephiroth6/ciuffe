@@ -403,7 +403,7 @@ public class Archivio {
 
         }
         scrivi.println("FINE DATABASE");
-        prova = new FileOutputStream("/Users/albyreturns/Desktop/Prenotazioni.txt");
+        prova = createDBW("archivio/Prenotazioni.txt");
         scrivi = new PrintStream(prova);
         scrivi.println("DATABASE");
 
