@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import lib.*;
 
@@ -2039,6 +2040,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             t.setValueAt(train.getPostiDisponibili(), i, 5);
             t.setValueAt(train.getPostiTotali(), i, 6);
         }
+        t.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);  
 
     }
 
