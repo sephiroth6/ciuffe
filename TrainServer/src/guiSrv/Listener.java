@@ -13,7 +13,7 @@ import train.*;
 
 /**
  *
- * @author Claudio
+ * @author angelo
  */
 public class Listener implements Runnable {
 
