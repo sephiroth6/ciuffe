@@ -22,6 +22,8 @@ public class Archivio {
     private ArrayList<Prenotazione> archivioPrenotazioni;
     private FileReader archivio = createDB("archivio/Archivio.txt");
     private FileReader prenotazioni = createDB("archivio/Prenotazioni.txt");
+    private FileOutputStream archivioW;
+    private FileOutputStream prenoW;
 
     public Archivio() throws FileNotFoundException {
 
@@ -366,6 +368,9 @@ public class Archivio {
     protected static FileReader createDB(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
+            System.out.println(path);
+            System.out.println(imgURL);
+            System.out.println(imgURL.getPath());
             return new FileReader(imgURL.getPath());
         } else {
             System.err.println("Couldn't find file: " + path);
@@ -376,6 +381,9 @@ public class Archivio {
     protected static FileOutputStream createDBW(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
+            System.out.println(path);
+            System.out.println(imgURL);
+            System.out.println(imgURL.getPath());
             return new FileOutputStream(imgURL.getPath());
         } else {
             System.err.println("Couldn't find file: " + path);
@@ -384,8 +392,9 @@ public class Archivio {
     }
 
     public void stampaSuFile() throws FileNotFoundException {
-        FileOutputStream prova = createDBW("archivio/Archivio.txt");
-        PrintStream scrivi = new PrintStream(prova);
+        archivioW = createDBW("archivio/Archivio.txt");
+        //FileOutputStream prova = new FileOutputStream("/home/angelo/ciuffe/TrainServer/src/train/archivio/Archivio.txt");
+        PrintStream scrivi = new PrintStream(archivioW);
         scrivi.println("DATABASE");
         for (int i = 0; i < archivioTreni.size(); i++) {
             scrivi.println("TRENO");
@@ -400,11 +409,14 @@ public class Archivio {
             scrivi.print(archivioTreni.get(i).getDataPartenza().getMinuti() + "\n");
             scrivi.println(archivioTreni.get(i).getPostiTotali());
             scrivi.println(archivioTreni.get(i).getPostiDisponibili());
+            System.out.println("ciclo: "+i);
 
         }
         scrivi.println("FINE DATABASE");
-        prova = createDBW("archivio/Prenotazioni.txt");
-        scrivi = new PrintStream(prova);
+        prenoW = createDBW("archivio/Prenotazioni.txt");
+        //prova = new FileOutputStream("/home/angelo/ciuffe/TrainServer/src/train/archivio/Prenotazioni.txt");
+        scrivi = null;
+        scrivi = new PrintStream(prenoW);
         scrivi.println("DATABASE");
 
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
@@ -413,6 +425,7 @@ public class Archivio {
             scrivi.println(archivioPrenotazioni.get(i).getCodiceTreno());
             scrivi.println(archivioPrenotazioni.get(i).getNomeCliente());
             scrivi.println(archivioPrenotazioni.get(i).getPostoPrenotato());
+            System.out.println("ciclo2: "+i);
         }
         scrivi.println("FINE DATABASE");
 
