@@ -261,6 +261,7 @@ public class Archivio {
             if (archivioTreni.get(i).getCodiceTreno().equals(codiceTreno)) {
                 int temp = archivioTreni.get(i).getPostiDisponibili();
                 postiDisponibili = temp + postiDisponibili;
+                System.out.print(archivioTreni.get(i).getCodiceTreno()+" ///// nuovi posti disponibili" + postiDisponibili);
                 archivioTreni.get(i).setPostiDisponibili(postiDisponibili);
 
             }
