@@ -63,7 +63,7 @@ public class Listener implements Runnable {
 
 
         ss.close();
-        if (sh.isConnected()) {
+        if (sh!=null) {
             sh.close();
         }
 
