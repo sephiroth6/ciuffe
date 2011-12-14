@@ -21,15 +21,15 @@ public class Listener implements Runnable {
     private Socket sh;
     private JTextArea jt;
     Archivio archivio;
- 
 
     public Listener(ServerSocket ss, JTextArea text) throws FileNotFoundException {
+        sh = null;
         this.ss = ss;
         jt = text;
         archivio = new Archivio();
         archivio.creaArchivioTreni();
         archivio.creaArchvioPrenotazioni();
-        
+
     }
 
     @Override
@@ -52,20 +52,20 @@ public class Listener implements Runnable {
     }
 
     public Archivio getArch() {
-        
-      return archivio;
-        
-    
 
-   }
-    
-    
-    public void closeAll() throws IOException {
+        return archivio;
 
-        ss.close();
-        sh.close();
+
 
     }
 
-    
+    public void closeAll() throws IOException {
+
+
+        ss.close();
+        if (sh.isConnected()) {
+            sh.close();
+        }
+
+    }
 }

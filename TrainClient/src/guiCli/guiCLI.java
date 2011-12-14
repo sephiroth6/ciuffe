@@ -1446,7 +1446,7 @@ public class guiCLI extends javax.swing.JFrame {
 
     //make a prenotation
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        if (jButton4.isEnabled()) {
+        if (jButton4.isEnabled() && s!=null) {
             FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 520, 340, jPanel2);
             setFrame(GestorePreno);
             setNoEditableP();

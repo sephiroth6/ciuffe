@@ -1265,13 +1265,11 @@ public class guiServ extends javax.swing.JFrame {
     private void stopSrv() throws IOException {
 
         archivio.stampaSuFile();
-
-    
+        
+       s.close();
         t.interrupt();
         l.closeAll();
         
-        
-           System.out.print(t.isAlive());
         jTextArea2.append("Server disconnesso" + "\n");
 
 

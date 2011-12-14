@@ -367,9 +367,7 @@ public class Archivio {
     protected static FileReader createDB(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
-            System.out.println(path);
-            System.out.println(imgURL);
-            System.out.println(imgURL.getPath());
+           
             return new FileReader(imgURL.getPath());
         } else {
             System.err.println("Couldn't find file: " + path);
@@ -380,9 +378,7 @@ public class Archivio {
     protected static FileOutputStream createDBW(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
-            System.out.println(path);
-            System.out.println(imgURL);
-            System.out.println(imgURL.getPath());
+           
             return new FileOutputStream(imgURL.getPath());
         } else {
             System.err.println("Couldn't find file: " + path);
@@ -422,7 +418,7 @@ public class Archivio {
             scrivi.println(archivioPrenotazioni.get(i).getCodiceTreno());
             scrivi.println(archivioPrenotazioni.get(i).getNomeCliente());
             scrivi.println(archivioPrenotazioni.get(i).getPostoPrenotato());
-            System.out.println("ciclo2: "+i);
+           
         }
         scrivi.println("FINE DATABASE");
 
