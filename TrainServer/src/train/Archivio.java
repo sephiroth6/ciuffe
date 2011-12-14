@@ -175,7 +175,7 @@ public class Archivio {
 
     }
 
-    public ArrayList<Prenotazione> prenotaMultipla(int posti, Prenotazione p, Treno t) {
+    public synchronized ArrayList<Prenotazione> prenotaMultipla(int posti, Prenotazione p, Treno t) {
         ArrayList<Prenotazione> out = new ArrayList();
         String codicePrenotazione = generaCodicePrenotazione();
         int posto = 0;
@@ -195,7 +195,7 @@ public class Archivio {
         return out;
     }
 
-    public void decrementaPosto(Treno t, int posti) {
+    public synchronized void decrementaPosto(Treno t, int posti) {
         for (int i = 0; i < archivioTreni.size(); i++) {
             if (archivioTreni.get(i).getCodiceTreno().equals(t.getCodiceTreno())) {
                 int temp = archivioTreni.get(i).getPostiDisponibili();
@@ -222,7 +222,7 @@ public class Archivio {
 
     }
 
-    public ArrayList<Prenotazione> eliminaPrenotazione(Prenotazione p) {
+    public synchronized ArrayList<Prenotazione> eliminaPrenotazione(Prenotazione p) {
 
         String codiceTreno = "";
         int postiDisponibili = 0;
@@ -266,7 +266,7 @@ public class Archivio {
 
     }
 
-    public ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data, int posti) {
+    public synchronized ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data, int posti) {
 
 
         ArrayList<Treno> out = new ArrayList();
@@ -329,14 +329,14 @@ public class Archivio {
 
     }
 
-    public boolean verificaDisponibilitàPosti(Treno t, int posti) {
+    public synchronized boolean verificaDisponibilitàPosti(Treno t, int posti) {
         if (t.getPostiDisponibili() < posti) {
             return false;
         }
         return true;
     }
 
-    public int verificaDisponibilitàPosto(Treno t) {   // ritorna true se è disponibile
+    public synchronized int verificaDisponibilitàPosto(Treno t) {   // ritorna true se è disponibile
 
 
         int posto = 1;
