@@ -2125,6 +2125,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
     private void startC() throws IOException {
         if (jToggleButton1.isEnabled()) {
+            s = null;
             try {
                 s = new Socket(jTextField6.getText(), 5001);
             } catch (UnknownHostException ex) {
