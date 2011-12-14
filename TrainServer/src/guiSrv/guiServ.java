@@ -32,6 +32,7 @@ public class guiServ extends javax.swing.JFrame {
     Thread t = null;
     Archivio archivio = null;
     ServerSocket s = null;
+    guiSrv.Listener l;
 
     /** Creates new form gui */
     public guiServ() {
@@ -1249,11 +1250,14 @@ public class guiServ extends javax.swing.JFrame {
 
 
     private void start2() throws IOException {
+        
         s = new ServerSocket(5001);
-        guiSrv.Listener l = new guiSrv.Listener(this.s, jTextArea2);
+        
+        l = new guiSrv.Listener(this.s, jTextArea2);
         t = new Thread(l);
         t.start();
         archivio = l.getArch();
+        
 
     }
 
@@ -1262,8 +1266,12 @@ public class guiServ extends javax.swing.JFrame {
 
         archivio.stampaSuFile();
 
-        s.close();
+    
         t.interrupt();
+        l.closeAll();
+        
+        
+           System.out.print(t.isAlive());
         jTextArea2.append("Server disconnesso" + "\n");
 
 
