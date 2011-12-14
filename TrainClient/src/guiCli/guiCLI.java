@@ -1471,7 +1471,8 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
             versoServer.flush();
-
+            
+           
 
 
         } catch (IOException ex) {

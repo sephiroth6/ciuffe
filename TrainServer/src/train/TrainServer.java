@@ -55,9 +55,12 @@ public class TrainServer extends Thread {
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
                             
+                            jt.append("Richiesta di prenotazione ricevuta da: \n");
+                             jt.append(socket+"\n");
                             ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
                           
                              obOs = new ObjectOutputStream(socket.getOutputStream());
+                             
                             obOs.writeObject(ricercaTreni); 
                             obOs.flush();
                             
@@ -66,6 +69,8 @@ public class TrainServer extends Thread {
                         }
                         if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
                            
+                            jt.append("Prenotazione effettuata da: \n");
+                            jt.append(socket + "\n");
                             Treno trenino=null;
                             for(int i=0; i<treni.size();i++){
                                 if(treni.get(i).getCodiceTreno().equals(p.getCodiceTreno()))
@@ -83,6 +88,8 @@ public class TrainServer extends Thread {
                         }
                          if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")){
                            
+                             jt.append("Richiesta visualizzazione prenotazione effettuata da: \n");
+                            jt.append(socket + "\n");
                             visualizzaPrenotazioni = archivio.visualizzaPrenotazione(p);
                             
                             obOs = new ObjectOutputStream(socket.getOutputStream());
@@ -95,6 +102,8 @@ public class TrainServer extends Thread {
                          
                          if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")){
                            
+                            jt.append("Prenotazione eliminata da: \n");
+                            jt.append(socket + "\n"); 
                             eliminaPrenotazioni = archivio.eliminaPrenotazione(p);
                             
                             obOs = new ObjectOutputStream(socket.getOutputStream());
@@ -127,7 +136,7 @@ public class TrainServer extends Thread {
             
             
             jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
-           
+          
             socket.close() ;
         } catch (IOException e) {
             jt.append("IOException: " + e +"\n");
