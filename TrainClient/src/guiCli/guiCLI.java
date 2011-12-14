@@ -1463,7 +1463,7 @@ public class guiCLI extends javax.swing.JFrame {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del serve.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
             setNoEditableP();
             jToggleButton1.setEnabled(true);
             jToggleButton1.setSelected(false);
@@ -1763,7 +1763,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
             }
         }else{
-            JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del serve.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
             setNoEditableP();
             jToggleButton1.setEnabled(true);
             jToggleButton1.setSelected(false);
@@ -2201,16 +2201,53 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     }
     
     private boolean aliveS(){
+//        try {
+//            jTextArea2.append("client prima "+s+"\n");
+//            s = new Socket(jTextField6.getText(), 5001);
+//            jTextArea2.append("client dopo"+s+"\n");
+//            return true;
+//        } catch (UnknownHostException ex) {
+//            return false;
+//        } catch (IOException ex) {
+//            return false;
+//        }
+        p = new Prenotazione(
+                "alive", //codice preno 
+                "", //nome cliente
+                100, //posti prenotato
+                "",//t.getNomeTreno(), //nome treno
+                "", //codice treno
+                "",//t.getStazionePartenza(), //stazione partenza
+                "",//t.getStazioneArrivo(), //stazione arrivo
+                null,//t.getDataPartenza(), //data
+                0, //posti totali
+                0 //posti dispo
+                );
+
+
         try {
-            jTextArea2.append("client prima "+s+"\n");
-            s = new Socket(jTextField6.getText(), 5001);
-            jTextArea2.append("client dopo"+s+"\n");
-            return true;
-        } catch (UnknownHostException ex) {
-            return false;
+            versoServer = new ObjectOutputStream(s.getOutputStream());
+            versoServer.writeObject(p);
+            versoServer.flush();
         } catch (IOException ex) {
             return false;
         }
+        try {
+            dalServer = new ObjectInputStream(s.getInputStream());
+            try {
+                Prenotazione alive = (Prenotazione) dalServer.readObject();
+                if(alive.getCodicePrenotazione().equals("isalive") && alive.getNomeCliente().equals("ok"))
+                    return true;
+                else
+                    return false;
+            } catch (ClassNotFoundException ex) {
+                return false;
+            }
+            
+        } catch (IOException ex) {
+            return false;
+        }
+        
         
             
     }

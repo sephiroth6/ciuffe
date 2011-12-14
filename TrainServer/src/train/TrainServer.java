@@ -113,6 +113,28 @@ public class TrainServer extends Thread {
                            
                        
                         }
+                         
+                         if(p.getCodicePrenotazione().equals("alive") && p.getNomeCliente().equals("") && p.getPostoPrenotato() == 100){
+                             jt.append("richiesta di alive dal client: "+socket+"\n");
+                             
+                             p = new Prenotazione(
+                                "isalive", //codice preno 
+                                "ok", //nome cliente
+                                100, //posti prenotato
+                                "",//t.getNomeTreno(), //nome treno
+                                "", //codice treno
+                                "",//t.getStazionePartenza(), //stazione partenza
+                                "",//t.getStazioneArrivo(), //stazione arrivo
+                                null,//t.getDataPartenza(), //data
+                                0, //posti totali
+                                0 //posti dispo
+                                );
+                             obOs = new ObjectOutputStream(socket.getOutputStream());
+                             obOs.writeObject(p); 
+                       
+                             obOs.flush();
+                         
+                         }
                         
                         
                         
