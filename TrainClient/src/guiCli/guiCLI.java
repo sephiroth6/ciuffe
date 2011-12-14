@@ -579,7 +579,9 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel37.setText("Quantità posti prenotati:");
 
-        jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 12));
+        jLabel38.setText("a");
+
+        jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel41.setText("* per eventuali disdette.");
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/crossX.png"))); // NOI18N
@@ -600,9 +602,6 @@ public class guiCLI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jLabel38))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel23))
@@ -635,7 +634,8 @@ public class guiCLI extends javax.swing.JFrame {
                                 .addComponent(jLabel36))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel37)
-                                .addGap(6, 6, 6))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel38))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel41)
@@ -679,10 +679,10 @@ public class guiCLI extends javax.swing.JFrame {
                     .addComponent(jLabel35)
                     .addComponent(jLabel36))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel37)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jButton11))
