@@ -55,7 +55,7 @@ public class TrainServer extends Thread {
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
                             
-                            jt.append("Richiesta di prenotazione ricevuta da: \n");
+                            jt.append("Richiesta di tratta ricevuta da: \n");
                              jt.append(socket+"\n");
                             ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
                           
@@ -69,7 +69,7 @@ public class TrainServer extends Thread {
                         }
                         if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
                            
-                            jt.append("Prenotazione effettuata da: \n");
+                            jt.append("Richiesta prenotazione ricevuta da: \n");
                             jt.append(socket + "\n");
                             Treno trenino=null;
                             for(int i=0; i<treni.size();i++){
@@ -98,6 +98,11 @@ public class TrainServer extends Thread {
                             obOs.flush();
                         
                         
+                        }if(p.getCodicePrenotazione().equals("ConfermaInvio") && p.getNomeCliente().equals("ConfermaInvio")){
+                           
+                             jt.append("Prenotazione effettuata \n");
+                            
+                        
                         }
                          
                          if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")){
@@ -115,7 +120,7 @@ public class TrainServer extends Thread {
                         }
                          
                          if(p.getCodicePrenotazione().equals("alive") && p.getNomeCliente().equals("") && p.getPostoPrenotato() == 100){
-                             jt.append("richiesta di alive dal client: "+socket+"\n");
+                             
                              
                              p = new Prenotazione(
                                 "isalive", //codice preno 
