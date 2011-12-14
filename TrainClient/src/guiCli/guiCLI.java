@@ -201,6 +201,8 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jToggleButton8 = new javax.swing.JToggleButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -269,6 +271,7 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 10));
         jLabel9.setText("formato: gg/mm/aaaa");
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/search.png"))); // NOI18N
         jButton5.setText("Cerca");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -276,6 +279,7 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/crossX.png"))); // NOI18N
         jButton6.setText("Annulla");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -313,7 +317,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(253, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
@@ -396,7 +400,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
@@ -425,6 +429,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel15.setText("Nome:");
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/next.png"))); // NOI18N
         jButton7.setText("Continua");
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -432,6 +437,7 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/8.png"))); // NOI18N
         jButton8.setText("Indietro");
         jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -443,6 +449,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel16.setText("Cognome:");
 
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/crossX.png"))); // NOI18N
         jButton9.setText("Annulla Operatione");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -481,12 +488,14 @@ public class guiCLI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 371, Short.MAX_VALUE)
-                                .addComponent(jButton7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton8))))
+                            .addComponent(jButton9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton7))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,12 +503,8 @@ public class guiCLI extends javax.swing.JFrame {
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(81, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -513,22 +518,24 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
                 .addGap(12, 12, 12)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton8)
-                    .addComponent(jButton7))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addComponent(jButton9))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addContainerGap())
         );
 
@@ -540,6 +547,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel28.setText("Data ed orario di partenza:");
 
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/salva.png"))); // NOI18N
         jButton10.setText("Finalizza prenotazione");
         jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -547,6 +555,7 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/8.png"))); // NOI18N
         jButton11.setText("Indietro");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -570,9 +579,12 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel37.setText("Quantità posti prenotati:");
 
-        jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 12));
+        jLabel38.setText("a");
+
+        jLabel41.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel41.setText("* per eventuali disdette.");
 
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/crossX.png"))); // NOI18N
         jButton12.setText("Annulla Operazione");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -595,57 +607,54 @@ public class guiCLI extends javax.swing.JFrame {
                         .addComponent(jLabel23))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel33))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel30))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel31))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel32))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel34))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel35)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel36))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel37)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel38))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel41)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                        .addComponent(jButton12))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton10)
-                        .addGap(86, 86, 86)
-                        .addComponent(jButton11))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel39)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel33))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel30))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel27)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel31))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel32))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel34))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel36))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel37)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel38)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addComponent(jButton12)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jButton11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addGap(28, 28, 28))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(jLabel33))
@@ -673,11 +682,11 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(jLabel38))
-                .addGap(68, 68, 68)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jButton11))
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -686,6 +695,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel42.setText("La prenotazione è stata ");
 
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/rientri.png"))); // NOI18N
         jButton14.setText("OK");
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -718,7 +728,7 @@ public class guiCLI extends javax.swing.JFrame {
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                         .addComponent(jButton14))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel14)
@@ -743,7 +753,7 @@ public class guiCLI extends javax.swing.JFrame {
                     .addComponent(jLabel20))
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addComponent(jButton14)
                 .addContainerGap())
         );
@@ -800,7 +810,7 @@ public class guiCLI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1070,6 +1080,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel63.setText("Data ed orario di partenza:");
 
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/bomb-4.png"))); // NOI18N
         jButton15.setText("Cancella prenotazione");
         jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1091,6 +1102,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel72.setText("Numero posti prenotati:");
 
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/8_2.png"))); // NOI18N
         jButton23.setText("Indietro");
         jButton23.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1140,17 +1152,17 @@ public class guiCLI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel68))
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jButton15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                        .addComponent(jButton23))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel71)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel72))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel73)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel76)))
+                        .addComponent(jLabel76))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                        .addComponent(jButton23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(jButton15)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -1160,7 +1172,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
                     .addComponent(jLabel74))
@@ -1188,15 +1200,16 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel73)
                     .addComponent(jLabel76))
-                .addGap(68, 68, 68)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton15)
-                    .addComponent(jButton23))
-                .addGap(55, 55, 55))
+                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton15))
+                .addGap(73, 73, 73))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/stock_connect.png"))); // NOI18N
         jToggleButton1.setText("Connessione al Server");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1204,6 +1217,7 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/frontend2.png"))); // NOI18N
         jButton2.setText("Visualizza una prenotazione");
         jButton2.setEnabled(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1212,6 +1226,7 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/add.png"))); // NOI18N
         jButton4.setText("Effettua una prenonazione");
         jButton4.setEnabled(false);
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1222,7 +1237,8 @@ public class guiCLI extends javax.swing.JFrame {
 
         jTextField6.setText("localhost");
 
-        jLabel44.setText("Nome Utente:");
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/clienti2.png"))); // NOI18N
+        jLabel44.setText("Nome Operatore:");
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -1230,12 +1246,17 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel2.setText("Logs:");
 
+        jToggleButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/gtk_disconnect.png"))); // NOI18N
         jToggleButton8.setText("Disconnessione dal Server");
         jToggleButton8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jToggleButton8MouseClicked(evt);
             }
         });
+
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png"))); // NOI18N
+
+        jLabel22.setText("Numero prenotazione:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1244,17 +1265,19 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel44)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
+                                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jToggleButton8))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1263,9 +1286,17 @@ public class guiCLI extends javax.swing.JFrame {
                                 .addComponent(jButton2, 0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -1275,7 +1306,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1290,13 +1321,18 @@ public class guiCLI extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel21)
                 .addContainerGap())
         );
 
         jToggleButton8.setEnabled(false);
+        jLabel22.setEnabled(false);
 
         jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18));
         jLabel13.setText("Client");
@@ -1396,6 +1432,8 @@ public class guiCLI extends javax.swing.JFrame {
 
                     startC();
                     jTextField6.setEditable(false);
+                    jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/Connect.png")));
+                    
 
                 } catch (UnknownHostException ex) {
                     JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1471,8 +1509,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(p);
             versoServer.flush();
-            
-           
+
 
 
         } catch (IOException ex) {
@@ -1580,6 +1617,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 stopC();
                 setNoEditableP();
                 jTextField6.setEditable(true);
+                jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
             } catch (IOException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1827,6 +1865,8 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -1973,6 +2013,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jButton4.setEnabled(true);
         jToggleButton8.setEnabled(true);
         jTextField1.setEditable(true);
+        jLabel22.setEnabled(true);
 
     }
 
@@ -1981,6 +2022,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jFrame1.setVisible(false);
         jButton4.setEnabled(false);
         jTextField1.setEditable(false);
+        jLabel22.setEnabled(false);
     }
 
     private void statoIniziale() {
