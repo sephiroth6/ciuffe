@@ -11,10 +11,13 @@
 package guiSrv;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JToggleButton;
 import train.*;
 
@@ -33,7 +36,13 @@ public class guiServ extends javax.swing.JFrame {
     Archivio archivio = null;
     ServerSocket s = null;
     guiSrv.Listener l;
-
+    //Create a file chooser
+    final JFileChooser fc = new JFileChooser();
+    String pathArch = "";
+    String pathPren = "";
+    int flagging =0;
+    
+    
     /** Creates new form gui */
     public guiServ() {
         initComponents();
@@ -140,6 +149,8 @@ public class guiServ extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -898,6 +909,7 @@ public class guiServ extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton3.setEnabled(false);
         jButton18.setEnabled(false);
 
         jLabel44.setFont(new java.awt.Font("Dialog", 1, 18));
@@ -910,6 +922,22 @@ public class guiServ extends javax.swing.JFrame {
 
         jLabel45.setText("Logs:");
 
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/frontend.png"))); // NOI18N
+        jButton19.setText("File archivio Treni");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
+
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/frontend2.png"))); // NOI18N
+        jButton20.setText("File archivio prenotazioni");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -917,23 +945,33 @@ public class guiServ extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel44)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel45))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel45)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton19)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton20)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel44)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton20)
+                    .addComponent(jButton19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel45)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1056,7 +1094,10 @@ public class guiServ extends javax.swing.JFrame {
             try {
                 stopSrv();
                 jButton18.setEnabled(false);
-                jButton3.setEnabled(true);
+                jButton19.setEnabled(true);
+                jButton20.setEnabled(true);
+                pathArch = "";
+                pathPren = "";
             } catch (IOException ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1066,16 +1107,59 @@ public class guiServ extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18MouseClicked
 
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
-        try {
+        if(jButton3.isEnabled()){
+            try {
 
-            start2();
-                       
-            jButton18.setEnabled(true);
-            jButton3.setEnabled(false);
-        } catch (Exception ex) {
-            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                start2();
+
+                jButton18.setEnabled(true);
+                jButton3.setEnabled(false);
+            } catch (Exception ex) {
+                Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton3MouseClicked1
+
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        if(jButton19.isEnabled()){
+            int returnVal = fc.showOpenDialog(jFrame1);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                jTextArea2.append("Apertura file archivio treni: " + file.getName() + ".\n");
+                try {
+                    pathArch = file.getCanonicalPath();
+                    start3();
+                } catch (IOException ex) {
+                    jTextArea2.append("Errore nell'apertura del file!\n");
+                }
+            } else {
+                jTextArea2.append("Operazione seleziona file annullata dall'utente.\n");
+            }
+        }
+        
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        if(jButton20.isEnabled()){
+            int returnVal = fc.showOpenDialog(jFrame1);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                jTextArea2.append("Apertura file archivio prenotazioni: " + file.getName() + ".\n");
+                try {
+                    pathPren = file.getCanonicalPath();
+                    start3();
+                } catch (IOException ex) {
+                    jTextArea2.append("Errore nell'apertura del file!\n");
+                }
+            } else {
+                jTextArea2.append("Operazione seleziona file annullata dall'utente.\n");
+            }
+        }
+    }//GEN-LAST:event_jButton20MouseClicked
 
    
     /**
@@ -1103,7 +1187,9 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1248,19 +1334,21 @@ public class guiServ extends javax.swing.JFrame {
 
 
 
-
+    //avvio effettivo del server con apertura socket e ascolto porta
     private void start2() throws IOException {
         
         s = new ServerSocket(5001);
         
-        l = new guiSrv.Listener(this.s, jTextArea2);
+        l = new guiSrv.Listener(this.s, jTextArea2, pathArch, pathPren);
         t = new Thread(l);
         t.start();
-        archivio = l.getArch();
+        archivio = l.getArch(pathArch, pathPren);
         
-
+        if (archivio == null)
+            jButton18MouseClicked(null);
     }
 
+    
     //stop server
     private void stopSrv() throws IOException {
 
@@ -1271,16 +1359,15 @@ public class guiServ extends javax.swing.JFrame {
         l.closeAll();
         
         jTextArea2.append("Server disconnesso" + "\n");
-
-
-
-
     }
-
-
-
-    private void logs() {
-        while (true) {
+    
+    
+    //abilitazione bottone connessione
+    private void start3(){
+        if(!pathArch.equals("") && !pathPren.equals("")){
+            jButton3.setEnabled(true);
+            jButton19.setEnabled(false);
+            jButton20.setEnabled(false);
         }
     }
 

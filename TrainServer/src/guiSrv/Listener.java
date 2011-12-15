@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextArea;
 import train.*;
 
@@ -22,11 +24,11 @@ public class Listener implements Runnable {
     private JTextArea jt;
     Archivio archivio;
 
-    public Listener(ServerSocket ss, JTextArea text) throws FileNotFoundException {
+    public Listener(ServerSocket ss, JTextArea text, String a, String p) throws FileNotFoundException {
         sh = null;
         this.ss = ss;
         jt = text;
-        archivio = new Archivio();
+        archivio = new Archivio(a, p);
         archivio.creaArchivioTreni();
         archivio.creaArchvioPrenotazioni();
 
@@ -51,12 +53,12 @@ public class Listener implements Runnable {
         }
     }
 
-    public Archivio getArch() {
-
-        return archivio;
-
-
-
+    public Archivio getArch(String arch, String pren) {
+        if(archivio.setPath(arch, pren)){
+            return archivio;
+        }
+        jt.append("Errore nella lettura del file!\n");
+        return null;
     }
 
     public void closeAll() throws IOException {

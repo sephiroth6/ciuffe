@@ -20,13 +20,17 @@ public class Archivio {
 
     private ArrayList<Treno> archivioTreni;
     private ArrayList<Prenotazione> archivioPrenotazioni;
-    private FileReader archivio = createDB("archivio/Archivio.txt");
-    private FileReader prenotazioni = createDB("archivio/Prenotazioni.txt");
+    private FileReader archivio; // = new FileReader("archivio/Archivio.txt");
+    private FileReader prenotazioni; // = new FileReader("archivio/Prenotazioni.txt");
     private FileOutputStream archivioW;
     private FileOutputStream prenoW;
+    String arch = "";
+    String pren = "";
 
-    public Archivio() throws FileNotFoundException {
+    public Archivio(String a, String p) throws FileNotFoundException {
 
+        archivio = new FileReader(a);
+        prenotazioni = new FileReader(p);
         archivioTreni = new ArrayList();
         archivioPrenotazioni = new ArrayList();
 
@@ -387,7 +391,7 @@ public class Archivio {
     }
 
     public void stampaSuFile() throws FileNotFoundException {
-        archivioW = createDBW("archivio/Archivio.txt");
+        archivioW = new FileOutputStream(arch);
         PrintStream scrivi = new PrintStream(archivioW);
         scrivi.println("DATABASE");
         for (int i = 0; i < archivioTreni.size(); i++) {
@@ -406,7 +410,8 @@ public class Archivio {
 
         }
         scrivi.println("FINE DATABASE");
-        prenoW = createDBW("archivio/Prenotazioni.txt");
+        
+        prenoW = new FileOutputStream(pren);
         
         scrivi = null;
         scrivi = new PrintStream(prenoW);
@@ -423,4 +428,19 @@ public class Archivio {
         scrivi.println("FINE DATABASE");
 
     }
+    
+    public boolean setPath(String arch, String pren){
+        try {
+            archivio = new FileReader(arch);
+            prenotazioni = new FileReader(pren);
+            this.arch = arch;
+            this.pren = pren;
+            //archivioW = new FileOutputStream(arch);
+            //prenoW = new FileOutputStream(pren);
+            return true;
+        } catch (FileNotFoundException ex) {
+            return false;
+        }
+    }
+    
 }
