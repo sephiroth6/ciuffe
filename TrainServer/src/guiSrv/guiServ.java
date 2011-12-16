@@ -1100,10 +1100,11 @@ public class guiServ extends javax.swing.JFrame {
         if (jButton3.isEnabled()) {
             try {
 
-                start2();
+                if(start2()){
 
-                jButton18.setEnabled(true);
-                jButton3.setEnabled(false);
+                    jButton18.setEnabled(true);
+                    jButton3.setEnabled(false);
+                }
             } catch (Exception ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
                 jTextArea2.append("Impossibile avviare il server\n");
@@ -1336,7 +1337,7 @@ public class guiServ extends javax.swing.JFrame {
     }
 
     //avvio effettivo del server con apertura socket e ascolto porta
-    private void start2() throws IOException {
+    private boolean start2() throws IOException {
 
         s = new ServerSocket(5001);
 
@@ -1357,12 +1358,14 @@ public class guiServ extends javax.swing.JFrame {
             jButton20.setEnabled(true);
             pathArch = "";
             pathPren = "";
-
+            return false;
 
         }
         else if (archivio == null) {
             jButton18MouseClicked(null);
+            return false;
         }
+        return true;
 
     }
 
