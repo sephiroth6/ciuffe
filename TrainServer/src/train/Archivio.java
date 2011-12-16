@@ -53,7 +53,7 @@ public class Archivio {
 
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
-            System.out.println(temp);
+        
             if (temp.equals("DATABASE TRENI")) {
 
                 while (!"FINE DATABASE".equals(temp)) {
