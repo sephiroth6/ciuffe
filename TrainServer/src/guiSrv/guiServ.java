@@ -1133,7 +1133,7 @@ public class guiServ extends javax.swing.JFrame {
                         jButton19.setEnabled(true);
                         jButton20.setEnabled(true);
                         pathArch = "";
-                        pathPren = "";
+                        
                     }
                     
                     
@@ -1168,7 +1168,6 @@ public class guiServ extends javax.swing.JFrame {
                         jButton18.setEnabled(false);
                         jButton19.setEnabled(true);
                         jButton20.setEnabled(true);
-                        pathArch = "";
                         pathPren = "";
                     }
                 } catch (IOException ex) {
