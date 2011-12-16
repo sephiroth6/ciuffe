@@ -11,7 +11,10 @@
 package guiSrv;
 
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.*;
 import java.util.logging.Level;
@@ -873,11 +876,6 @@ public class guiServ extends javax.swing.JFrame {
                 jButton3MouseClicked1(evt);
             }
         });
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/ConnectNO.png"))); // NOI18N
         jButton18.setText("Stop");
@@ -945,7 +943,7 @@ public class guiServ extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -959,7 +957,7 @@ public class guiServ extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1100,11 +1098,11 @@ public class guiServ extends javax.swing.JFrame {
         if (jButton3.isEnabled()) {
             try {
 
-                if(start2()){
+                start2();
 
                     jButton18.setEnabled(true);
                     jButton3.setEnabled(false);
-                }
+                
             } catch (Exception ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
                 jTextArea2.append("Impossibile avviare il server\n");
@@ -1123,7 +1121,22 @@ public class guiServ extends javax.swing.JFrame {
                 jTextArea2.append("Apertura file archivio treni: " + file.getName() + ".\n");
                 try {
                     pathArch = file.getCanonicalPath();
-                    start3();
+                    if(checkFIle(pathArch)){
+                        start3();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
+
+                        jTextArea2.append("Archivio treni danneggiato o illeggibile" + "\n");
+                        jButton3.setEnabled(false);
+                        jButton18.setEnabled(false);
+                        jButton19.setEnabled(true);
+                        jButton20.setEnabled(true);
+                        pathArch = "";
+                        pathPren = "";
+                    }
+                    
+                    
                 } catch (IOException ex) {
                     jTextArea2.append("Errore nell'apertura del file!\n");
                 }
@@ -1145,7 +1158,19 @@ public class guiServ extends javax.swing.JFrame {
                 jTextArea2.append("Apertura file archivio prenotazioni: " + file.getName() + ".\n");
                 try {
                     pathPren = file.getCanonicalPath();
-                    start3();
+                    if(checkFIle(pathPren))
+                        start3();
+                    else{
+                        JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
+
+                        jTextArea2.append("Archivio prenovazioni danneggiato o illeggibile" + "\n");
+                        jButton3.setEnabled(false);
+                        jButton18.setEnabled(false);
+                        jButton19.setEnabled(true);
+                        jButton20.setEnabled(true);
+                        pathArch = "";
+                        pathPren = "";
+                    }
                 } catch (IOException ex) {
                     jTextArea2.append("Errore nell'apertura del file!\n");
                 }
@@ -1154,10 +1179,6 @@ public class guiServ extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton20MouseClicked
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1337,7 +1358,7 @@ public class guiServ extends javax.swing.JFrame {
     }
 
     //avvio effettivo del server con apertura socket e ascolto porta
-    private boolean start2() throws IOException {
+    private void start2() throws IOException {
 
         s = new ServerSocket(5001);
 
@@ -1358,14 +1379,14 @@ public class guiServ extends javax.swing.JFrame {
             jButton20.setEnabled(true);
             pathArch = "";
             pathPren = "";
-            return false;
+
 
         }
         else if (archivio == null) {
             jButton18MouseClicked(null);
-            return false;
+
         }
-        return true;
+
 
     }
 
@@ -1389,4 +1410,18 @@ public class guiServ extends javax.swing.JFrame {
             jButton20.setEnabled(false);
         }
     }
+    
+    private boolean checkFIle(String f) throws FileNotFoundException, IOException{
+        FileReader file = new FileReader(f);
+        BufferedReader reader = new BufferedReader(file);
+        
+        f = reader.readLine();
+
+        if (f.equals("DATABASE TRENI") || f.equals("DATABASE PRENOTAZIONI")){
+            return true;
+        }
+        return false;
+    }
+    
+    
 }
