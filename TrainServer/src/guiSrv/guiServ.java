@@ -1345,18 +1345,25 @@ public class guiServ extends javax.swing.JFrame {
         t.start();
         archivio = l.getArch(pathArch, pathPren);
 
-        if (archivio.isArchioPrenotazione() == false || archivio.isArchivioTreno()== false) {
+        if (archivio.isArchioPrenotazione() == false || archivio.isArchivioTreno() == false) {
             JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
             s.close();
             t.interrupt();
             l.closeAll();
             jTextArea2.append("Server disconnesso" + "\n");
-            
+            jButton3.setEnabled(false);
+            jButton18.setEnabled(false);
+            jButton19.setEnabled(true);
+            jButton20.setEnabled(true);
+            pathArch = "";
+            pathPren = "";
+
+
         }
-            if (archivio == null) {
-                jButton18MouseClicked(null);
-            }
-        
+        else if (archivio == null) {
+            jButton18MouseClicked(null);
+        }
+
     }
 
     //stop server e chiusura connessione

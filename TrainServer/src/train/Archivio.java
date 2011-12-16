@@ -36,6 +36,7 @@ public class Archivio {
         prenotazioni = new FileReader(p);
         archivioTreni = new ArrayList();
         archivioPrenotazioni = new ArrayList();
+        
 
     }
 
@@ -419,7 +420,7 @@ public class Archivio {
     public void stampaSuFile() throws FileNotFoundException {
         archivioW = new FileOutputStream(arch);
         PrintStream scrivi = new PrintStream(archivioW);
-        scrivi.println("DATABASE");
+        scrivi.println("DATABASE TRENI");
         for (int i = 0; i < archivioTreni.size(); i++) {
             scrivi.println("TRENO");
             scrivi.println(archivioTreni.get(i).getNomeTreno());
@@ -441,7 +442,7 @@ public class Archivio {
 
         scrivi = null;
         scrivi = new PrintStream(prenoW);
-        scrivi.println("DATABASE");
+        scrivi.println("DATABASE PRENOTAZIONI");
 
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
             scrivi.println("PRENOTAZIONE");
