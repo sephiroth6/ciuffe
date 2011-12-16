@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JToggleButton;
-//import reti2.supportMsg.*;
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class guiCLI extends javax.swing.JFrame {
     private FinestraSwing frame;
     protected static int id = 0;
    
-    //protected static Socket socket;
+   
     private Socket s;
     DataOutputStream output;
     DataInputStream input;
@@ -1453,20 +1453,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     date = new Data(jTextField5.getText(), jTextField10.getText(), jTextField11.getText(), jTextField12.getText(), jTextField13.getText());
 
     if (checkValueP()) {
-        // try {
-
-        /*
-        # String cP ->codice prenotazione
-        # String n -> nome (ma dell'operatore che mettiamo sul client o un nuovo nome?)
-        # int pP -> posto prenotato
-        # String nT -> nome treno
-        # String c -> codice treno
-        #String sP -> stazione partenza
-        # String sA -> stazione arrivo
-        # Data dP -> data giorno
-        # int pT -> posti totali
-        # int pD -> posti disponibili
-         */
+       
         
         
 
@@ -1520,9 +1507,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         setTableSearchTrain(jTable1, ricercaTreni);
         jTextField8.setText("");
         jTextField9.setText("");
-//            } catch (IOException ex) {
-//                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        //}
 
     }
 
@@ -1553,24 +1537,14 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         if (jTextField8.getText().equals("") || jTextField9.getText().equals("")) {
             JOptionPane.showMessageDialog(jPanel3, "Controllare nome e cognome.", "Errore!", JOptionPane.WARNING_MESSAGE);
         } else {
-//            int row=0;
-//            row=jTable1.getRowCount();
-//            for(int i=0;i<row;i++){
-//                if(jTable1.isRowSelected(i))
-//                    
-//            }
+           
 
 
             int sel = -1;
             sel = jTable1.getSelectedRow();
             if (sel != -1) {
                 t = ricercaTreni.get(sel);
-
-
-
-                //       
-                //        
-
+                
                 close();
 
                 jLabel33.setText(t.getNomeTreno() + " " + t.getCodiceTreno());//trenoinfo
@@ -1645,33 +1619,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jLabel8.setText("");
         jLabel20.setText("");
 
-  /*      p = new Prenotazione(
-                "", //codice preno 
-                jLabel34.getText() + " " + jLabel36.getText(), //nome cliente
-                jComboBox2.getSelectedIndex(), //posti prenotato
-                "",//t.getNomeTreno(), //nome treno
-                t.getCodiceTreno(), //codice treno
-                "",//t.getStazionePartenza(), //stazione partenza
-                "",//t.getStazioneArrivo(), //stazione arrivo
-                null,//t.getDataPartenza(), //data
-                0, //posti totali
-                0 //posti dispo
-                );
-
-        try {
-            versoServer = new ObjectOutputStream(s.getOutputStream());
-            versoServer.writeObject(p);
-            versoServer.flush();
-
-
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        }  */
-     //   try {
-         //   dalServer = new ObjectInputStream(s.getInputStream());
-      //      try {
-              //  risultatoPrenotazioni = (ArrayList<Prenotazione>) dalServer.readObject();
-                int size = risultatoPrenotazioni.size();
+    int size = risultatoPrenotazioni.size();
                 String posti = "";
                 for (int i = 0; i < size; i++) {
                     posti = posti + risultatoPrenotazioni.get(i).getPostoPrenotato() + " ";
@@ -1681,13 +1629,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 jLabel20.setText(posti);
                 jTextArea2.append("Prenotazione effettuata \n");
 
-        //    } catch (ClassNotFoundException ex) {
-          //      Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-
-           // }
-     //   } catch (IOException ex) {
-       //     Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-      //  }
                 
                 
                 p = new Prenotazione(
@@ -2029,25 +1970,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         }
     }
 
-//cambia stato bottone server, true è connesso al server
-    private void connectDisconnect() throws UnknownHostException, IOException {
-        if (jToggleButton1.isSelected()) {
-            jToggleButton1.setText("DisconnectToServer");
-//            try {
-//                socket.getInputStream(), socket.getOutputStream();
-//            } catch (IOException ex) {
-//                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-            Socket socket = new Socket("127.0.0.1", 5001);
-//                supportCli newConn = new supportCli(socket.getInputStream(),socket.getOutputStream());
 
-            setEditableP();
-        } else {
-            jToggleButton1.setText("ConnectToServer");
-            setNoEditableP();
-            // supportCli.
-        }
-    }
 
     //stato bottoni limitrovi a connectDisconnect
 //    private void statoBotton() throws UnknownHostException, IOException{
@@ -2082,15 +2005,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         setEditableP();
     }
 
-    // deselezione i bottoni toggle passati come argomento
-    private static void postiDispo(JToggleButton... b) {
-        for (int i = 0; i < b.length; i++) {
-            b[i].setBackground(Color.RED);
-            //if(b[i].isSelected())
-            disableJT(b[i]);
-        }
-
-    }
+   
 
     private static void disableJT(JToggleButton... b) {
         for (int i = 0; i < b.length; i++) {
@@ -2105,18 +2020,9 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         disableJT(jToggleButton5, jToggleButton6, jToggleButton7);
     }
 
-    private void closeC() throws IOException {
-        String s = "exit";
-        output.writeUTF(s);
+   
 
-    }
-
-    private void close2() throws IOException {
-        input = new DataInputStream(s.getInputStream());
-        output = new DataOutputStream(s.getOutputStream());
-        String s = "exit";
-        output.writeUTF(s);
-    }
+   
 
     private void setTableSearchTrain(JTable t, ArrayList<Treno> a) {
 
@@ -2181,19 +2087,17 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             try {
                 s = new Socket(jTextField6.getText(), 5001);
             } catch (UnknownHostException ex) {
-                //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                
                 jTextArea2.append("Host sconosciuto: controllare l'indirizzo del server.\n");
                 jTextField6.setEditable(true);
             } catch (IOException ex) {
-                //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                
                 jTextArea2.append("Server non raggiungibile\n");
                  jTextField6.setEditable(true);
             }
             if (s != null) {
                 jTextArea2.append("Client connesso a: " + s + "\n");
-                //              input = new DataInputStream(s.getInputStream());
-                //              output = new DataOutputStream(s.getOutputStream());
-
+         
                 User = jTextField7.getText();
                 setEditableP();
                 jTextField7.setEditable(false);
@@ -2236,16 +2140,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     }
 
     private boolean aliveS() {
-//        try {
-//            jTextArea2.append("client prima "+s+"\n");
-//            s = new Socket(jTextField6.getText(), 5001);
-//            jTextArea2.append("client dopo"+s+"\n");
-//            return true;
-//        } catch (UnknownHostException ex) {
-//            return false;
-//        } catch (IOException ex) {
-//            return false;
-//        }
+//    
         p = new Prenotazione(
                 "alive", //codice preno 
                 "", //nome cliente
