@@ -100,7 +100,8 @@ public class TrainServer extends Thread {
                         
                         }if(p.getCodicePrenotazione().equals("ConfermaInvio") && p.getNomeCliente().equals("ConfermaInvio")){
                            
-                             jt.append("Prenotazione effettuata \n");
+                             jt.append("Prenotazione effettuata da \n");
+                             jt.append(socket + "\n");
                             
                         
                         }

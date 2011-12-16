@@ -16,7 +16,7 @@ class FinestraSwing extends JFrame {
         setSize(x_Siz, y_Siz);
         getContentPane().add(pann);
         setVisible(true);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
 }

@@ -20,13 +20,20 @@ public class Archivio {
 
     private ArrayList<Treno> archivioTreni;
     private ArrayList<Prenotazione> archivioPrenotazioni;
-    private FileReader archivio = createDB("archivio/Archivio.txt");
-    private FileReader prenotazioni = createDB("archivio/Prenotazioni.txt");
+    private FileReader archivio; // = new FileReader("archivio/Archivio.txt");
+    private FileReader prenotazioni; // = new FileReader("archivio/Prenotazioni.txt");
     private FileOutputStream archivioW;
     private FileOutputStream prenoW;
+    String arch = "";
+    String pren = "";
+    boolean treno = false;
+    boolean prenotazione = false;
+    
 
-    public Archivio() throws FileNotFoundException {
+    public Archivio(String a, String p) throws FileNotFoundException {
 
+        archivio = new FileReader(a);
+        prenotazioni = new FileReader(p);
         archivioTreni = new ArrayList();
         archivioPrenotazioni = new ArrayList();
 
@@ -42,38 +49,47 @@ public class Archivio {
             int postiTotali = 0;
             int postiDisponibili = 0;
             String temp;
-           
+
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
+            System.out.println(temp);
+            if (temp.equals("DATABASE TRENI")) {
 
-            while (!"FINE DATABASE".equals(temp)) {
-                temp = archivioL.readLine();
-                if (temp.equals("TRENO") && !"FINE DATABASE".equals(temp)) {
+                while (!"FINE DATABASE".equals(temp)) {
 
-                    nomeTreno = archivioL.readLine();
-                    codiceTreno = archivioL.readLine();
-                    stazionePartenza = archivioL.readLine();
-                    stazioneArrivo = archivioL.readLine();
-                    data = archivioL.readLine();
-                    Data dataConvertita = new Data();
-                    dataConvertita.leggiStringa(data);
-                    postiTotali = Data.convertiStringa(archivioL.readLine());
-                    postiDisponibili = Data.convertiStringa(archivioL.readLine());
 
-                    Treno t = new Treno(nomeTreno, codiceTreno, stazionePartenza,
-                            stazioneArrivo, dataConvertita, postiTotali, postiDisponibili);
-                    archivioTreni.add(t);
+                    temp = archivioL.readLine();
+                    if (temp.equals("TRENO") && !"FINE DATABASE".equals(temp)) {
+
+                        nomeTreno = archivioL.readLine();
+                        codiceTreno = archivioL.readLine();
+                        stazionePartenza = archivioL.readLine();
+                        stazioneArrivo = archivioL.readLine();
+                        data = archivioL.readLine();
+                        Data dataConvertita = new Data();
+                        dataConvertita.leggiStringa(data);
+                        postiTotali = Data.convertiStringa(archivioL.readLine());
+                        postiDisponibili = Data.convertiStringa(archivioL.readLine());
+
+                        Treno t = new Treno(nomeTreno, codiceTreno, stazionePartenza,
+                                stazioneArrivo, dataConvertita, postiTotali, postiDisponibili);
+                        archivioTreni.add(t);
+
+                    }
                 }
-            }
 
-            archivioL.close();
-
+                archivioL.close();
+                treno =true;
+                
+            } 
         } catch (IOException ex) {
             Logger.getLogger(Archivio.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
 
     }
+    
 
     public void creaArchvioPrenotazioni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
         try {
@@ -92,6 +108,10 @@ public class Archivio {
 
             BufferedReader archivioL = new BufferedReader(prenotazioni);
             temp = archivioL.readLine();
+            
+            if (temp.equals("DATABASE PRENOTAZIONI")){
+                
+                
             while (!"FINE DATABASE".equals(temp)) {
                 temp = archivioL.readLine();
 
@@ -114,13 +134,24 @@ public class Archivio {
                 }
             }
             archivioL.close();
+            prenotazione = true;
+           
+            }
         } catch (IOException ex) {
             Logger.getLogger(Archivio.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
+       
 
     }
+    
+    public boolean isArchivioTreno(){
+        return treno;
+    }
+    public boolean isArchioPrenotazione(){
+        return prenotazione;
+    }
+    
 
     public ArrayList<Treno> getArchivioTreni() {
         return archivioTreni;
@@ -229,21 +260,20 @@ public class Archivio {
         ArrayList<Prenotazione> out = new ArrayList();
 
 
-        for (int i = 0; i < archivioPrenotazioni.size(); ) {
+        for (int i = 0; i < archivioPrenotazioni.size();) {
             if (archivioPrenotazioni.get(i).getCodicePrenotazione().equals(p.getCodicePrenotazione())) {
                 codiceTreno = archivioPrenotazioni.get(i).getCodiceTreno();
-                
+
                 out.add(archivioPrenotazioni.get(i));
 
 
                 archivioPrenotazioni.remove(i);
-               
+
                 postiDisponibili++;
 
 
-            }
-            else {
-            i++;
+            } else {
+                i++;
             }
 
         }
@@ -346,7 +376,7 @@ public class Archivio {
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
             if (archivioPrenotazioni.get(i).getCodiceTreno().equalsIgnoreCase(codice)
                     && archivioPrenotazioni.get(i).getPostoPrenotato() == posto) {
-             
+
                 posto++;
 
             }
@@ -367,18 +397,18 @@ public class Archivio {
     protected static FileReader createDB(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
-           
+
             return new FileReader(imgURL.getPath());
         } else {
             System.err.println("Couldn't find file: " + path);
             return null;
         }
     }
-    
+
     protected static FileOutputStream createDBW(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
-           
+
             return new FileOutputStream(imgURL.getPath());
         } else {
             System.err.println("Couldn't find file: " + path);
@@ -387,7 +417,7 @@ public class Archivio {
     }
 
     public void stampaSuFile() throws FileNotFoundException {
-        archivioW = createDBW("archivio/Archivio.txt");
+        archivioW = new FileOutputStream(arch);
         PrintStream scrivi = new PrintStream(archivioW);
         scrivi.println("DATABASE");
         for (int i = 0; i < archivioTreni.size(); i++) {
@@ -406,8 +436,9 @@ public class Archivio {
 
         }
         scrivi.println("FINE DATABASE");
-        prenoW = createDBW("archivio/Prenotazioni.txt");
-        
+
+        prenoW = new FileOutputStream(pren);
+
         scrivi = null;
         scrivi = new PrintStream(prenoW);
         scrivi.println("DATABASE");
@@ -418,9 +449,23 @@ public class Archivio {
             scrivi.println(archivioPrenotazioni.get(i).getCodiceTreno());
             scrivi.println(archivioPrenotazioni.get(i).getNomeCliente());
             scrivi.println(archivioPrenotazioni.get(i).getPostoPrenotato());
-           
+
         }
         scrivi.println("FINE DATABASE");
 
+    }
+
+    public boolean setPath(String arch, String pren) {
+        try {
+            archivio = new FileReader(arch);
+            prenotazioni = new FileReader(pren);
+            this.arch = arch;
+            this.pren = pren;
+            //archivioW = new FileOutputStream(arch);
+            //prenoW = new FileOutputStream(pren);
+            return true;
+        } catch (FileNotFoundException ex) {
+            return false;
+        }
     }
 }

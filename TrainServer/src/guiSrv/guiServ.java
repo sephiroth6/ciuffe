@@ -11,10 +11,13 @@
 package guiSrv;
 
 import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import train.*;
 
@@ -33,6 +36,11 @@ public class guiServ extends javax.swing.JFrame {
     Archivio archivio = null;
     ServerSocket s = null;
     guiSrv.Listener l;
+    //Create a file chooser
+    final JFileChooser fc = new JFileChooser();
+    String pathArch = "";
+    String pathPren = "";
+    int flagging = 0;
 
     /** Creates new form gui */
     public guiServ() {
@@ -140,6 +148,8 @@ public class guiServ extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
+        jButton19 = new javax.swing.JButton();
+        jButton20 = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -244,7 +254,7 @@ public class guiServ extends javax.swing.JFrame {
                                         .addGap(12, 12, 12)
                                         .addComponent(jLabel9))
                                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(107, 107, 107)
                 .addComponent(jButton5)
@@ -254,11 +264,11 @@ public class guiServ extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jLabel5)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -687,11 +697,6 @@ public class guiServ extends javax.swing.JFrame {
         jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton2.setText("posto 1");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
 
         jToggleButton3.setBackground(new java.awt.Color(61, 184, 55));
         jToggleButton3.setFont(new java.awt.Font("Ubuntu", 1, 15));
@@ -715,7 +720,7 @@ public class guiServ extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(333, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -859,13 +864,18 @@ public class guiServ extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Server GUI");
+        setTitle("TrainServer Gui");
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/Connect.png"))); // NOI18N
         jButton3.setText("start");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked1(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -898,6 +908,7 @@ public class guiServ extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton3.setEnabled(false);
         jButton18.setEnabled(false);
 
         jLabel44.setFont(new java.awt.Font("Dialog", 1, 18));
@@ -910,6 +921,22 @@ public class guiServ extends javax.swing.JFrame {
 
         jLabel45.setText("Logs:");
 
+        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/frontend.png"))); // NOI18N
+        jButton19.setText("File archivio Treni");
+        jButton19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton19MouseClicked(evt);
+            }
+        });
+
+        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/frontend2.png"))); // NOI18N
+        jButton20.setText("File archivio prenotazioni");
+        jButton20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton20MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -917,30 +944,45 @@ public class guiServ extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel44)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel45))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel45)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton19)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton20)))
+                        .addContainerGap(129, Short.MAX_VALUE))
+                    .addComponent(jLabel44)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(206, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton20)
+                    .addComponent(jButton19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel45)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
+    //non usati
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
 
@@ -952,43 +994,36 @@ public class guiServ extends javax.swing.JFrame {
             jFrame1.setVisible(true);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
 
         jFrame1.setVisible(false);
 }//GEN-LAST:event_jButton13ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
         close();
         FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 480, 420, jPanel3);
         setFrame(VisualizzaTreni);
 }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
         statoIniziale();
 }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
         close();
         FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
         setFrame(RiepilogoPreno);
 }//GEN-LAST:event_jButton7ActionPerformed
-
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
         close();
         FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 480, 340, jPanel2);
         setFrame(GestorePreno);
 }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
         statoIniziale();
 }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
 
         jFrame2.setVisible(true);
@@ -997,66 +1032,61 @@ public class guiServ extends javax.swing.JFrame {
         legenda();
         postiDispo(jToggleButton2, jToggleButton4);
 }//GEN-LAST:event_jButton15ActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
         close();
         FinestraSwing Finalizzazione = new FinestraSwing("Esito prenotazione", 30, 50, 375, 115, jPanel5);
         setFrame(Finalizzazione);
 }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
 
         close();
         FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 480, 420, jPanel3);
         setFrame(VisualizzaTreni);
 }//GEN-LAST:event_jButton11ActionPerformed
-
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
 
         statoIniziale();
 }//GEN-LAST:event_jButton12ActionPerformed
-
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         statoIniziale();
 }//GEN-LAST:event_jButton14ActionPerformed
-
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
 
 
         jFrame2.setVisible(false);
 }//GEN-LAST:event_jButton16ActionPerformed
-
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
 
         jFrame2.setVisible(false);
 }//GEN-LAST:event_jButton17ActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        //cambia colore
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
-
-    //start server
+    //start server doppio metodo (non si elimina)
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        try {
+        if (jButton3.isEnabled()) {
+            try {
 
-            start2();
-            jButton18.setEnabled(true);
-            jButton3.setEnabled(false);
-        } catch (Exception ex) {
-            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                start2();
+
+                jButton18.setEnabled(true);
+                jButton3.setEnabled(false);
+            } catch (Exception ex) {
+                Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                jTextArea2.append("Impossibile avviare il server\n");
+            }
         }
-
-
     }//GEN-LAST:event_jButton3MouseClicked
 
     //stop server
     private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
-        if(jButton18.isEnabled()){
+        if (jButton18.isEnabled()) {
             try {
                 stopSrv();
                 jButton18.setEnabled(false);
-                jButton3.setEnabled(true);
+                jButton19.setEnabled(true);
+                jButton20.setEnabled(true);
+                pathArch = "";
+                pathPren = "";
             } catch (IOException ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1065,19 +1095,69 @@ public class guiServ extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton18MouseClicked
 
+    //avvio del server tramite bottone
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
-        try {
+        if (jButton3.isEnabled()) {
+            try {
 
-            start2();
-                       
-            jButton18.setEnabled(true);
-            jButton3.setEnabled(false);
-        } catch (Exception ex) {
-            Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                start2();
+
+                jButton18.setEnabled(true);
+                jButton3.setEnabled(false);
+            } catch (Exception ex) {
+                Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                jTextArea2.append("Impossibile avviare il server\n");
+            }
         }
     }//GEN-LAST:event_jButton3MouseClicked1
 
-   
+    //selezione file archivio
+    private void jButton19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton19MouseClicked
+        if (jButton19.isEnabled()) {
+            int returnVal = fc.showOpenDialog(jFrame1);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                jTextArea2.append("Apertura file archivio treni: " + file.getName() + ".\n");
+                try {
+                    pathArch = file.getCanonicalPath();
+                    start3();
+                } catch (IOException ex) {
+                    jTextArea2.append("Errore nell'apertura del file!\n");
+                }
+            } else {
+                jTextArea2.append("Operazione seleziona file annullata dall'utente.\n");
+            }
+        }
+
+    }//GEN-LAST:event_jButton19MouseClicked
+
+    //selezione file prenotazione
+    private void jButton20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton20MouseClicked
+        if (jButton20.isEnabled()) {
+            int returnVal = fc.showOpenDialog(jFrame1);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                //This is where a real application would open the file.
+                jTextArea2.append("Apertura file archivio prenotazioni: " + file.getName() + ".\n");
+                try {
+                    pathPren = file.getCanonicalPath();
+                    start3();
+                } catch (IOException ex) {
+                    jTextArea2.append("Errore nell'apertura del file!\n");
+                }
+            } else {
+                jTextArea2.append("Operazione seleziona file annullata dall'utente.\n");
+            }
+        }
+    }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1103,7 +1183,9 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1186,10 +1268,12 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton7;
     // End of variables declaration//GEN-END:variables
 
+    //imposta come frame principale la nuova finestra
     private void setFrame(FinestraSwing frame) {
         this.frame = frame;
     }
 
+    //chiude il frame
     private void close() {
         if (frame != null) {
             frame.setVisible(false);
@@ -1198,6 +1282,7 @@ public class guiServ extends javax.swing.JFrame {
         }
     }
 
+    //abilitazione di tutti i bottoni
     private void setEditableP() {
         jButton1.setEnabled(true);
         jButton2.setEnabled(true);
@@ -1208,6 +1293,7 @@ public class guiServ extends javax.swing.JFrame {
         jButton4.setEnabled(true);
     }
 
+    //disabilita bottoni che potrebbero creare problemi in esecuzione
     private void setNoEditableP() {
         jButton1.setEnabled(false);
         jButton2.setEnabled(false);
@@ -1219,20 +1305,23 @@ public class guiServ extends javax.swing.JFrame {
         jButton4.setEnabled(false);
     }
 
+    //ripristina stato inziale con view e jFrame
     private void statoIniziale() {
         close();
         setEditableP();
     }
 
+    //imposta colore background su oggetti Jtogglebutton
     private static void postiDispo(JToggleButton... b) {
         for (int i = 0; i < b.length; i++) {
             b[i].setBackground(Color.RED);
-        
+
             disableJT(b[i]);
         }
 
     }
 
+    //disabilita oggetti di tipo JToggleButton
     private static void disableJT(JToggleButton... b) {
         for (int i = 0; i < b.length; i++) {
             b[i].setEnabled(false);
@@ -1246,43 +1335,48 @@ public class guiServ extends javax.swing.JFrame {
         disableJT(jToggleButton5, jToggleButton6, jToggleButton7);
     }
 
-
-
-
+    //avvio effettivo del server con apertura socket e ascolto porta
     private void start2() throws IOException {
-        
+
         s = new ServerSocket(5001);
-        
-        l = new guiSrv.Listener(this.s, jTextArea2);
+
+        l = new guiSrv.Listener(this.s, jTextArea2, pathArch, pathPren);
         t = new Thread(l);
         t.start();
-        archivio = l.getArch();
-        
+        archivio = l.getArch(pathArch, pathPren);
 
+        if (archivio.isArchioPrenotazione() == false || archivio.isArchivioTreno()== false) {
+            JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
+            s.close();
+            t.interrupt();
+            l.closeAll();
+            jTextArea2.append("Server disconnesso" + "\n");
+            
+        }
+            if (archivio == null) {
+                jButton18MouseClicked(null);
+            }
+        
     }
 
-    //stop server
+    //stop server e chiusura connessione
     private void stopSrv() throws IOException {
 
         archivio.stampaSuFile();
-        
-       s.close();
+
+        s.close();
         t.interrupt();
         l.closeAll();
-        
+
         jTextArea2.append("Server disconnesso" + "\n");
-
-
-
-
     }
 
-
-
-    private void logs() {
-        while (true) {
+    //abilitazione bottone connessione
+    private void start3() {
+        if (!pathArch.equals("") && !pathPren.equals("")) {
+            jButton3.setEnabled(true);
+            jButton19.setEnabled(false);
+            jButton20.setEnabled(false);
         }
     }
-
-    
 }
