@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTextArea;
 import train.*;
 
@@ -51,8 +53,14 @@ public class Listener implements Runnable {
 //                    jt.append("Ho ricevuto una chiamata di chiusura da:\n" + ss.accept() + "\n");
 //                }
             }
-        } catch (IOException ex) {
-        }
+        } catch (IOException ex) {}
+//        finally{
+//            try {
+//                ss.close();
+//            } catch (IOException ex) {
+//                Logger.getLogger(Listener.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }
 
     public Archivio getArch(String arch, String pren) {
