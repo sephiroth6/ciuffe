@@ -36,7 +36,6 @@ public class Archivio {
         prenotazioni = new FileReader(p);
         archivioTreni = new ArrayList();
         archivioPrenotazioni = new ArrayList();
-        
 
     }
 

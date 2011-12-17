@@ -152,9 +152,9 @@ public class TrainServer extends Thread {
                     }
                     
                     if (p==null) {
-                        //run = false;
-                        jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
-                        socket.close();
+                        run = false;
+//                        jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
+//                        socket.close();
                     }
            
                 }
@@ -163,8 +163,8 @@ public class TrainServer extends Thread {
                 }
             }
             
-//            jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
-//            socket.close();
+            jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
+            socket.close();
             
         } catch (IOException e) {
             jt.append("Socket Closed.\n");

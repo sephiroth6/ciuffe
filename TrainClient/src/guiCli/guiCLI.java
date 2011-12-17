@@ -15,7 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JToggleButton;
-//import reti2.supportMsg.*;
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -2282,6 +2282,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 //        } catch (IOException ex) {
 //            return false;
 //        }
+        
         p = new Prenotazione(
                 "alive", //codice preno 
                 "", //nome cliente
