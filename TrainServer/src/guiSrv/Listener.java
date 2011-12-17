@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import javax.swing.JTextArea;
 import train.*;
 
@@ -18,12 +19,13 @@ import train.*;
 public class Listener implements Runnable {
 
     private ServerSocket ss;
-    private Socket sh;
+    private ArrayList<Socket> sh= new ArrayList();
     private JTextArea jt;
     Archivio archivio;
 
+
     public Listener(ServerSocket ss, JTextArea text, String a, String p) throws FileNotFoundException {
-        sh = null;
+        
         this.ss = ss;
         jt = text;
         archivio = new Archivio(a, p);
@@ -38,14 +40,16 @@ public class Listener implements Runnable {
 
             while (true) {
                 jt.append("In attesa di chiamate dai Client...\n");
-                sh = ss.accept();
-                jt.append("Ho ricevuto una chiamata di apertura da:\n" + sh + "\n");
+                Socket suk = ss.accept();
+                sh.add(suk);
+                jt.append("Ho ricevuto una chiamata di apertura da:\n" + suk + "\n");
+                //jt.append("Ho ricevuto una chiamata di apertura da:\n" + sh.get(sok-1) + "\n");
 
-                new TrainServer(sh, jt, archivio).start();
+                new TrainServer(suk, jt, archivio).start();
 
-                if (sh.isClosed()) {
-                    jt.append("Ho ricevuto una chiamata di chiusura da:\n" + sh + "\n");
-                }
+//                if (ss.accept().isClosed()) {
+//                    jt.append("Ho ricevuto una chiamata di chiusura da:\n" + ss.accept() + "\n");
+//                }
             }
         } catch (IOException ex) {
         }
@@ -62,10 +66,17 @@ public class Listener implements Runnable {
     public void closeAll() throws IOException {
 
 
-        ss.close();
-        if (sh!=null) {
-            sh.close();
+        
+        for(int i=0; i<sh.size(); i++){
+            if(sh.get(i) !=null)
+                sh.get(i).close();
         }
+        sh.removeAll(sh);
+        ss.close();
+//        
+//        if (sh!=null) {
+//            sh.close();
+//        }
 
     }
 }

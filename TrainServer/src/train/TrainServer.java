@@ -50,8 +50,10 @@ public class TrainServer extends Thread {
                 try {
                     objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione)objectInputStream.readObject();
-         
                     
+                    System.out.println("stampa preno\n");
+                    
+                                       
                     if(p!=null){
                         if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
                             
@@ -147,27 +149,25 @@ public class TrainServer extends Thread {
                         
                         
                         
-                    }  if (p==null) {
-                   
-                    run = false;
+                    }
                     
-                }
+                    if (p==null) {
+                        //run = false;
+                        jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
+                        socket.close();
+                    }
            
                 }
                 catch (ClassNotFoundException ex) {
                     Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-               
-              
             }
             
+//            jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
+//            socket.close();
             
-            jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
-          
-            socket.close() ;
         } catch (IOException e) {
-            jt.append("IOException: " + e +"\n");
+            jt.append("Socket Closed.\n");
         }
     }
     

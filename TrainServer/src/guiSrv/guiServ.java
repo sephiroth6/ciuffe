@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
+import javax.swing.text.DefaultCaret;
 import train.*;
 
 /**
@@ -34,17 +35,17 @@ public class guiServ extends javax.swing.JFrame {
     private FinestraSwing frame;
     private boolean flag;
     //comunication server
-    ServerSocket serverSocket = null;
-    Thread t = null;
-    Archivio archivio = null;
     ServerSocket s = null;
+    Thread t = null;
     guiSrv.Listener l;
+    //archivio
+    Archivio archivio = null;
     //Create a file chooser
     final JFileChooser fc = new JFileChooser();
     String pathArch = "";
     String pathPren = "";
-    int flagging = 0;
-
+    
+    
     /** Creates new form gui */
     public guiServ() {
         initComponents();
@@ -148,11 +149,11 @@ public class guiServ extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -912,11 +913,6 @@ public class guiServ extends javax.swing.JFrame {
         jLabel44.setFont(new java.awt.Font("Dialog", 1, 18));
         jLabel44.setText("Server");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setEditable(false);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
         jLabel45.setText("Logs:");
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/frontend.png"))); // NOI18N
@@ -935,29 +931,39 @@ public class guiServ extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setAutoscrolls(true);
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
+        DefaultCaret caret = (DefaultCaret)jTextArea3.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel45)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jButton19)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton20)))
-                        .addContainerGap(129, Short.MAX_VALUE))
-                    .addComponent(jLabel44)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,7 +979,7 @@ public class guiServ extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel45)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1070,7 +1076,7 @@ public class guiServ extends javax.swing.JFrame {
                 jButton3.setEnabled(false);
             } catch (Exception ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                jTextArea2.append("Impossibile avviare il server\n");
+                jTextArea3.append("Impossibile avviare il server\n");
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked
@@ -1105,7 +1111,7 @@ public class guiServ extends javax.swing.JFrame {
                 
             } catch (Exception ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                jTextArea2.append("Impossibile avviare il server\n");
+                jTextArea3.append("Impossibile avviare il server\n");
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked1
@@ -1118,16 +1124,16 @@ public class guiServ extends javax.swing.JFrame {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 //This is where a real application would open the file.
-                jTextArea2.append("Apertura file archivio treni: " + file.getName() + ".\n");
+                jTextArea3.append("Apertura file archivio treni: " + file.getName() + ".\n");
                 try {
                     pathArch = file.getCanonicalPath();
-                    if(checkFIle(pathArch)){
+                    if(checkFIleT(pathArch)){
                         start3();
                     }
                     else{
                         JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
 
-                        jTextArea2.append("Archivio treni danneggiato o illeggibile" + "\n");
+                        jTextArea3.append("Archivio treni danneggiato o illeggibile" + "\n");
                         jButton3.setEnabled(false);
                         jButton18.setEnabled(false);
                         jButton19.setEnabled(true);
@@ -1138,10 +1144,10 @@ public class guiServ extends javax.swing.JFrame {
                     
                     
                 } catch (IOException ex) {
-                    jTextArea2.append("Errore nell'apertura del file!\n");
+                    jTextArea3.append("Errore nell'apertura del file!\n");
                 }
             } else {
-                jTextArea2.append("Operazione seleziona file annullata dall'utente.\n");
+                jTextArea3.append("Operazione seleziona file annullata dall'utente.\n");
             }
         }
 
@@ -1155,15 +1161,15 @@ public class guiServ extends javax.swing.JFrame {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 //This is where a real application would open the file.
-                jTextArea2.append("Apertura file archivio prenotazioni: " + file.getName() + ".\n");
+                jTextArea3.append("Apertura file archivio prenotazioni: " + file.getName() + ".\n");
                 try {
                     pathPren = file.getCanonicalPath();
-                    if(checkFIle(pathPren))
+                    if(checkFIleP(pathPren))
                         start3();
                     else{
-                        JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio Prenotazioni", "Error", JOptionPane.ERROR_MESSAGE);
 
-                        jTextArea2.append("Archivio prenovazioni danneggiato o illeggibile" + "\n");
+                        jTextArea3.append("Archivio prenovazioni danneggiato o illeggibile" + "\n");
                         jButton3.setEnabled(false);
                         jButton18.setEnabled(false);
                         jButton19.setEnabled(true);
@@ -1171,10 +1177,10 @@ public class guiServ extends javax.swing.JFrame {
                         pathPren = "";
                     }
                 } catch (IOException ex) {
-                    jTextArea2.append("Errore nell'apertura del file!\n");
+                    jTextArea3.append("Errore nell'apertura del file!\n");
                 }
             } else {
-                jTextArea2.append("Operazione seleziona file annullata dall'utente.\n");
+                jTextArea3.append("Operazione seleziona file annullata dall'utente.\n");
             }
         }
     }//GEN-LAST:event_jButton20MouseClicked
@@ -1271,9 +1277,9 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -1361,7 +1367,7 @@ public class guiServ extends javax.swing.JFrame {
 
         s = new ServerSocket(5001);
 
-        l = new guiSrv.Listener(this.s, jTextArea2, pathArch, pathPren);
+        l = new guiSrv.Listener(this.s, jTextArea3, pathArch, pathPren);
         t = new Thread(l);
         t.start();
         archivio = l.getArch(pathArch, pathPren);
@@ -1371,7 +1377,7 @@ public class guiServ extends javax.swing.JFrame {
             s.close();
             t.interrupt();
             l.closeAll();
-            jTextArea2.append("Server disconnesso" + "\n");
+            jTextArea3.append("Server disconnesso" + "\n");
             jButton3.setEnabled(false);
             jButton18.setEnabled(false);
             jButton19.setEnabled(true);
@@ -1398,7 +1404,7 @@ public class guiServ extends javax.swing.JFrame {
         t.interrupt();
         l.closeAll();
 
-        jTextArea2.append("Server disconnesso" + "\n");
+        jTextArea3.append("Server disconnesso" + "\n");
     }
 
     //abilitazione bottone connessione
@@ -1410,17 +1416,31 @@ public class guiServ extends javax.swing.JFrame {
         }
     }
     
-    private boolean checkFIle(String f) throws FileNotFoundException, IOException{
+    private boolean checkFIleP(String f) throws FileNotFoundException, IOException{
         FileReader file = new FileReader(f);
         BufferedReader reader = new BufferedReader(file);
         
         f = reader.readLine();
 
-        if (f.equals("DATABASE TRENI") || f.equals("DATABASE PRENOTAZIONI")){
+        if (f.equals("DATABASE PRENOTAZIONI")){
             return true;
         }
         return false;
     }
+    
+    
+    private boolean checkFIleT(String f) throws FileNotFoundException, IOException{
+        FileReader file = new FileReader(f);
+        BufferedReader reader = new BufferedReader(file);
+        
+        f = reader.readLine();
+
+        if (f.equals("DATABASE TRENI")){
+            return true;
+        }
+        return false;
+    }
+    
     
     
 }

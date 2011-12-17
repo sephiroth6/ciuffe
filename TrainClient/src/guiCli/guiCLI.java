@@ -1400,27 +1400,29 @@ public class guiCLI extends javax.swing.JFrame {
     
     //make a prenotation
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        if(jButton4.isEnabled()){
+            if (aliveS()) {
+                if (jButton4.isEnabled() && s != null) {
+                    FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 520, 340, jPanel2);
+                    setFrame(GestorePreno);
+                    setNoEditableP();
+                    jToggleButton1.setEnabled(false);
+                    disableJTextF(jTextField5, jTextField10, jTextField11, jTextField12, jTextField13, jTextField3, jTextField4);
+                    //romamilano();
+                    jComboBox2.setSelectedIndex(0);
+                    jTextArea2.append("socket :"+s + "\n");
 
-        if (aliveS()) {
-            if (jButton4.isEnabled() && s != null) {
-                FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 520, 340, jPanel2);
-                setFrame(GestorePreno);
+                }
+            } else {
+                JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
                 setNoEditableP();
-                jToggleButton1.setEnabled(false);
-                disableJTextF(jTextField5, jTextField10, jTextField11, jTextField12, jTextField13, jTextField3, jTextField4);
-                //romamilano();
-                jComboBox2.setSelectedIndex(0);
-
-
-               
+                jTextArea2.append("Server non raggiungibile\n");
+                jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
+                jToggleButton1.setEnabled(true);
+                jToggleButton1.setSelected(false);
+                jToggleButton8.setEnabled(false);
+                jToggleButton8.setSelected(false);
             }
-        } else {
-            JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
-            setNoEditableP();
-            jToggleButton1.setEnabled(true);
-            jToggleButton1.setSelected(false);
-            jToggleButton8.setEnabled(false);
-            jToggleButton8.setSelected(false);
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -1619,13 +1621,33 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     //disconnessione client
     private void jToggleButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton8MouseClicked
         if (jToggleButton8.isEnabled()) {
-            try {
-                stopC();
+            if (aliveS()) {
+            
+                try {
+                    stopC();
+
+                } catch (IOException ex) {
+                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 setNoEditableP();
                 jTextField6.setEditable(true);
                 jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
-            } catch (IOException ex) {
-                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+            else{
+                JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nAvviare la connessione sul server.", "Error", JOptionPane.ERROR_MESSAGE);
+                setNoEditableP();
+    //            try {
+    //                versoServer.flush();
+    //                versoServer.close();
+    //            } catch (IOException ex) {
+                   jTextArea2.append("Server non raggiungibile, reset della connessione.\n");
+    //            }
+
+                jToggleButton1.setEnabled(true);
+                jToggleButton1.setSelected(false);
+                jToggleButton8.setEnabled(false);
+                jToggleButton8.setSelected(false);
             }
         }
     }//GEN-LAST:event_jToggleButton8MouseClicked
@@ -1720,83 +1742,87 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     
     //apre view per la cancellazione di una prenotazione con il codice scritto nella casellina
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        if (aliveS()) {
-            if (jButton2.isEnabled()) {
-                if (jTextField1.getText().equals("")) {
-                    JOptionPane.showMessageDialog(jPanel1, "Inserire un codice di prenotazione valido", "Errore!", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    p = new Prenotazione(
-                            jTextField1.getText(), //codice preno 
-                            "prenota", //nome cliente
-                            0, //posti prenotato
-                            "",//t.getNomeTreno(), //nome treno
-                            "", //codice treno
-                            "",//t.getStazionePartenza(), //stazione partenza
-                            "",//t.getStazioneArrivo(), //stazione arrivo
-                            null,//t.getDataPartenza(), //data
-                            0, //posti totali
-                            0 //posti dispo
-                            );
+        if(jButton2.isEnabled()){
+            if (aliveS()) {
+                if (jButton2.isEnabled()) {
+                    if (jTextField1.getText().equals("")) {
+                        JOptionPane.showMessageDialog(jPanel1, "Inserire un codice di prenotazione valido", "Errore!", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        p = new Prenotazione(
+                                jTextField1.getText(), //codice preno 
+                                "prenota", //nome cliente
+                                0, //posti prenotato
+                                "",//t.getNomeTreno(), //nome treno
+                                "", //codice treno
+                                "",//t.getStazionePartenza(), //stazione partenza
+                                "",//t.getStazioneArrivo(), //stazione arrivo
+                                null,//t.getDataPartenza(), //data
+                                0, //posti totali
+                                0 //posti dispo
+                                );
 
 
-                    try {
-                        versoServer = new ObjectOutputStream(s.getOutputStream());
-                        versoServer.writeObject(p);
-                        versoServer.flush();
-                        jTextArea2.append("Richiesta visualizzazione prenotazione inviata al server\n");
-                    } catch (IOException ex) {
-                        Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    try {
-                        dalServer = new ObjectInputStream(s.getInputStream());
                         try {
-                            risultatoRicerca = (ArrayList<Prenotazione>) dalServer.readObject();
-
-                            if (risultatoRicerca.size() > 0) {
-
-                                jLabel77.setText(risultatoRicerca.get(0).getCodicePrenotazione());//numero preno
-                                jLabel74.setText(risultatoRicerca.get(0).getNomeTreno());//treno
-                                jLabel64.setText(risultatoRicerca.get(0).getStazionePartenza());//partenza
-                                jLabel65.setText(risultatoRicerca.get(0).getStazioneArrivo());//arrivo
-                                jLabel66.setText(risultatoRicerca.get(0).getDataPartenza().getGiorno() + "/"
-                                        + risultatoRicerca.get(0).getDataPartenza().getMese() + "/"
-                                        + risultatoRicerca.get(0).getDataPartenza().getAnno() + " - "
-                                        + risultatoRicerca.get(0).getDataPartenza().getOra() + ":"
-                                        + risultatoRicerca.get(0).getDataPartenza().getMinuti());//data e ora di partenza
-                                jLabel68.setText(risultatoRicerca.get(0).getNomeCliente());//nome e cognome
-                                jLabel72.setText("" + risultatoRicerca.size());//quantità posti
-                                String posti = "";
-                                for (int i = 0; i < risultatoRicerca.size(); i++) {
-                                    posti = posti + risultatoRicerca.get(i).getPostoPrenotato() + " ";//posti prenotati
-                                }
-                                jLabel76.setText(posti);
-                                close();
-                                FinestraSwing EliminaPreno = new FinestraSwing("", 30, 50, 410, 389, jPanel8);
-                                EliminaPreno.setSize(410, 389);
-                                setFrame(EliminaPreno);
-                                setNoEditableP();
-                            } else {
-                                JOptionPane.showMessageDialog(jPanel1, "Nessuna prenotazione trovata!", "Errore!", JOptionPane.WARNING_MESSAGE);
-                            }
-                        } catch (ClassNotFoundException ex) {
+                            versoServer = new ObjectOutputStream(s.getOutputStream());
+                            versoServer.writeObject(p);
+                            versoServer.flush();
+                            jTextArea2.append("Richiesta visualizzazione prenotazione inviata al server\n");
+                        } catch (IOException ex) {
                             Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-
                         }
-                    } catch (IOException ex) {
-                        Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+
+                        try {
+                            dalServer = new ObjectInputStream(s.getInputStream());
+                            try {
+                                risultatoRicerca = (ArrayList<Prenotazione>) dalServer.readObject();
+
+                                if (risultatoRicerca.size() > 0) {
+
+                                    jLabel77.setText(risultatoRicerca.get(0).getCodicePrenotazione());//numero preno
+                                    jLabel74.setText(risultatoRicerca.get(0).getNomeTreno());//treno
+                                    jLabel64.setText(risultatoRicerca.get(0).getStazionePartenza());//partenza
+                                    jLabel65.setText(risultatoRicerca.get(0).getStazioneArrivo());//arrivo
+                                    jLabel66.setText(risultatoRicerca.get(0).getDataPartenza().getGiorno() + "/"
+                                            + risultatoRicerca.get(0).getDataPartenza().getMese() + "/"
+                                            + risultatoRicerca.get(0).getDataPartenza().getAnno() + " - "
+                                            + risultatoRicerca.get(0).getDataPartenza().getOra() + ":"
+                                            + risultatoRicerca.get(0).getDataPartenza().getMinuti());//data e ora di partenza
+                                    jLabel68.setText(risultatoRicerca.get(0).getNomeCliente());//nome e cognome
+                                    jLabel72.setText("" + risultatoRicerca.size());//quantità posti
+                                    String posti = "";
+                                    for (int i = 0; i < risultatoRicerca.size(); i++) {
+                                        posti = posti + risultatoRicerca.get(i).getPostoPrenotato() + " ";//posti prenotati
+                                    }
+                                    jLabel76.setText(posti);
+                                    close();
+                                    FinestraSwing EliminaPreno = new FinestraSwing("", 30, 50, 410, 389, jPanel8);
+                                    EliminaPreno.setSize(410, 389);
+                                    setFrame(EliminaPreno);
+                                    setNoEditableP();
+                                } else {
+                                    JOptionPane.showMessageDialog(jPanel1, "Nessuna prenotazione trovata!", "Errore!", JOptionPane.WARNING_MESSAGE);
+                                }
+                            } catch (ClassNotFoundException ex) {
+                                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+
+                            }
+                        } catch (IOException ex) {
+                            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
                     }
 
                 }
-
+            } else {
+                JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
+                setNoEditableP();
+                jToggleButton1.setEnabled(true);
+                jToggleButton1.setSelected(false);
+                jToggleButton8.setEnabled(false);
+                jToggleButton8.setSelected(false);
+                jTextArea2.append("Server non raggiungibile\n");
+                jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
             }
-        } else {
-            JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
-            setNoEditableP();
-            jToggleButton1.setEnabled(true);
-            jToggleButton1.setSelected(false);
-            jToggleButton8.setEnabled(false);
-            jToggleButton8.setSelected(false);
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -2223,6 +2249,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             jTextArea2.append("Client disconnesso da: " + s + "\n");
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(null);
+            
             versoServer.flush();
             versoServer.close();
 
