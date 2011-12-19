@@ -104,6 +104,7 @@ public class TrainServer extends Thread {
 
                            
                             utente = p.getCodicePrenotazione();
+                            jt.append("Connesso con: "+utente+"\n");
                           
 
                         }
