@@ -23,7 +23,7 @@ public class Prenotazione extends Treno implements Serializable {
     public Prenotazione(String cP, String n, int pP, String nT, String c, String sP,
             String sA, Data dP, int pT, int pD, boolean conf) {
 
-        super(nT, c, sP, sA, dP, pT, pD);       // usato per leggere dall'archivio
+        super(nT, c, sP, sA, dP, pT, pD);       
 
 
         codicePrenotazione = cP;
@@ -33,7 +33,7 @@ public class Prenotazione extends Treno implements Serializable {
 
     }
 
-    public Prenotazione(String sP, String sA, Data d) {       // utilizzato per trovare un treno
+    public Prenotazione(String sP, String sA, Data d) {      
         super(null, null, sP, sA, d, 0, 0);
 
 
@@ -47,26 +47,6 @@ public class Prenotazione extends Treno implements Serializable {
     public void conferma(){
         confermata = true;
     }
-    
-
-    public Prenotazione(String cP, String cT, int pP, String n) throws FileNotFoundException {
-        super(cT, null, null, null, null, 0, 0);
-
-        // utilizzato per prenotare prima bisogna eseguire il codice pre generare un numero di prenotazione
-        codicePrenotazione = cP;
-        postoPrenotato = pP;
-        nome = n;
-    }
-    public Prenotazione(String cP){
-        super(null,null,null,null,null,0,0);   // utilizzato per disdire la prenotazione
-        codicePrenotazione = cP;
-        
-    }
-    
-    
-    
-    
-
     public String getCodicePrenotazione() {
         return codicePrenotazione;
     }
@@ -118,15 +98,4 @@ public class Prenotazione extends Treno implements Serializable {
         return super.getPostiDisponibili();
     }
     
-    
-
-    public void stampaPrenotazione() {
-        System.out.println("Codice Prenotazione: " + codicePrenotazione);
-        System.out.println("Codice Treno: " + getCodiceTreno());
-        System.out.println("Nome: " + nome);
-        System.out.println("Posto Prenotato: " + postoPrenotato);
-        System.out.println("Posti Totali: " + getPostiTotali());
-        System.out.println("Posti Disponibili: " + getPostiDisponibili());
-
-    }
 }

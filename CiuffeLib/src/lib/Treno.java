@@ -65,19 +65,4 @@ public class Treno implements Serializable {
         return postiDisponibili;
     }
 
-    public void stampaInfoTreno() {
-        if (nomeTreno != null) {
-            System.out.println("Nome Treno: " + nomeTreno);
-            System.out.println("Codice Treno: " + codiceTreno);
-            System.out.println("Tratta: " + stazionePartenza + " - " + stazioneArrivo);
-            System.out.print("Data Partenza: ");
-            dataPartenza.stampaData();
-            System.out.println("Posti Totali: " + postiTotali);
-            System.out.println("Posti Disponibili: " + postiDisponibili);
-        } else {
-            System.out.println("Treno non trovato");
-        }
-
-
-    }
 }

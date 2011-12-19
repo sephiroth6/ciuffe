@@ -43,22 +43,14 @@ public class Listener implements Runnable {
                 Socket suk = ss.accept();
                 sh.add(suk);
                 jt.append("Ho ricevuto una chiamata di apertura da:\n" + suk + "\n");
-                //jt.append("Ho ricevuto una chiamata di apertura da:\n" + sh.get(sok-1) + "\n");
+              
 
                 new TrainServer(suk, jt, archivio).start();
 
-//                if (ss.accept().isClosed()) {
-//                    jt.append("Ho ricevuto una chiamata di chiusura da:\n" + ss.accept() + "\n");
-//                }
+
             }
         } catch (IOException ex) {}
-//        finally{
-//            try {
-//                ss.close();
-//            } catch (IOException ex) {
-//                Logger.getLogger(Listener.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+
     }
 
     public Archivio getArch(String arch, String pren) {
@@ -80,9 +72,6 @@ public class Listener implements Runnable {
         sh.removeAll(sh);
         ss.close();
 
-//        if (sh!=null) {
-//            sh.close();
-//        }
 
     }
 }

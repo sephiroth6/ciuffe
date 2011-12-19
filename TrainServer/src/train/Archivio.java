@@ -17,17 +17,17 @@ import lib.*;
 
 public class Archivio {
 
-    private ArrayList<Treno> archivioTreni;
-    private ArrayList<Prenotazione> archivioPrenotazioni;
+    private ArrayList<Treno> archivioTreni; // arraylist dei treni
+    private ArrayList<Prenotazione> archivioPrenotazioni; // arraylist delle prenotazioni
     private FileReader archivio; // = new FileReader("archivio/Archivio.txt");
     private FileReader prenotazioni; // = new FileReader("archivio/Prenotazioni.txt");
-    private FileOutputStream archivioW;
-    private FileOutputStream prenoW;
-    String arch = "";
+    private FileOutputStream archivioW;  // stream per la scrittura sul file
+    private FileOutputStream prenoW;   // stream per la scrittura sul file
+    String arch = "";  
     String pren = "";
-    boolean treno = false;
-    boolean prenotazione = false;
-    int letture;
+    boolean treno = false;    // verifica la riuscita della creazione dell'archivio dei treni
+    boolean prenotazione = false;  // verifica la riuscita della creazione dell'archivio delle prenotazioni
+    int letture;   // numero di volte che viene aperta l'archivio di prenotazione
 
     public Archivio(String a, String p) throws FileNotFoundException {
 
@@ -38,7 +38,7 @@ public class Archivio {
         letture = 0;
     }
 
-    public void creaArchivioTreni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
+    public void creaArchivioTreni() throws FileNotFoundException, NoSuchElementException {
         try {
             String nomeTreno;
             String codiceTreno;
@@ -52,7 +52,7 @@ public class Archivio {
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
 
-
+            // scorrimento del database per popolare l'arraylist di treni 
             if (temp.equals("DATABASE TRENI")) {
 
 
@@ -91,7 +91,7 @@ public class Archivio {
 
     }
 
-    public void creaArchvioPrenotazioni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
+    public void creaArchvioPrenotazioni() throws FileNotFoundException, NoSuchElementException {
         try {
 
 
@@ -112,6 +112,7 @@ public class Archivio {
             BufferedReader archivioL = new BufferedReader(prenotazioni);
             temp = archivioL.readLine();
 
+            // scorrimento del database per popolare l'arraylist di prenotazioni
             if (temp.equals("DATABASE PRENOTAZIONI")) {
                 temp = archivioL.readLine();
                 temp = archivioL.readLine();
@@ -183,10 +184,10 @@ public class Archivio {
         return archivioPrenotazioni;
     }
 
+    
+    // genera un codice di prenotazione unico poiché partendo da 1000
+        // scorre tutte le prenotazioni presenti fino a trovare un valore valido
     public String generaCodicePrenotazione() {
-
-
-
 
         int start = 1000;
         boolean check = true;
@@ -227,7 +228,10 @@ public class Archivio {
         return t;
 
     }
-
+    
+    
+// Prenotazione di una quantità di posti
+    
     public synchronized ArrayList<Prenotazione> prenotaMultipla(int posti, Prenotazione p, Treno t) {
         ArrayList<Prenotazione> out = new ArrayList();
         String codicePrenotazione = generaCodicePrenotazione();
@@ -249,6 +253,7 @@ public class Archivio {
         return out;
     }
 
+    // finalizzazione delle prenotazioni
     public void finalizza(String codice) {
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
             if (archivioPrenotazioni.get(i).getCodicePrenotazione().equals(codice)) {
@@ -260,7 +265,7 @@ public class Archivio {
 
 
     }
-
+// decrementa i posti presenti in un treno a seguito di una prenotazione
     public synchronized void decrementaPosto(Treno t, int posti) {
         for (int i = 0; i < archivioTreni.size(); i++) {
             if (archivioTreni.get(i).getCodiceTreno().equals(t.getCodiceTreno())) {
@@ -272,7 +277,7 @@ public class Archivio {
 
 
     }
-
+// crea un'arraylist contenente le prenotazioni desiderate
     public ArrayList<Prenotazione> visualizzaPrenotazione(Prenotazione p) {
 
         ArrayList<Prenotazione> out = new ArrayList();
@@ -287,7 +292,8 @@ public class Archivio {
         return out;
 
     }
-
+    
+    // elimina una prenotazione e la ritorna al cliente per la visualizzazione
     public synchronized ArrayList<Prenotazione> eliminaPrenotazione(Prenotazione p) {
 
         String codiceTreno = "";
@@ -331,6 +337,8 @@ public class Archivio {
 
     }
 
+    // ritorna un'arraylist contenente tutti i treni per una determinata tratta ad un determinato orario e con
+    // un determinato numero di posti disponibili
     public synchronized ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data, int posti) {
 
 
@@ -379,7 +387,7 @@ public class Archivio {
         return out;
 
     }
-
+// ritorna una prenotazione
     public ArrayList<Prenotazione> getPrenotazione(String codice) {
         Prenotazione p = null;
         ArrayList<Prenotazione> listaPrenotazione = new ArrayList();
@@ -394,14 +402,16 @@ public class Archivio {
 
     }
 
+    // verifica se una determinata quantità di posti sono disponibili su un treno
     public synchronized boolean verificaDisponibilitàPosti(Treno t, int posti) {
         if (t.getPostiDisponibili() < posti) {
             return false;
         }
         return true;
     }
-
-    public synchronized int verificaDisponibilitàPosto(Treno t) {   // ritorna true se è disponibile
+ 
+    // verifica la disponibilità di un determinato posto
+    public synchronized int verificaDisponibilitàPosto(Treno t) {   
 
 
         int posto = 1;
@@ -420,15 +430,9 @@ public class Archivio {
 
     }
 
-    public void selezionaOperazione(Prenotazione p) {
-        if (p.getCodicePrenotazione().equals("")) {
-        } else {
-        }
-
-
-
-    }
-
+    
+   
+// crea il path assoluto per l'archivio dei treni
     protected static FileReader createDB(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
@@ -439,7 +443,7 @@ public class Archivio {
             return null;
         }
     }
-
+// crea il path assoluto per l'archivio delle prenotazioni
     protected static FileOutputStream createDBW(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
@@ -451,6 +455,7 @@ public class Archivio {
         }
     }
 
+    // stampa su file entrambi gli archivi
     public void stampaSuFile() throws FileNotFoundException {
         archivioW = new FileOutputStream(arch);
         PrintStream scrivi = new PrintStream(archivioW);
@@ -505,8 +510,7 @@ public class Archivio {
             prenotazioni = new FileReader(pren);
             this.arch = arch;
             this.pren = pren;
-            //archivioW = new FileOutputStream(arch);
-            //prenoW = new FileOutputStream(pren);
+           
             return true;
         } catch (FileNotFoundException ex) {
             return false;

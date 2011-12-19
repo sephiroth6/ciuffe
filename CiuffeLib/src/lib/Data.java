@@ -22,8 +22,7 @@ public class Data implements Serializable {
 
     }
 
-    public Data() {
-    }
+    
 
     public String getGiorno() {
 
@@ -51,6 +50,8 @@ public class Data implements Serializable {
         System.out.println(giorno + "/" + mese + "/" + anno + "-" + ora + ":" + minuti);
     }
 
+    // converte una stringa in un intero
+    
     public static int convertiStringa(String s) {
         int temp;
         int aux = 0;
@@ -68,6 +69,7 @@ public class Data implements Serializable {
         return aux;
     }
 
+    // legge la stringa e la trasforma in una data
     public void leggiStringa(String s) {
 
 
@@ -86,33 +88,8 @@ public class Data implements Serializable {
         }
 
     }
-    /*
-    public boolean equalsData(Data t) {
-    if (giorno.equals(t.returnGiorno()) && mese.equals(t.returnMese())
-    && anno.equals(t.returnAnno())) {
-    return true;
-    }
-    return false;
-    }
-    
-    public boolean isPrecedente(Data t2) {
-    int g1 = convertiData(giorno);
-    int g2 = convertiData(t2.returnGiorno());
-    int m1 = convertiData(mese);
-    int m2 = convertiData(t2.returnMese());
-    int a1 = convertiData(anno);
-    int a2 = convertiData(t2.returnAnno());
-    
-    if (a1 < a2) {
-    return true;
-    } else if (a1 == a2 && m1 < m2) {
-    return true;
-    } else if (a1 == a2 && m1 == m2 && g1 < g2) {
-    return true;
-    }
-    return false;
-    } */
 
+    // verifica la correttezza della data
     public boolean verificaData() {
 
         int g = convertiStringa(giorno);
