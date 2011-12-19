@@ -26,6 +26,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import lib.*;
 
+
 /**
  *
  * @author angelo
@@ -49,7 +50,7 @@ public class guiCLI extends javax.swing.JFrame {
     private Treno t;
     String codiceEliminazione = "";
     //User
-    private String User = null;
+    private String User = "";
 
     /** Creates new form gui */
     public guiCLI() {
@@ -1426,7 +1427,8 @@ public class guiCLI extends javax.swing.JFrame {
                 jToggleButton1.setSelected(false);
             } else {
                 try {
-
+                    User = jTextField7.getText();
+                    
                     startC();
                     jTextField6.setEditable(false);
                     jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/Connect.png")));
@@ -2306,7 +2308,25 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 jTextArea2.append("Client connesso a: " + s + "\n");
                 //              input = new DataInputStream(s.getInputStream());
                 //              output = new DataOutputStream(s.getOutputStream());
-
+                
+                
+                 p = new Prenotazione(
+                User, //codice preno 
+                User, //nome cliente
+                0, //posti prenotato
+                "",//t.getNomeTreno(), //nome treno
+                "", //codice treno
+                "",//t.getStazionePartenza(), //stazione partenza
+                "",//t.getStazioneArrivo(), //stazione arrivo
+                null,//t.getDataPartenza(), //data
+                0, //posti totali
+                0, //posti dispo
+                true);
+                 
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+                versoServer.flush();
+                
                 User = jTextField7.getText();
                 setEditableP();
                 jTextField7.setEditable(false);

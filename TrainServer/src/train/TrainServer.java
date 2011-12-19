@@ -21,161 +21,170 @@ public class TrainServer extends Thread {
     ArrayList<Prenotazione> visualizzaPrenotazioni = new ArrayList(); // per visualizzare e poi annullare
     ArrayList<Prenotazione> eliminaPrenotazioni = new ArrayList(); //cancella preno
     JTextArea jt;
+    private String utente;
 
     public TrainServer(Socket socket, JTextArea text, Archivio arch) throws FileNotFoundException {
         this.socket = socket;
         jt = text;
         archivio = arch;
-     
+
         treni = archivio.getArchivioTreni();
         prenotazioni = archivio.getArchivioPrenotazioni();
+        utente = "";
     }
 
     //esecuzione del Thread sul Socket
     @Override
-    public void run () {
+    public void run() {
         boolean run = true;
         ObjectInputStream objectInputStream;
         ObjectOutputStream obOs;
-        int a=0;
-        int b=0;
-        
+        int a = 0;
+        int b = 0;
+
         try {
-            
-            Prenotazione p=null;
+
+            Prenotazione p = null;
             while (run) {
-                
-               
-               
+
+
+
                 try {
                     objectInputStream = new ObjectInputStream(socket.getInputStream());
-                    p = (Prenotazione)objectInputStream.readObject();
-                    
+                    p = (Prenotazione) objectInputStream.readObject();
+
                     System.out.println("stampa preno\n");
-                    
-                                       
-                    if(p!=null){
-                        if(p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")){
-                            
-                            jt.append("Richiesta di tratta ricevuta da: \n");
-                             jt.append(socket+"\n");
-                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
-                          
-                             obOs = new ObjectOutputStream(socket.getOutputStream());
-                             
-                            obOs.writeObject(ricercaTreni); 
-                            obOs.flush();
-                            
-                            
-                            
-                        }
-                        if(p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")){
-                           
-                            jt.append("Richiesta prenotazione ricevuta da: \n");
+
+
+                    if (p != null) {
+                        if (p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")) {
+
+                            jt.append("Richiesta di tratta ricevuta da: " + utente + "\n");
                             jt.append(socket + "\n");
-                            Treno trenino=null;
-                            for(int i=0; i<treni.size();i++){
-                                if(treni.get(i).getCodiceTreno().equals(p.getCodiceTreno()))
-                                    trenino=treni.get(i);
-                                
+                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
+
+                            obOs = new ObjectOutputStream(socket.getOutputStream());
+
+                            obOs.writeObject(ricercaTreni);
+                            obOs.flush();
+
+
+
+                        }
+                        if (p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")) {
+
+                            jt.append("Richiesta prenotazione ricevuta da: " + utente + "\n");
+                            jt.append(socket + "\n");
+                            Treno trenino = null;
+                            for (int i = 0; i < treni.size(); i++) {
+                                if (treni.get(i).getCodiceTreno().equals(p.getCodiceTreno())) {
+                                    trenino = treni.get(i);
+                                }
+
                             }
                             prenotazioniEff = archivio.prenotaMultipla(p.getPostoPrenotato(), p, trenino);
-                            
+
                             obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(prenotazioniEff); 
-                       
-                             obOs.flush();
-                           
-                        
+                            obOs.writeObject(prenotazioniEff);
+
+                            obOs.flush();
                         }
-                         if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")){
+                        if (!p.getCodicePrenotazione().equals("")
+                                && p.getCodicePrenotazione().equals(p.getNomeCliente())) {
+
                            
-                             
-                             jt.append("Richiesta visualizzazione prenotazione effettuata da: \n");
+                            utente = p.getCodicePrenotazione();
+                            System.out.println(utente);
+
+                        }
+
+
+                        if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")) {
+
+
+                            jt.append("Richiesta visualizzazione prenotazione effettuata da: " + utente + "\n");
                             jt.append(socket + "\n");
                             visualizzaPrenotazioni = archivio.visualizzaPrenotazione(p);
-                            
+
                             obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(visualizzaPrenotazioni); 
-                       
+                            obOs.writeObject(visualizzaPrenotazioni);
+
                             obOs.flush();
-                        
-                        
-                        }if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("ConfermaInvio")){
-                           
+
+
+                        }
+                        if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("ConfermaInvio")) {
+
                             archivio.finalizza(p.getCodicePrenotazione());
-                            
-                            
-                             jt.append("Prenotazione effettuata da \n");
-                             jt.append(socket + "\n");
-                            
-                        
+
+
+                            jt.append("Prenotazione effettuata da: " + utente + "\n");
+                            jt.append(socket + "\n");
+
+
                         }
-                         
-                         if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")){
-                           
-                            jt.append("Prenotazione eliminata da: \n");
-                            jt.append(socket + "\n"); 
+
+                        if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")) {
+
+                            jt.append("Prenotazione eliminata da: " + utente + "\n");
+                            jt.append(socket + "\n");
                             eliminaPrenotazioni = archivio.eliminaPrenotazione(p);
-                            
+
                             obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(eliminaPrenotazioni); 
-                       
+                            obOs.writeObject(eliminaPrenotazioni);
+
                             obOs.flush();
-                           
-                       
+
+
                         }
-                         
-                         if(p.getCodicePrenotazione().equals("alive") && p.getNomeCliente().equals("") && p.getPostoPrenotato() == 100){
-                             
-                             
-                             p = new Prenotazione(
-                                "isalive", //codice preno 
-                                "ok", //nome cliente
-                                100, //posti prenotato
-                                "",//t.getNomeTreno(), //nome treno
-                                "", //codice treno
-                                "",//t.getStazionePartenza(), //stazione partenza
-                                "",//t.getStazioneArrivo(), //stazione arrivo
-                                null,//t.getDataPartenza(), //data
-                                0, //posti totali
-                                0, //posti dispo
-                                true);
-                             obOs = new ObjectOutputStream(socket.getOutputStream());
-                             obOs.writeObject(p); 
-                       
-                             obOs.flush();
-                         
-                         }
-                        
-                        
-                        
-                        
-                        
-                        
+
+                        if (p.getCodicePrenotazione().equals("alive") && p.getNomeCliente().equals("") && p.getPostoPrenotato() == 100) {
+
+
+                            p = new Prenotazione(
+                                    "isalive", //codice preno 
+                                    "ok", //nome cliente
+                                    100, //posti prenotato
+                                    "",//t.getNomeTreno(), //nome treno
+                                    "", //codice treno
+                                    "",//t.getStazionePartenza(), //stazione partenza
+                                    "",//t.getStazioneArrivo(), //stazione arrivo
+                                    null,//t.getDataPartenza(), //data
+                                    0, //posti totali
+                                    0, //posti dispo
+                                    true);
+                            obOs = new ObjectOutputStream(socket.getOutputStream());
+                            obOs.writeObject(p);
+
+                            obOs.flush();
+
+                        }
+
+
+
+
+
+
                     }
-                    
-                    if (p==null) {
+
+                    if (p == null) {
                         run = false;
 //                        jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
 //                        socket.close();
                     }
-           
-                }
-                catch (ClassNotFoundException ex) {
+
+                } catch (ClassNotFoundException ex) {
                     Logger.getLogger(TrainServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
-            jt.append("Ho ricevuto una chiamata di chiusura da:\n" + socket + "\n");
+
+            jt.append("Ho ricevuto una chiamata di chiusura da: " + utente + "\n");
+            jt.append(socket + "\n");
+
             socket.close();
-            
+
         } catch (IOException e) {
             jt.append("Socket Closed.\n");
         }
     }
-    
-    
 }
-    
-    
