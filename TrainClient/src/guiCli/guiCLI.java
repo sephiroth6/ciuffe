@@ -189,6 +189,7 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         jLabel70 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel79 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jButton2 = new javax.swing.JButton();
@@ -266,11 +267,11 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(373, Short.MAX_VALUE)
                 .addComponent(jButton5)
@@ -294,7 +295,7 @@ public class guiCLI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
+                                .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,7 +320,7 @@ public class guiCLI extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(300, Short.MAX_VALUE))
+                .addContainerGap(351, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -708,7 +709,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(jLabel20))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(jButton14)
@@ -1074,6 +1075,7 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel70.setText("jLabel70");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/confirm.png"))); // NOI18N
         jButton1.setText("Conferma Prenotazione");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1086,102 +1088,117 @@ public class guiCLI extends javax.swing.JFrame {
             }
         });
 
+        jLabel79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/confirm.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel40)
+                        .addContainerGap()
+                        .addComponent(jLabel69)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel77))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel75)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel74))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel61)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel64))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel62)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel65))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel63)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel66))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel67)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel68))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel71)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel72))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel73)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel76))
-                    .addComponent(jLabel69)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton23)
-                            .addComponent(jLabel70))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton15)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel71)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel72))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel40)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel77))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel75)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel74))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel61)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel64))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel62)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel65))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel63)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel66))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel67)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel68))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel70)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel79))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jButton23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton15))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel73)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel76))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jButton1)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel75)
-                    .addComponent(jLabel74))
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel70)
+                    .addComponent(jLabel79))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel64)
-                    .addComponent(jLabel61))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel62)
-                    .addComponent(jLabel65))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel63)
-                    .addComponent(jLabel66))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel67)
-                    .addComponent(jLabel68))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel71)
-                    .addComponent(jLabel72))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel69))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel77))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel75)
+                            .addComponent(jLabel74))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel61))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel62)
+                            .addComponent(jLabel65))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel63)
+                            .addComponent(jLabel66))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel67)
+                            .addComponent(jLabel68))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel71)
+                            .addComponent(jLabel72))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel73)
                     .addComponent(jLabel76))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel69)
-                .addGap(21, 21, 21)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton15))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel70))
-                .addGap(34, 34, 34))
+                .addGap(30, 30, 30))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1242,11 +1259,11 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 763, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel44)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
+                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1256,10 +1273,10 @@ public class guiCLI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 352, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 395, Short.MAX_VALUE)
                         .addComponent(jLabel22)
                         .addGap(39, 39, 39)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1669,7 +1686,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
 
         jLabel46.setText("non effettuata!");
-        jLabel8.setText("");
+        jLabel18.setText("");
         jLabel20.setText("");
 
         /*      p = new Prenotazione(
@@ -1809,8 +1826,10 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
                                         jButton1.setVisible(false);
                                         jLabel70.setText("Prenotazione già confermata");
+                                        jLabel79.setVisible(true);
                                     } else {
-                                        jLabel70.setText("Prenotazione da confermare");
+                                        jLabel70.setText("Prenotazione da confermare ! ! !");
+                                        jLabel79.setVisible(false);
                                         jButton1.setEnabled(true);
                                         jButton1.setVisible(true);
 
@@ -1823,7 +1842,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                                     jLabel76.setText(posti);
                                     close();
                                     FinestraSwing EliminaPreno = new FinestraSwing("", 30, 50, 410, 389, jPanel8);
-                                    EliminaPreno.setSize(410, 389);
+                                    EliminaPreno.setSize(414, 376);
                                     setFrame(EliminaPreno);
                                     setNoEditableP();
                                 } else {
@@ -2083,6 +2102,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -2389,15 +2409,21 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     public void resetConnessione() {
 
         JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nAvviare la connessione sul server.", "Error", JOptionPane.ERROR_MESSAGE);
-        setNoEditableP();
+        
         jTextArea2.append("Server non raggiungibile\n");
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
+//        jToggleButton1.setEnabled(true);
+//        jToggleButton1.setSelected(false);
+//        jToggleButton8.setEnabled(false);
+//        jToggleButton8.setSelected(false);
+//        jToggleButton4.setSelected(false);
+//        jToggleButton2.setSelected(false);
+        statoIniziale();
+        setNoEditableP();
         jToggleButton1.setEnabled(true);
         jToggleButton1.setSelected(false);
         jToggleButton8.setEnabled(false);
         jToggleButton8.setSelected(false);
-        jToggleButton4.setSelected(false);
-        jToggleButton2.setSelected(false);
 
         try {
             s.close();
