@@ -34,7 +34,6 @@ public class guiCLI extends javax.swing.JFrame {
 
     private FinestraSwing frame;
     protected static int id = 0;
-   
     //protected static Socket socket;
     private Socket s;
     DataOutputStream output;
@@ -48,7 +47,7 @@ public class guiCLI extends javax.swing.JFrame {
     ArrayList<Prenotazione> risultatoRicerca = new ArrayList();
     ArrayList<Prenotazione> risultatoElim = new ArrayList();
     private Treno t;
-    String codiceEliminazione ="";
+    String codiceEliminazione = "";
     //User
     private String User = null;
 
@@ -125,6 +124,7 @@ public class guiCLI extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jButton14 = new javax.swing.JButton();
@@ -186,6 +186,9 @@ public class guiCLI extends javax.swing.JFrame {
         jLabel73 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
         jLabel77 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jToggleButton1 = new javax.swing.JToggleButton();
         jButton2 = new javax.swing.JButton();
@@ -263,13 +266,13 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(313, Short.MAX_VALUE)
+                .addContainerGap(373, Short.MAX_VALUE)
                 .addComponent(jButton5)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
@@ -316,7 +319,7 @@ public class guiCLI extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,7 +444,7 @@ public class guiCLI extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17)
                             .addComponent(jButton9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 421, Short.MAX_VALUE)
                         .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton7))
@@ -548,50 +551,50 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel39.setText("Treno:");
 
+        jLabel78.setText("jLabel78");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel23))
+                        .addComponent(jLabel23)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel78))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel39)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel33))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel30))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel31))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel32))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel29)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel34))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel35)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel36))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel37)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel38))))
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel33))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel30))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel31))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel32))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel34))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel36))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel38))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel41)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                         .addComponent(jButton12)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -605,8 +608,10 @@ public class guiCLI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel23)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel78)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(jLabel33))
@@ -634,7 +639,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(jLabel38))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jButton11))
@@ -731,7 +736,7 @@ public class guiCLI extends javax.swing.JFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
 
         jToggleButton2.setBackground(new java.awt.Color(61, 184, 55));
-        jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jToggleButton2.setFont(new java.awt.Font("Ubuntu", 1, 15));
         jToggleButton2.setText("posto 1");
         jToggleButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -796,7 +801,7 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame2Layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addComponent(jButton17)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                 .addComponent(jButton16)
                 .addGap(58, 58, 58))
             .addGroup(jFrame2Layout.createSequentialGroup()
@@ -908,7 +913,7 @@ public class guiCLI extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addComponent(jButton19)
                 .addGap(82, 82, 82)
                 .addComponent(jButton20)
@@ -927,15 +932,15 @@ public class guiCLI extends javax.swing.JFrame {
                     .addComponent(jLabel54)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel55)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel57)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel58)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
@@ -946,7 +951,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addComponent(jLabel52)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel56)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -956,11 +961,11 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel59)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(304, Short.MAX_VALUE)
+                .addContainerGap(335, Short.MAX_VALUE)
                 .addComponent(jButton21)
                 .addContainerGap())
             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -968,7 +973,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addComponent(jLabel60)
                 .addGap(18, 18, 18)
                 .addComponent(jButton22)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1067,6 +1072,20 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel77.setText("roma");
 
+        jLabel70.setText("jLabel70");
+
+        jButton1.setText("Conferma Prenotazione");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -1106,10 +1125,15 @@ public class guiCLI extends javax.swing.JFrame {
                         .addComponent(jLabel73)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel76))
+                    .addComponent(jLabel69)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jButton23)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addComponent(jButton15)))
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton23)
+                            .addComponent(jLabel70))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton15)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -1119,7 +1143,7 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(jLabel77))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
                     .addComponent(jLabel74))
@@ -1147,11 +1171,17 @@ public class guiCLI extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel73)
                     .addComponent(jLabel76))
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel69)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton15))
-                .addGap(73, 73, 73))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel70))
+                .addGap(34, 34, 34))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1216,20 +1246,20 @@ public class guiCLI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel44)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE))
+                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToggleButton8))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 328, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 352, Short.MAX_VALUE)
                         .addComponent(jLabel22)
                         .addGap(39, 39, 39)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1271,7 +1301,7 @@ public class guiCLI extends javax.swing.JFrame {
         jToggleButton8.setEnabled(false);
         jLabel22.setEnabled(false);
 
-        jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18));
         jLabel13.setText("Client");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1298,27 +1328,23 @@ public class guiCLI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     //torna alla schermata iniziale
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
         statoIniziale();
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    
     //torna alla schermata iniziale
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
 
         statoIniziale();
     }//GEN-LAST:event_jButton12ActionPerformed
 
-
     //stato iniziale esito prenotazione/disdetta
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         statoIniziale();
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    
     //torna allo stato precedente, con i dati già precompilati
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
 
@@ -1326,33 +1352,35 @@ public class guiCLI extends javax.swing.JFrame {
         FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 480, 420, jPanel3);
         setFrame(VisualizzaTreni);
         VisualizzaTreni.setSize(700, 480);
-         p = new Prenotazione(
-                codiceEliminazione, //codice preno 
-                "conferma", //nome cliente
-                0, //posti prenotato
-                "",//t.getNomeTreno(), //nome treno
-                "", //codice treno
-                "",//t.getStazionePartenza(), //stazione partenza
-                "",//t.getStazioneArrivo(), //stazione arrivo
-                null,//t.getDataPartenza(), //data
-                0, //posti totali
-                0 //posti dispo
-                );
-        try {
-            versoServer = new ObjectOutputStream(s.getOutputStream());
-            versoServer.writeObject(p);
-            versoServer.flush();
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        if (aliveS()) {
+            p = new Prenotazione(
+                    codiceEliminazione, //codice preno 
+                    "conferma", //nome cliente
+                    0, //posti prenotato
+                    "",//t.getNomeTreno(), //nome treno
+                    "", //codice treno
+                    "",//t.getStazionePartenza(), //stazione partenza
+                    "",//t.getStazioneArrivo(), //stazione arrivo
+                    null,//t.getDataPartenza(), //data
+                    0, //posti totali
+                    0, //posti dispo
+                    true);
+            try {
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+                versoServer.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+        } else {
+            resetConnessione();
         }
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    
     //chiudi logs server
     //annulla ed esci i posti selezionati
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -1361,16 +1389,16 @@ public class guiCLI extends javax.swing.JFrame {
         jFrame2.setVisible(false);
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    
     //salva ed esci i posti selezionati
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
 
         jFrame2.setVisible(false);
     }//GEN-LAST:event_jButton17ActionPerformed
 
-    
     //connection to server
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+
+
         if (jToggleButton1.isEnabled()) {
             if (jTextField7.getText().equals("")) {
                 JOptionPane.showMessageDialog(jPanel1, "Nome Operatore Mancante, inserire il nome cliente.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1397,10 +1425,9 @@ public class guiCLI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
-    
     //make a prenotation
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        if(jButton4.isEnabled()){
+        if (jButton4.isEnabled()) {
             if (aliveS()) {
                 if (jButton4.isEnabled() && s != null) {
                     FinestraSwing GestorePreno = new FinestraSwing("Effettua una ricerca", 30, 50, 520, 340, jPanel2);
@@ -1410,23 +1437,16 @@ public class guiCLI extends javax.swing.JFrame {
                     disableJTextF(jTextField5, jTextField10, jTextField11, jTextField12, jTextField13, jTextField3, jTextField4);
                     //romamilano();
                     jComboBox2.setSelectedIndex(0);
-                    jTextArea2.append("socket :"+s + "\n");
+                    jTextArea2.append("socket :" + s + "\n");
 
                 }
             } else {
-                JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
-                setNoEditableP();
-                jTextArea2.append("Server non raggiungibile\n");
-                jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
-                jToggleButton1.setEnabled(true);
-                jToggleButton1.setSelected(false);
-                jToggleButton8.setEnabled(false);
-                jToggleButton8.setSelected(false);
+                close();
+                resetConnessione();
             }
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
-    
     //popolamento dati in automatico
     private void romamilano() {
         jTextField5.setText("20");
@@ -1438,7 +1458,6 @@ public class guiCLI extends javax.swing.JFrame {
         jTextField4.setText("roma");
     }
 
-    
     //cerca prenotazione
 private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
 
@@ -1459,68 +1478,71 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         # int pT -> posti totali
         # int pD -> posti disponibili
          */
-        
-        
-
-        p = new Prenotazione(
-                "", //codice preno 
-                User, //nome operatore
-                jComboBox2.getSelectedIndex(), //posto prenotato
-                "", //nome treno
-                "", //codice treno
-                jTextField3.getText(), //stazione partenza
-                jTextField4.getText(), //stazione arrivo
-                date, //data
-                0, //posti totali
-                0 //posti dispo
-                );
-        try {
-            versoServer = new ObjectOutputStream(s.getOutputStream());
-            versoServer.writeObject(p);
-            versoServer.flush();
-            jTextArea2.append("Richiesta tratta treni inviata al server\n");
-            
 
 
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (aliveS()) {
+            p = new Prenotazione(
+                    "", //codice preno 
+                    User, //nome operatore
+                    jComboBox2.getSelectedIndex(), //posto prenotato
+                    "", //nome treno
+                    "", //codice treno
+                    jTextField3.getText(), //stazione partenza
+                    jTextField4.getText(), //stazione arrivo
+                    date, //data
+                    0, //posti totali
+                    0, //posti dispo
+                    true);
 
-
-
-
-        try {
-            dalServer = new ObjectInputStream(s.getInputStream());
 
             try {
-                ricercaTreni = (ArrayList<Treno>) dalServer.readObject();
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+                versoServer.flush();
+                jTextArea2.append("Richiesta tratta treni inviata al server\n");
 
-            } catch (ClassNotFoundException ex) {
+
+
+            } catch (IOException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
 
 
-        close();
-        FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 600, 480, jPanel3);
-        VisualizzaTreni.setSize(700, 480);
-        setFrame(VisualizzaTreni);
-        setTableSearchTrain(jTable1, ricercaTreni);
-        jTextField8.setText("");
-        jTextField9.setText("");
+            try {
+                dalServer = new ObjectInputStream(s.getInputStream());
+
+                try {
+                    ricercaTreni = (ArrayList<Treno>) dalServer.readObject();
+
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+            close();
+            FinestraSwing VisualizzaTreni = new FinestraSwing("Risultati ricerca", 30, 50, 600, 480, jPanel3);
+            VisualizzaTreni.setSize(700, 480);
+            setFrame(VisualizzaTreni);
+            setTableSearchTrain(jTable1, ricercaTreni);
+            jTextField8.setText("");
+            jTextField9.setText("");
 //            } catch (IOException ex) {
 //                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+            //}
 
+        } else {
+            close();
+            resetConnessione();
+        }
     }
-
 }//GEN-LAST:event_jButton5MouseClicked
-
-
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
@@ -1539,7 +1561,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         legenda();
     }//GEN-LAST:event_jButton22ActionPerformed
 
-    
     //apertura finestra riepilogo prenotazione
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         if (jTextField8.getText().equals("") || jTextField9.getText().equals("")) {
@@ -1552,77 +1573,81 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 //                    
 //            }
 
+            if (aliveS()) {
+                int sel = -1;
+                sel = jTable1.getSelectedRow();
+                if (sel != -1) {
+                    t = ricercaTreni.get(sel);
 
-            int sel = -1;
-            sel = jTable1.getSelectedRow();
-            if (sel != -1) {
-                t = ricercaTreni.get(sel);
 
 
+                    //       
+                    //        
 
-                //       
-                //        
+                    close();
 
-                close();
+                    jLabel33.setText(t.getNomeTreno() + " " + t.getCodiceTreno());//trenoinfo
+                    jLabel30.setText(t.getStazionePartenza());//citt partenza
+                    jLabel31.setText(t.getStazioneArrivo());//citt arrivo
+                    jLabel32.setText(t.getDataPartenza().getGiorno() + "/" + t.getDataPartenza().getMese() + "/" + t.getDataPartenza().getAnno() + " - " + t.getDataPartenza().getOra() + ":" + t.getDataPartenza().getMinuti());//data ora partenza
+                    jLabel36.setText(jTextField9.getText());//cognome
+                    jLabel34.setText(jTextField8.getText());//nome
+                    jLabel38.setText(jComboBox2.getSelectedIndex() + "");//quantità posti preno
 
-                jLabel33.setText(t.getNomeTreno() + " " + t.getCodiceTreno());//trenoinfo
-                jLabel30.setText(t.getStazionePartenza());//citt partenza
-                jLabel31.setText(t.getStazioneArrivo());//citt arrivo
-                jLabel32.setText(t.getDataPartenza().getGiorno() + "/" + t.getDataPartenza().getMese() + "/" + t.getDataPartenza().getAnno() + " - " + t.getDataPartenza().getOra() + ":" + t.getDataPartenza().getMinuti());//data ora partenza
-                jLabel36.setText(jTextField9.getText());//cognome
-                jLabel34.setText(jTextField8.getText());//nome
-                jLabel38.setText(jComboBox2.getSelectedIndex() + "");//quantità posti preno
-
-                p = new Prenotazione(
-                        "", //codice preno 
-                        jLabel34.getText() + " " + jLabel36.getText(), //nome cliente
-                        jComboBox2.getSelectedIndex(), //posti prenotato
-                        "",//t.getNomeTreno(), //nome treno
-                        t.getCodiceTreno(), //codice treno
-                        "",//t.getStazionePartenza(), //stazione partenza
-                        "",//t.getStazioneArrivo(), //stazione arrivo
-                        null,//t.getDataPartenza(), //data
-                        0, //posti totali
-                        0 //posti dispo
-                        );
-                try {
-                    versoServer = new ObjectOutputStream(s.getOutputStream());
-                    versoServer.writeObject(p);
-                    versoServer.flush();
-                    jTextArea2.append("Richiesta di prenotazione inviata al server\n");
-
-                } catch (IOException ex) {
-                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    dalServer = new ObjectInputStream(s.getInputStream());
+                    p = new Prenotazione(
+                            "", //codice preno 
+                            jLabel34.getText() + " " + jLabel36.getText(), //nome cliente
+                            jComboBox2.getSelectedIndex(), //posti prenotato
+                            "",//t.getNomeTreno(), //nome treno
+                            t.getCodiceTreno(), //codice treno
+                            "",//t.getStazionePartenza(), //stazione partenza
+                            "",//t.getStazioneArrivo(), //stazione arrivo
+                            null,//t.getDataPartenza(), //data
+                            0, //posti totali
+                            0, //posti dispo
+                            true);
                     try {
-                        risultatoPrenotazioni = (ArrayList<Prenotazione>) dalServer.readObject();
-                    } catch (ClassNotFoundException ex) {
+                        versoServer = new ObjectOutputStream(s.getOutputStream());
+                        versoServer.writeObject(p);
+                        versoServer.flush();
+                        jTextArea2.append("Richiesta di prenotazione inviata al server\n");
+
+                    } catch (IOException ex) {
                         Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (IOException ex) {
-                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        dalServer = new ObjectInputStream(s.getInputStream());
+                        try {
+                            risultatoPrenotazioni = (ArrayList<Prenotazione>) dalServer.readObject();
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    codiceEliminazione = risultatoPrenotazioni.get(0).getCodicePrenotazione();
+
+
+
+                    jLabel78.setText(codiceEliminazione);
+                    FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
+                    
+                    setFrame(RiepilogoPreno);
+                } else {
+                    JOptionPane.showMessageDialog(jPanel3, "Selezionare un treno", "Errore!", JOptionPane.WARNING_MESSAGE);
                 }
-                codiceEliminazione = risultatoPrenotazioni.get(0).getCodicePrenotazione();
-
-
-
-
-                FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
-                setFrame(RiepilogoPreno);
             } else {
-                JOptionPane.showMessageDialog(jPanel3, "Selezionare un treno", "Errore!", JOptionPane.WARNING_MESSAGE);
+
+                resetConnessione();
             }
-        }
     }//GEN-LAST:event_jButton7MouseClicked
 
-    
+    }
     //disconnessione client
     private void jToggleButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton8MouseClicked
         if (jToggleButton8.isEnabled()) {
             if (aliveS()) {
-            
+
                 try {
                     stopC();
 
@@ -1633,116 +1658,107 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 jTextField6.setEditable(true);
                 jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
 
-            }
-            else{
-                JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nAvviare la connessione sul server.", "Error", JOptionPane.ERROR_MESSAGE);
-                setNoEditableP();
-    //            try {
-    //                versoServer.flush();
-    //                versoServer.close();
-    //            } catch (IOException ex) {
-                   jTextArea2.append("Server non raggiungibile, reset della connessione.\n");
-    //            }
-
-                jToggleButton1.setEnabled(true);
-                jToggleButton1.setSelected(false);
-                jToggleButton8.setEnabled(false);
-                jToggleButton8.setSelected(false);
+            } else {
+                resetConnessione();
             }
         }
     }//GEN-LAST:event_jToggleButton8MouseClicked
 
-    
     //esito prenotazione con relativa view
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
 
-        
+
         jLabel46.setText("non effettuata!");
         jLabel8.setText("");
         jLabel20.setText("");
 
-  /*      p = new Prenotazione(
-                "", //codice preno 
-                jLabel34.getText() + " " + jLabel36.getText(), //nome cliente
-                jComboBox2.getSelectedIndex(), //posti prenotato
-                "",//t.getNomeTreno(), //nome treno
-                t.getCodiceTreno(), //codice treno
-                "",//t.getStazionePartenza(), //stazione partenza
-                "",//t.getStazioneArrivo(), //stazione arrivo
-                null,//t.getDataPartenza(), //data
-                0, //posti totali
-                0 //posti dispo
-                );
-
+        /*      p = new Prenotazione(
+        "", //codice preno 
+        jLabel34.getText() + " " + jLabel36.getText(), //nome cliente
+        jComboBox2.getSelectedIndex(), //posti prenotato
+        "",//t.getNomeTreno(), //nome treno
+        t.getCodiceTreno(), //codice treno
+        "",//t.getStazionePartenza(), //stazione partenza
+        "",//t.getStazioneArrivo(), //stazione arrivo
+        null,//t.getDataPartenza(), //data
+        0, //posti totali
+        0 //posti dispo
+        );
+        
         try {
-            versoServer = new ObjectOutputStream(s.getOutputStream());
-            versoServer.writeObject(p);
-            versoServer.flush();
-
-
+        versoServer = new ObjectOutputStream(s.getOutputStream());
+        versoServer.writeObject(p);
+        versoServer.flush();
+        
+        
         } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
         }  */
-     //   try {
-         //   dalServer = new ObjectInputStream(s.getInputStream());
-      //      try {
-              //  risultatoPrenotazioni = (ArrayList<Prenotazione>) dalServer.readObject();
-                int size = risultatoPrenotazioni.size();
-                String posti = "";
-                for (int i = 0; i < size; i++) {
-                    posti = posti + risultatoPrenotazioni.get(i).getPostoPrenotato() + " ";
-                }
-                jLabel46.setText("effettuata!");
-                jLabel18.setText(risultatoPrenotazioni.get(0).getCodicePrenotazione());
-                jLabel20.setText(posti);
-                jTextArea2.append("Prenotazione effettuata \n");
+        //   try {
+        //   dalServer = new ObjectInputStream(s.getInputStream());
+        //      try {
+        //  risultatoPrenotazioni = (ArrayList<Prenotazione>) dalServer.readObject();
+        int size = risultatoPrenotazioni.size();
+        String posti = "";
+        for (int i = 0; i < size; i++) {
+            posti = posti + risultatoPrenotazioni.get(i).getPostoPrenotato() + " ";
+        }
+        jLabel46.setText("effettuata!");
+        jLabel18.setText(risultatoPrenotazioni.get(0).getCodicePrenotazione());
+        jLabel20.setText(posti);
+        jTextArea2.append("Prenotazione effettuata \n");
 
         //    } catch (ClassNotFoundException ex) {
-          //      Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        //      Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
 
-           // }
-     //   } catch (IOException ex) {
-       //     Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-      //  }
-                
-                
-                p = new Prenotazione(
-                "ConfermaInvio", //codice preno 
-                "ConfermaInvio", //nome cliente
-                0, //posti prenotato
-                "",//t.getNomeTreno(), //nome treno
-                "", //codice treno
-                "",//t.getStazionePartenza(), //stazione partenza
-                "",//t.getStazioneArrivo(), //stazione arrivo
-                null,//t.getDataPartenza(), //data
-                0, //posti totali
-                0 //posti dispo
-                );
-        try {
-            versoServer = new ObjectOutputStream(s.getOutputStream());
-            versoServer.writeObject(p);
-            versoServer.flush();
-                
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-                
-                
+        // }
+        //   } catch (IOException ex) {
+        //     Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        //  }
 
-        close();
-        FinestraSwing Finalizzazione = new FinestraSwing("Esito prenotazione", 30, 50, 375, 115, jPanel5);
-        setFrame(Finalizzazione);
+        if (aliveS()) {
+
+            p = new Prenotazione(
+                    jLabel18.getText(), //codice preno 
+                    "ConfermaInvio", //nome cliente
+                    0, //posti prenotato
+                    "",//t.getNomeTreno(), //nome treno
+                    "", //codice treno
+                    "",//t.getStazionePartenza(), //stazione partenza
+                    "",//t.getStazioneArrivo(), //stazione arrivo
+                    null,//t.getDataPartenza(), //data
+                    0, //posti totali
+                    0, //posti dispo
+                    true);
+            try {
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+                versoServer.flush();
+
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+
+            close();
+            FinestraSwing Finalizzazione = new FinestraSwing("Esito prenotazione", 30, 50, 375, 115, jPanel5);
+            setFrame(Finalizzazione);
 
 
 
 
     }//GEN-LAST:event_jButton10MouseClicked
+        else {
+            close();
+            resetConnessione();
+        }
 
-    
+    }
     //apre view per la cancellazione di una prenotazione con il codice scritto nella casellina
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        if(jButton2.isEnabled()){
+        if (jButton2.isEnabled()) {
             if (aliveS()) {
                 if (jButton2.isEnabled()) {
                     if (jTextField1.getText().equals("")) {
@@ -1758,8 +1774,8 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                                 "",//t.getStazioneArrivo(), //stazione arrivo
                                 null,//t.getDataPartenza(), //data
                                 0, //posti totali
-                                0 //posti dispo
-                                );
+                                0, //posti dispo
+                                true);
 
 
                         try {
@@ -1789,6 +1805,17 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                                             + risultatoRicerca.get(0).getDataPartenza().getMinuti());//data e ora di partenza
                                     jLabel68.setText(risultatoRicerca.get(0).getNomeCliente());//nome e cognome
                                     jLabel72.setText("" + risultatoRicerca.size());//quantità posti
+                                    if (risultatoRicerca.get(0).getConfermata()) {
+
+                                        jButton1.setVisible(false);
+                                        jLabel70.setText("Prenotazione già confermata");
+                                    } else {
+                                        jLabel70.setText("Prenotazione da confermare");
+                                        jButton1.setEnabled(true);
+                                        jButton1.setVisible(true);
+
+
+                                    }
                                     String posti = "";
                                     for (int i = 0; i < risultatoRicerca.size(); i++) {
                                         posti = posti + risultatoRicerca.get(i).getPostoPrenotato() + " ";//posti prenotati
@@ -1814,73 +1841,67 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
                 }
             } else {
-                JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nla connessione del server.", "Error", JOptionPane.ERROR_MESSAGE);
-                setNoEditableP();
-                jToggleButton1.setEnabled(true);
-                jToggleButton1.setSelected(false);
-                jToggleButton8.setEnabled(false);
-                jToggleButton8.setSelected(false);
-                jTextArea2.append("Server non raggiungibile\n");
-                jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
+                resetConnessione();
             }
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
-    
     //cancellazione di una prenotazione
     private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
-        p = new Prenotazione(
-                jLabel77.getText(), //codice preno 
-                "conferma", //nome cliente
-                0, //posti prenotato
-                "",//t.getNomeTreno(), //nome treno
-                "", //codice treno
-                "",//t.getStazionePartenza(), //stazione partenza
-                "",//t.getStazioneArrivo(), //stazione arrivo
-                null,//t.getDataPartenza(), //data
-                0, //posti totali
-                0 //posti dispo
-                );
-        try {
-            versoServer = new ObjectOutputStream(s.getOutputStream());
-            versoServer.writeObject(p);
-            versoServer.flush();
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-
-        try {
-            dalServer = new ObjectInputStream(s.getInputStream());
+        if (aliveS()) {
+            p = new Prenotazione(
+                    jLabel77.getText(), //codice preno 
+                    "conferma", //nome cliente
+                    0, //posti prenotato
+                    "",//t.getNomeTreno(), //nome treno
+                    "", //codice treno
+                    "",//t.getStazionePartenza(), //stazione partenza
+                    "",//t.getStazioneArrivo(), //stazione arrivo
+                    null,//t.getDataPartenza(), //data
+                    0, //posti totali
+                    0, //posti dispo
+                    true);
             try {
-                risultatoElim = (ArrayList<Prenotazione>) dalServer.readObject();
-
-                if (risultatoElim.size() == risultatoRicerca.size()) {
-                    JOptionPane.showMessageDialog(jPanel8, "Cancellazione effettuata con successo.", "Info", JOptionPane.INFORMATION_MESSAGE);
-                    statoIniziale();
-                    jTextArea2.append("Cancellazione prenotazione effettuata\n");
-                }
-            } catch (ClassNotFoundException ex) {
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+                versoServer.flush();
+            } catch (IOException ex) {
                 Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } catch (IOException ex) {
-            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+
+            try {
+                dalServer = new ObjectInputStream(s.getInputStream());
+                try {
+                    risultatoElim = (ArrayList<Prenotazione>) dalServer.readObject();
+
+                    if (risultatoElim.size() == risultatoRicerca.size()) {
+                        JOptionPane.showMessageDialog(jPanel8, "Cancellazione effettuata con successo.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                        statoIniziale();
+                        jTextArea2.append("Cancellazione prenotazione effettuata\n");
+                    }
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+        } else {
+            resetConnessione();
         }
-
-
-
-
 
     }//GEN-LAST:event_jButton15MouseClicked
 
-    
     //torna alla schermata principale invece di cancellare la prenotazione, annullando così la cancellazione di una prenotazione
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
         statoIniziale();
     }//GEN-LAST:event_jButton23MouseClicked
 
-    
     //chiude la finestra dei risultati della ricerca dei treni e ritorna alla view per impostare data e città di partenza
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         close();
@@ -1889,13 +1910,64 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         GestorePreno.setSize(520, 340);
     }//GEN-LAST:event_jButton8MouseClicked
 
-    
     //chiude finestra per la ricerca e ritorna alla view principale
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         statoIniziale();
     }//GEN-LAST:event_jButton6MouseClicked
 
-    
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        if (aliveS()) {
+
+            p = new Prenotazione(
+                    jLabel77.getText(), //codice preno 
+                    "ConfermaInvio", //nome cliente
+                    0, //posti prenotato
+                    "",//t.getNomeTreno(), //nome treno
+                    "", //codice treno
+                    "",//t.getStazionePartenza(), //stazione partenza
+                    "",//t.getStazioneArrivo(), //stazione arrivo
+                    null,//t.getDataPartenza(), //data
+                    0, //posti totali
+                    0, //posti dispo
+                    true);
+            try {
+                versoServer = new ObjectOutputStream(s.getOutputStream());
+                versoServer.writeObject(p);
+                versoServer.flush();
+
+            } catch (IOException ex) {
+                Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+
+
+
+            close();
+
+
+            jLabel18.setText(jLabel77.getText());
+            jLabel20.setText(jLabel76.getText());
+            FinestraSwing Finalizzazione = new FinestraSwing("Esito prenotazione", 30, 50, 375, 115, jPanel5);
+            
+            setFrame(Finalizzazione);
+
+
+
+
+        } else {
+            close();
+            resetConnessione();
+
+        }
+
+
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1906,12 +1978,13 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             @Override
             public void run() {
                 new guiCLI().setVisible(true);
-               
+
 
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -1999,7 +2072,9 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
@@ -2007,6 +2082,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -2045,13 +2121,11 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JToggleButton jToggleButton8;
     // End of variables declaration//GEN-END:variables
 
-    
     //imposta la nuova view come view principale
     private void setFrame(FinestraSwing frame) {
         this.frame = frame;
     }
 
-    
     //chiude la finestra e ripristina la view successiva
     private void close() {
         if (frame != null) {
@@ -2080,8 +2154,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             // supportCli.
         }
     }
-    
-    
+
     //abilita i bottoni necessari per il funzionamento del client nella view principale
     private void setEditableP() {
 
@@ -2094,24 +2167,21 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
     }
 
-    
     //disabilita i bottoni nella view principale
     private void setNoEditableP() {
         jButton2.setEnabled(false);
-     
+
         jButton4.setEnabled(false);
         jTextField1.setEditable(false);
         jLabel22.setEnabled(false);
     }
 
-    
     //ritorna allo stato precedente con le view e lo stato dei bottoni
     private void statoIniziale() {
         close();
         setEditableP();
     }
 
-    
     // deselezione i bottoni toggle passati come argomento
     private static void postiDispo(JToggleButton... b) {
         for (int i = 0; i < b.length; i++) {
@@ -2122,7 +2192,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
     }
 
-    
     //disabilita bottoni di tipo jtogglebutton
     private static void disableJT(JToggleButton... b) {
         for (int i = 0; i < b.length; i++) {
@@ -2130,7 +2199,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         }
     }
 
-    
     //cambia colore sui bottoni di tipo jtogglebutton
     private void legenda() {
         jToggleButton5.setBackground(new Color(61, 184, 55));
@@ -2139,7 +2207,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         disableJT(jToggleButton5, jToggleButton6, jToggleButton7);
     }
 
-    
     //popola la tabella con i risultati della ricerca dei treni
     private void setTableSearchTrain(JTable t, ArrayList<Treno> a) {
 
@@ -2165,7 +2232,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
     }
 
-    
     //controllo dei valori per effettura la prenotazione effettiva
     private boolean checkValueP() {
 
@@ -2184,7 +2250,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         return true;
     }
 
-    
     //imposta la struttura della tabella per il risultato della ricerca dei treni
     private static void setJTableTrain(JTable jt, int n) {
         String[] columnNames = new String[]{"Nome Treno", "Codice", "Città P.nza", "Città A.vo", "Orario P.za", "Posti disp", "Posti tot"};
@@ -2202,7 +2267,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         jt.setModel(model);
     }
 
-    
     //avvia comunicazione con server con relativi check di controllo ed eventuali messaggi di errori
     private void startC() throws IOException {
         if (jToggleButton1.isEnabled()) {
@@ -2216,7 +2280,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             } catch (IOException ex) {
                 //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
                 jTextArea2.append("Server non raggiungibile\n");
-                 jTextField6.setEditable(true);
+                jTextField6.setEditable(true);
             }
             if (s != null) {
                 jTextArea2.append("Client connesso a: " + s + "\n");
@@ -2242,14 +2306,13 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
     }
 
-    
     //stop del socket con relativi ripristini di bottoni ed oggetti
     private void stopC() throws IOException {
         if (jToggleButton8.isEnabled()) {
             jTextArea2.append("Client disconnesso da: " + s + "\n");
             versoServer = new ObjectOutputStream(s.getOutputStream());
             versoServer.writeObject(null);
-            
+
             versoServer.flush();
             versoServer.close();
 
@@ -2261,7 +2324,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         }
     }
 
-    
     //imposta valore "" nel testo di oggetti jtextfield
     private static void disableJTextF(JTextField... b) {
         for (int i = 0; i < b.length; i++) {
@@ -2269,7 +2331,6 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
         }
     }
 
-    
     //controlla se il server è raggiungibile
     private boolean aliveS() {
 //        try {
@@ -2282,7 +2343,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 //        } catch (IOException ex) {
 //            return false;
 //        }
-        
+
         p = new Prenotazione(
                 "alive", //codice preno 
                 "", //nome cliente
@@ -2293,8 +2354,8 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 "",//t.getStazioneArrivo(), //stazione arrivo
                 null,//t.getDataPartenza(), //data
                 0, //posti totali
-                0 //posti dispo
-                );
+                0, //posti dispo
+                true);
 
 
         try {
@@ -2321,6 +2382,28 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             return false;
         }
 
+
+
+    }
+
+    public void resetConnessione() {
+
+        JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nAvviare la connessione sul server.", "Error", JOptionPane.ERROR_MESSAGE);
+        setNoEditableP();
+        jTextArea2.append("Server non raggiungibile\n");
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
+        jToggleButton1.setEnabled(true);
+        jToggleButton1.setSelected(false);
+        jToggleButton8.setEnabled(false);
+        jToggleButton8.setSelected(false);
+        jToggleButton4.setSelected(false);
+        jToggleButton2.setSelected(false);
+
+        try {
+            s.close();
+        } catch (IOException ex) {
+            Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
 
     }

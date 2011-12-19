@@ -17,10 +17,11 @@ public class Prenotazione extends Treno implements Serializable {
     private String codicePrenotazione;
     private String nome;
     private int postoPrenotato;
+    private boolean confermata;
 
 
     public Prenotazione(String cP, String n, int pP, String nT, String c, String sP,
-            String sA, Data dP, int pT, int pD) {
+            String sA, Data dP, int pT, int pD, boolean conf) {
 
         super(nT, c, sP, sA, dP, pT, pD);       // usato per leggere dall'archivio
 
@@ -28,6 +29,7 @@ public class Prenotazione extends Treno implements Serializable {
         codicePrenotazione = cP;
         nome = n;
         postoPrenotato = pP;
+        confermata = conf;
 
     }
 
@@ -38,6 +40,14 @@ public class Prenotazione extends Treno implements Serializable {
 
 
     }
+    public boolean getConfermata(){
+        return confermata;
+        
+    }
+    public void conferma(){
+        confermata = true;
+    }
+    
 
     public Prenotazione(String cP, String cT, int pP, String n) throws FileNotFoundException {
         super(cT, null, null, null, null, 0, 0);

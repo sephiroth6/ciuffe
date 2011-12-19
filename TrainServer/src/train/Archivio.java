@@ -14,7 +14,6 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lib.*;
-import lib.Prenotazione;
 
 public class Archivio {
 
@@ -28,7 +27,7 @@ public class Archivio {
     String pren = "";
     boolean treno = false;
     boolean prenotazione = false;
-    
+    int letture;
 
     public Archivio(String a, String p) throws FileNotFoundException {
 
@@ -36,7 +35,7 @@ public class Archivio {
         prenotazioni = new FileReader(p);
         archivioTreni = new ArrayList();
         archivioPrenotazioni = new ArrayList();
-
+        letture = 0;
     }
 
     public void creaArchivioTreni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
@@ -53,9 +52,10 @@ public class Archivio {
             BufferedReader archivioL = new BufferedReader(archivio);
             temp = archivioL.readLine();
             System.out.println(temp);
-            
-            
+
+
             if (temp.equals("DATABASE TRENI")) {
+
 
                 while (!"FINE DATABASE".equals(temp)) {
 
@@ -81,20 +81,17 @@ public class Archivio {
                 }
 
                 archivioL.close();
-                treno =true;
-                
-            } 
+                treno = true;
+
+            }
         } catch (IOException ex) {
             Logger.getLogger(Archivio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
 
     }
-    
 
-   
-    
     public void creaArchvioPrenotazioni() throws FileNotFoundException, /*FormatException,*/ NoSuchElementException {
         try {
 
@@ -106,56 +103,78 @@ public class Archivio {
             String codiceTreno;
             String nome;
             int postoPrenotato;
+            String confermato;
+            boolean confermatoB;
+
 
             String temp;
             Prenotazione p;
 
             BufferedReader archivioL = new BufferedReader(prenotazioni);
             temp = archivioL.readLine();
-            
-            if (temp.equals("DATABASE PRENOTAZIONI")){
-                
-                
-            while (!"FINE DATABASE".equals(temp)) {
+
+            if (temp.equals("DATABASE PRENOTAZIONI")) {
                 temp = archivioL.readLine();
+                temp = archivioL.readLine();
+                letture = Data.convertiStringa(temp);
 
-                if (!"FINE DATABASE".equals(temp) && temp.equals("PRENOTAZIONE")) {
+                while (!"FINE DATABASE".equals(temp)) {
+                    temp = archivioL.readLine();
 
-
-                    codicePrenotazione = archivioL.readLine();
-                    codiceTreno = archivioL.readLine();
-                    nome = archivioL.readLine();
-                    postoPrenotato = Data.convertiStringa(archivioL.readLine());
-                    Treno t = getTreno(codiceTreno);
-
-                    p = new Prenotazione(codicePrenotazione, nome, postoPrenotato,
-                            t.getNomeTreno(), codiceTreno, t.getStazionePartenza(),
-                            t.getStazioneArrivo(), t.getDataPartenza(),
-                            t.getPostiTotali(), t.getPostiDisponibili());
-                    archivioPrenotazioni.add(p);
+                    if (!"FINE DATABASE".equals(temp) && temp.equals("PRENOTAZIONE")) {
 
 
+                        codicePrenotazione = archivioL.readLine();
+                        codiceTreno = archivioL.readLine();
+                        nome = archivioL.readLine();
+                        postoPrenotato = Data.convertiStringa(archivioL.readLine());
+                        confermato = archivioL.readLine();
+                        if (confermato.equals("TRUE")) {
+                            confermatoB = true;
+                        } else {
+                            confermatoB = false;
+                        }
+                        Treno t = getTreno(codiceTreno);
+
+                        p = new Prenotazione(codicePrenotazione, nome, postoPrenotato,
+                                t.getNomeTreno(), codiceTreno, t.getStazionePartenza(),
+                                t.getStazioneArrivo(), t.getDataPartenza(),
+                                t.getPostiTotali(), t.getPostiDisponibili(), confermatoB);
+
+                        if (confermatoB == true || letture % 3 == 0) {
+                            archivioPrenotazioni.add(p);
+                        } else {
+                            decrementaPosto(t,-1);
+                        
+                        
+                        }
+
+
+                    }
                 }
-            }
-            archivioL.close();
-            prenotazione = true;
-           
+                archivioL.close();
+                prenotazione = true;
+
             }
         } catch (IOException ex) {
             Logger.getLogger(Archivio.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-       
+
 
     }
-    
-    public boolean isArchivioTreno(){
+
+    public void incrementaLetture() {
+        letture++;
+    }
+
+    public boolean isArchivioTreno() {
         return treno;
     }
-    public boolean isArchioPrenotazione(){
+
+    public boolean isArchioPrenotazione() {
         return prenotazione;
     }
-    
 
     public ArrayList<Treno> getArchivioTreni() {
         return archivioTreni;
@@ -219,7 +238,8 @@ public class Archivio {
             posto = verificaDisponibilitàPosto(t);
 
             int pDis = t.getPostiDisponibili() - posti;
-            Prenotazione p2 = new Prenotazione(codicePrenotazione, p.getNomeCliente(), posto, t.getNomeTreno(), t.getCodiceTreno(), t.getStazionePartenza(), t.getStazioneArrivo(), t.getDataPartenza(), t.getPostiTotali(), pDis);
+            Prenotazione p2 = new Prenotazione(codicePrenotazione, p.getNomeCliente(), posto, t.getNomeTreno(), t.getCodiceTreno(), t.getStazionePartenza(), t.getStazioneArrivo(), t.getDataPartenza(), t.getPostiTotali(), pDis, false);
+
             out.add(p2);
             archivioPrenotazioni.add(p2);
 
@@ -228,6 +248,18 @@ public class Archivio {
 
 
         return out;
+    }
+
+    public void finalizza(String codice) {
+        for (int i = 0; i < archivioPrenotazioni.size(); i++) {
+            if (archivioPrenotazioni.get(i).getCodicePrenotazione().equals(codice)) {
+                archivioPrenotazioni.get(i).conferma();
+            }
+
+
+        }
+
+
     }
 
     public synchronized void decrementaPosto(Treno t, int posti) {
@@ -446,13 +478,22 @@ public class Archivio {
         scrivi = null;
         scrivi = new PrintStream(prenoW);
         scrivi.println("DATABASE PRENOTAZIONI");
-
+        incrementaLetture();
+        scrivi.println("NUMERO LETTURE");
+        scrivi.println(letture);
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
             scrivi.println("PRENOTAZIONE");
+
             scrivi.println(archivioPrenotazioni.get(i).getCodicePrenotazione());
             scrivi.println(archivioPrenotazioni.get(i).getCodiceTreno());
             scrivi.println(archivioPrenotazioni.get(i).getNomeCliente());
             scrivi.println(archivioPrenotazioni.get(i).getPostoPrenotato());
+            if (archivioPrenotazioni.get(i).getConfermata()) {
+                scrivi.println("TRUE");
+            } else {
+                scrivi.println("FALSE");
+            }
+
 
         }
         scrivi.println("FINE DATABASE");

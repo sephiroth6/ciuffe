@@ -90,6 +90,7 @@ public class TrainServer extends Thread {
                         }
                          if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")){
                            
+                             
                              jt.append("Richiesta visualizzazione prenotazione effettuata da: \n");
                             jt.append(socket + "\n");
                             visualizzaPrenotazioni = archivio.visualizzaPrenotazione(p);
@@ -100,8 +101,11 @@ public class TrainServer extends Thread {
                             obOs.flush();
                         
                         
-                        }if(p.getCodicePrenotazione().equals("ConfermaInvio") && p.getNomeCliente().equals("ConfermaInvio")){
+                        }if(!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("ConfermaInvio")){
                            
+                            archivio.finalizza(p.getCodicePrenotazione());
+                            
+                            
                              jt.append("Prenotazione effettuata da \n");
                              jt.append(socket + "\n");
                             
@@ -135,8 +139,8 @@ public class TrainServer extends Thread {
                                 "",//t.getStazioneArrivo(), //stazione arrivo
                                 null,//t.getDataPartenza(), //data
                                 0, //posti totali
-                                0 //posti dispo
-                                );
+                                0, //posti dispo
+                                true);
                              obOs = new ObjectOutputStream(socket.getOutputStream());
                              obOs.writeObject(p); 
                        
