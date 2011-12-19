@@ -23,6 +23,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.text.DefaultCaret;
+import lib.Data;
 import train.*;
 
 /**
@@ -44,8 +45,7 @@ public class guiServ extends javax.swing.JFrame {
     final JFileChooser fc = new JFileChooser();
     String pathArch = "";
     String pathPren = "";
-    
-    
+
     /** Creates new form gui */
     public guiServ() {
         initComponents();
@@ -145,15 +145,16 @@ public class guiServ extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        jLabel47 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton18 = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -870,46 +871,6 @@ public class guiServ extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TrainServer Gui");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/Connect.png"))); // NOI18N
-        jButton3.setText("start");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked1(evt);
-            }
-        });
-
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/ConnectNO.png"))); // NOI18N
-        jButton18.setText("Stop");
-        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton18MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3)
-                .addGap(32, 32, 32)
-                .addComponent(jButton18)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton18))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jButton3.setEnabled(false);
-        jButton18.setEnabled(false);
-
         jLabel44.setFont(new java.awt.Font("Dialog", 1, 18));
         jLabel44.setText("Server");
 
@@ -941,46 +902,77 @@ public class guiServ extends javax.swing.JFrame {
         DefaultCaret caret = (DefaultCaret)jTextArea3.getCaret();
         caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
 
+        jLabel47.setText("Port");
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/Connect.png"))); // NOI18N
+        jButton3.setText("start");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked1(evt);
+            }
+        });
+
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiSrv/images/ConnectNO.png"))); // NOI18N
+        jButton18.setText("Stop");
+        jButton18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton18MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel44)
-                            .addComponent(jLabel45)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton19)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton20))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jLabel47)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton19))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton20))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel44)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton20)
-                    .addComponent(jButton19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jLabel45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel44)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(jLabel47)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton18))
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel45))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton20))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jButton3.setEnabled(false);
+        jButton18.setEnabled(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1067,15 +1059,23 @@ public class guiServ extends javax.swing.JFrame {
     //start server doppio metodo (non si elimina)
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         if (jButton3.isEnabled()) {
-            try {
+            if (!jTextField6.getText().equals("")) {
 
-                start2();
 
-                jButton18.setEnabled(true);
-                jButton3.setEnabled(false);
-            } catch (Exception ex) {
-                Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                jTextArea3.append("Impossibile avviare il server\n");
+                try {
+
+                    start2();
+
+                    jButton18.setEnabled(true);
+                    jButton3.setEnabled(false);
+                } catch (Exception ex) {
+                    Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                    jTextArea3.append("Impossibile avviare il server\n");
+                }
+            }
+            else {
+            JOptionPane.showMessageDialog(jPanel1, "Inserire la porta dove connettersi", "Error", JOptionPane.ERROR_MESSAGE);
+            
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked
@@ -1101,16 +1101,24 @@ public class guiServ extends javax.swing.JFrame {
     //avvio del server tramite bottone
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
         if (jButton3.isEnabled()) {
+           
+            if (!jTextField6.getText().equals("")){
+                
             try {
 
                 start2();
 
-                    jButton18.setEnabled(true);
-                    jButton3.setEnabled(false);
-                
+                jButton18.setEnabled(true);
+                jButton3.setEnabled(false);
+
             } catch (Exception ex) {
                 Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
                 jTextArea3.append("Impossibile avviare il server\n");
+            }
+        }
+            else {
+            JOptionPane.showMessageDialog(jPanel1, "Inserire la porta dove connettersi", "Error", JOptionPane.ERROR_MESSAGE);
+            
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked1
@@ -1126,10 +1134,9 @@ public class guiServ extends javax.swing.JFrame {
                 jTextArea3.append("Apertura file archivio treni: " + file.getName() + ".\n");
                 try {
                     pathArch = file.getCanonicalPath();
-                    if(checkFIleT(pathArch)){
+                    if (checkFIleT(pathArch)) {
                         start3();
-                    }
-                    else{
+                    } else {
                         JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
 
                         jTextArea3.append("Archivio treni danneggiato o illeggibile" + "\n");
@@ -1138,10 +1145,10 @@ public class guiServ extends javax.swing.JFrame {
                         jButton19.setEnabled(true);
                         jButton20.setEnabled(true);
                         pathArch = "";
-                        
+
                     }
-                    
-                    
+
+
                 } catch (IOException ex) {
                     jTextArea3.append("Errore nell'apertura del file!\n");
                 }
@@ -1163,9 +1170,9 @@ public class guiServ extends javax.swing.JFrame {
                 jTextArea3.append("Apertura file archivio prenotazioni: " + file.getName() + ".\n");
                 try {
                     pathPren = file.getCanonicalPath();
-                    if(checkFIleP(pathPren))
+                    if (checkFIleP(pathPren)) {
                         start3();
-                    else{
+                    } else {
                         JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio Prenotazioni", "Error", JOptionPane.ERROR_MESSAGE);
 
                         jTextArea3.append("Archivio prenovazioni danneggiato o illeggibile" + "\n");
@@ -1263,6 +1270,7 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1274,7 +1282,6 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
@@ -1284,6 +1291,7 @@ public class guiServ extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton2;
@@ -1364,7 +1372,10 @@ public class guiServ extends javax.swing.JFrame {
     //avvio effettivo del server con apertura socket e ascolto porta
     private void start2() throws IOException {
 
-        s = new ServerSocket(5001);
+
+        int port = Data.convertiStringa(jTextField6.getText());
+
+        s = new ServerSocket(port);
 
         l = new guiSrv.Listener(this.s, jTextArea3, pathArch, pathPren);
         t = new Thread(l);
@@ -1385,8 +1396,7 @@ public class guiServ extends javax.swing.JFrame {
             pathPren = "";
 
 
-        }
-        else if (archivio == null) {
+        } else if (archivio == null) {
             jButton18MouseClicked(null);
 
         }
@@ -1414,32 +1424,28 @@ public class guiServ extends javax.swing.JFrame {
             jButton20.setEnabled(false);
         }
     }
-    
-    private boolean checkFIleP(String f) throws FileNotFoundException, IOException{
+
+    private boolean checkFIleP(String f) throws FileNotFoundException, IOException {
         FileReader file = new FileReader(f);
         BufferedReader reader = new BufferedReader(file);
-        
+
         f = reader.readLine();
 
-        if (f.equals("DATABASE PRENOTAZIONI")){
+        if (f.equals("DATABASE PRENOTAZIONI")) {
             return true;
         }
         return false;
     }
-    
-    
-    private boolean checkFIleT(String f) throws FileNotFoundException, IOException{
+
+    private boolean checkFIleT(String f) throws FileNotFoundException, IOException {
         FileReader file = new FileReader(f);
         BufferedReader reader = new BufferedReader(file);
-        
+
         f = reader.readLine();
 
-        if (f.equals("DATABASE TRENI")){
+        if (f.equals("DATABASE TRENI")) {
             return true;
         }
         return false;
     }
-    
-    
-    
 }

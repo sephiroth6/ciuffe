@@ -26,7 +26,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import lib.*;
 
-
 /**
  *
  * @author angelo
@@ -205,6 +204,7 @@ public class guiCLI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
 
         jLabel3.setText("Effettua una ricerca di un treno, inserendo la città di partenza,");
@@ -1254,6 +1254,13 @@ public class guiCLI extends javax.swing.JFrame {
 
         jLabel22.setText("Codice prenotazione:");
 
+        jTextField2.setText("port");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1261,29 +1268,37 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel44)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButton8))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 462, Short.MAX_VALUE)
-                        .addComponent(jLabel22)
-                        .addGap(39, 39, 39)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel44)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel22)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jToggleButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))))))
+                                .addGap(371, 371, 371))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 843, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addGap(402, 402, 402))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1295,9 +1310,12 @@ public class guiCLI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1308,13 +1326,13 @@ public class guiCLI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel22))))
+                            .addComponent(jLabel22)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel21)
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
 
         jToggleButton8.setEnabled(false);
@@ -1330,14 +1348,14 @@ public class guiCLI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1429,7 +1447,7 @@ public class guiCLI extends javax.swing.JFrame {
             } else {
                 try {
                     User = jTextField7.getText();
-                    
+
                     startC();
                     jTextField6.setEditable(false);
                     jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/Connect.png")));
@@ -1651,7 +1669,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
 
                     jLabel78.setText(codiceEliminazione);
                     FinestraSwing RiepilogoPreno = new FinestraSwing("Riepilo prenotazione", 30, 50, 480, 420, jPanel4);
-                    
+
                     setFrame(RiepilogoPreno);
                 } else {
                     JOptionPane.showMessageDialog(jPanel3, "Selezionare un treno", "Errore!", JOptionPane.WARNING_MESSAGE);
@@ -1970,7 +1988,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
             jLabel18.setText(jLabel77.getText());
             jLabel20.setText(jLabel76.getText());
             FinestraSwing Finalizzazione = new FinestraSwing("Esito prenotazione", 30, 50, 375, 115, jPanel5);
-            
+
             setFrame(Finalizzazione);
 
 
@@ -1989,6 +2007,10 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2127,6 +2149,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -2294,57 +2317,64 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     private void startC() throws IOException {
         if (jToggleButton1.isEnabled()) {
             s = null;
-            try {
-                s = new Socket(jTextField6.getText(), 5001);
-            } catch (UnknownHostException ex) {
-                //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-                jTextArea2.append("Host sconosciuto: controllare l'indirizzo del server.\n");
-                jTextField6.setEditable(true);
-            } catch (IOException ex) {
-                //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-                jTextArea2.append("Server non raggiungibile\n");
-                jTextField6.setEditable(true);
+            if (!jTextField2.getText().equals("")) {
+
+                try {
+                    int port = Data.convertiStringa(jTextField2.getText());
+                    s = new Socket(jTextField6.getText(), port);
+                } catch (UnknownHostException ex) {
+                    //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    jTextArea2.append("Host sconosciuto: controllare l'indirizzo del server.\n");
+                    jTextField6.setEditable(true);
+                } catch (IOException ex) {
+                    //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    jTextArea2.append("Server non raggiungibile\n");
+                    jTextField6.setEditable(true);
+                }
+                if (s != null) {
+                    jTextArea2.append("Client connesso a: " + s + "\n");
+                    //              input = new DataInputStream(s.getInputStream());
+                    //              output = new DataOutputStream(s.getOutputStream());
+
+
+                    p = new Prenotazione(
+                            User, //codice preno 
+                            User, //nome cliente
+                            0, //posti prenotato
+                            "",//t.getNomeTreno(), //nome treno
+                            "", //codice treno
+                            "",//t.getStazionePartenza(), //stazione partenza
+                            "",//t.getStazioneArrivo(), //stazione arrivo
+                            null,//t.getDataPartenza(), //data
+                            0, //posti totali
+                            0, //posti dispo
+                            true);
+
+                    versoServer = new ObjectOutputStream(s.getOutputStream());
+                    versoServer.writeObject(p);
+                    versoServer.flush();
+
+                    User = jTextField7.getText();
+                    setEditableP();
+                    jTextField7.setEditable(false);
+                    jToggleButton1.setEnabled(false);
+                    jToggleButton1.setSelected(true);
+                    jToggleButton8.setEnabled(true);
+                    jToggleButton8.setSelected(false);
+                } else {
+                    jToggleButton1.setEnabled(true);
+                    jToggleButton1.setSelected(false);
+                }
+
             }
-            if (s != null) {
-                jTextArea2.append("Client connesso a: " + s + "\n");
-                //              input = new DataInputStream(s.getInputStream());
-                //              output = new DataOutputStream(s.getOutputStream());
-                
-                
-                 p = new Prenotazione(
-                User, //codice preno 
-                User, //nome cliente
-                0, //posti prenotato
-                "",//t.getNomeTreno(), //nome treno
-                "", //codice treno
-                "",//t.getStazionePartenza(), //stazione partenza
-                "",//t.getStazioneArrivo(), //stazione arrivo
-                null,//t.getDataPartenza(), //data
-                0, //posti totali
-                0, //posti dispo
-                true);
-                 
-                versoServer = new ObjectOutputStream(s.getOutputStream());
-                versoServer.writeObject(p);
-                versoServer.flush();
-                
-                User = jTextField7.getText();
-                setEditableP();
-                jTextField7.setEditable(false);
-                jToggleButton1.setEnabled(false);
-                jToggleButton1.setSelected(true);
-                jToggleButton8.setEnabled(true);
-                jToggleButton8.setSelected(false);
-            } else {
-                jToggleButton1.setEnabled(true);
-                jToggleButton1.setSelected(false);
+            else {
+            JOptionPane.showMessageDialog(jPanel1, "Inserire una porta dove connettersi", "Errore!", JOptionPane.WARNING_MESSAGE);
+            
             }
+
+
 
         }
-
-
-
-
     }
 
     //stop del socket con relativi ripristini di bottoni ed oggetti
@@ -2430,7 +2460,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     public void resetConnessione() {
 
         JOptionPane.showMessageDialog(jPanel1, "Host non raggiungibile: controllare\nAvviare la connessione sul server.", "Error", JOptionPane.ERROR_MESSAGE);
-        
+
         jTextArea2.append("Server non raggiungibile\n");
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/ConnectNO.png")));
 //        jToggleButton1.setEnabled(true);
