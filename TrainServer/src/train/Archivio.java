@@ -141,7 +141,7 @@ public class Archivio {
                                 t.getStazioneArrivo(), t.getDataPartenza(),
                                 t.getPostiTotali(), t.getPostiDisponibili(), confermatoB);
 
-                        if (confermatoB == true || letture % 3 == 0) {
+                        if (confermatoB == true || letture % 3 != 0) {
                             archivioPrenotazioni.add(p);
                         } else {
                             decrementaPosto(t,-1);
