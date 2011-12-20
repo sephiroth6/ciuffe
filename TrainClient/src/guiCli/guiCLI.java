@@ -50,6 +50,7 @@ public class guiCLI extends javax.swing.JFrame {
     String codiceEliminazione = "";
     //User
     private String User = "";
+    int port;
 
     /** Creates new form gui */
     public guiCLI() {
@@ -1445,19 +1446,27 @@ public class guiCLI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
                 jToggleButton1.setSelected(false);
             } else {
-                try {
-                    User = jTextField7.getText();
-
-                    startC();
-                    jTextField6.setEditable(false);
-                    jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/Connect.png")));
+                User = jTextField7.getText();
+                port = Data.convertiStringa(jTextField2.getText());
+                if (port > 1024 && port < 49152) {
+                    try {
 
 
-                } catch (UnknownHostException ex) {
-                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
-                    jTextField6.setEditable(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+
+                        startC();
+                        jTextField6.setEditable(false);
+                        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/guiCli/images/Connect.png")));
+
+
+                    } catch (UnknownHostException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: controllare l'indirizzo del server.", "Error", JOptionPane.ERROR_MESSAGE);
+                        jTextField6.setEditable(true);
+                    } catch (IOException ex) {
+                        Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(jPanel1, "Numero di porta inserito non valido", "Error", JOptionPane.ERROR_MESSAGE);
+                    jToggleButton1.setSelected(false);
                 }
             }
         }
@@ -2328,6 +2337,7 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                     jTextField6.setEditable(true);
                 } catch (IOException ex) {
                     //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto. Controllare il numero della porta", "Error", JOptionPane.ERROR_MESSAGE);
                     jTextArea2.append("Server non raggiungibile\n");
                     jTextField6.setEditable(true);
                 }
@@ -2366,10 +2376,9 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                     jToggleButton1.setSelected(false);
                 }
 
-            }
-            else {
-            JOptionPane.showMessageDialog(jPanel1, "Inserire una porta dove connettersi", "Errore!", JOptionPane.WARNING_MESSAGE);
-            
+            } else {
+                JOptionPane.showMessageDialog(jPanel1, "Inserire una porta dove connettersi", "Errore!", JOptionPane.WARNING_MESSAGE);
+
             }
 
 

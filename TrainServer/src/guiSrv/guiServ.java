@@ -1059,8 +1059,12 @@ public class guiServ extends javax.swing.JFrame {
     //start server doppio metodo (non si elimina)
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         if (jButton3.isEnabled()) {
-            if (!jTextField6.getText().equals("")) {
-
+            
+            
+            int port = Data.convertiStringa(jTextField6.getText());
+        
+            if (port>1024&& port<49152) {
+                 
 
                 try {
 
@@ -1074,7 +1078,7 @@ public class guiServ extends javax.swing.JFrame {
                 }
             }
             else {
-            JOptionPane.showMessageDialog(jPanel1, "Inserire la porta dove connettersi", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel1, "Porta inserita non corretta", "Error", JOptionPane.ERROR_MESSAGE);
             
             }
         }
@@ -1101,8 +1105,8 @@ public class guiServ extends javax.swing.JFrame {
     //avvio del server tramite bottone
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
         if (jButton3.isEnabled()) {
-           
-            if (!jTextField6.getText().equals("")){
+           int port = Data.convertiStringa(jTextField6.getText());
+            if (port>1024 && port<49152) {
                 
             try {
 
@@ -1117,7 +1121,7 @@ public class guiServ extends javax.swing.JFrame {
             }
         }
             else {
-            JOptionPane.showMessageDialog(jPanel1, "Inserire la porta dove connettersi", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel1, "Porta inserita non corretta", "Error", JOptionPane.ERROR_MESSAGE);
             
             }
         }
@@ -1374,7 +1378,7 @@ public class guiServ extends javax.swing.JFrame {
 
 
         int port = Data.convertiStringa(jTextField6.getText());
-
+       
         s = new ServerSocket(port);
 
         l = new guiSrv.Listener(this.s, jTextArea3, pathArch, pathPren);
@@ -1401,7 +1405,7 @@ public class guiServ extends javax.swing.JFrame {
 
         }
 
-
+        
     }
 
     //stop server e chiusura connessione
