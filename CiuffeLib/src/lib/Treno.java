@@ -21,7 +21,8 @@ public class Treno implements Serializable {
     private int postiTotali;
     private int postiDisponibili;
 
-    public Treno(String n, String c, String sP, String sA, Data dP, int pT, int pD) {
+    public Treno(String n, String c, String sP, String sA, Data dP, 
+            int pT, int pD) {
         nomeTreno = n;
         codiceTreno = c;
         stazionePartenza = sP;
