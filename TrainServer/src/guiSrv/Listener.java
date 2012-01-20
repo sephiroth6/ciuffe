@@ -19,13 +19,13 @@ import train.*;
 public class Listener implements Runnable {
 
     private ServerSocket ss;
-    private ArrayList<Socket> sh= new ArrayList();
+    private ArrayList<Socket> sh = new ArrayList();
     private JTextArea jt;
     Archivio archivio;
 
+    public Listener(ServerSocket ss, JTextArea text, String a, String p)
+            throws FileNotFoundException {
 
-    public Listener(ServerSocket ss, JTextArea text, String a, String p) throws FileNotFoundException {
-        
         this.ss = ss;
         jt = text;
         archivio = new Archivio(a, p);
@@ -43,18 +43,19 @@ public class Listener implements Runnable {
                 Socket suk = ss.accept();
                 sh.add(suk);
                 jt.append("Ho ricevuto una chiamata di apertura da:\n" + suk + "\n");
-              
+
 
                 new TrainServer(suk, jt, archivio).start();
 
 
             }
-        } catch (IOException ex) {}
+        } catch (IOException ex) {
+        }
 
     }
 
     public Archivio getArch(String arch, String pren) {
-        if(archivio.setPath(arch, pren)){
+        if (archivio.setPath(arch, pren)) {
             return archivio;
         }
         jt.append("Errore nella lettura del file!\n");
@@ -63,15 +64,12 @@ public class Listener implements Runnable {
 
     public void closeAll() throws IOException {
 
-
-        
-        for(int i=0; i<sh.size(); i++){
-            if(sh.get(i) !=null)
+        for (int i = 0; i < sh.size(); i++) {
+            if (sh.get(i) != null) {
                 sh.get(i).close();
+            }
         }
         sh.removeAll(sh);
         ss.close();
-
-
     }
 }

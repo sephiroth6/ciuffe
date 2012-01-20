@@ -18,20 +18,16 @@ public class Prenotazione extends Treno implements Serializable {
     private String nome;
     private int postoPrenotato;
     private boolean confermata;
-
-
-    public Prenotazione(String cP, String n, int pP, String nT, String c, String sP,
-            String sA, Data dP, int pT, int pD, boolean conf) {
-
+    
+    public Prenotazione(String cP, String n, int pP,String nT, 
+                        String c, String sP,String sA, Data dP, 
+                        int pT, int pD,boolean conf) {
         super(nT, c, sP, sA, dP, pT, pD);       
-
-
         codicePrenotazione = cP;
         nome = n;
         postoPrenotato = pP;
         confermata = conf;
-
-    }
+}
 
     public Prenotazione(String sP, String sA, Data d) {      
         super(null, null, sP, sA, d, 0, 0);

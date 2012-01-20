@@ -50,22 +50,25 @@ public class TrainServer extends Thread {
 
 
                 try {
-                    
+
                     // l'oggetto viene ricevuto in ingresso e convertito in una prenotazione
                     objectInputStream = new ObjectInputStream(socket.getInputStream());
                     p = (Prenotazione) objectInputStream.readObject();
 
-                    
+
 
 
                     if (p != null) {
-                        
+
                         // richiesta di visualizzare una tratta
+
                         if (p.getCodicePrenotazione().equals("") && p.getCodiceTreno().equals("")) {
 
                             jt.append("Richiesta di tratta ricevuta da: " + utente + "\n");
                             jt.append(socket + "\n");
-                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(), p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
+
+                            ricercaTreni = archivio.getArrayListTratta(p.getStazionePartenza(),
+                                    p.getStazioneArrivo(), p.getDataPartenza(), p.getPostoPrenotato());
 
                             obOs = new ObjectOutputStream(socket.getOutputStream());
 
@@ -75,8 +78,9 @@ public class TrainServer extends Thread {
 
 
                         }
-                        
+
                         // richiesta di prenotazione
+
                         if (p.getCodicePrenotazione().equals("") && !p.getCodiceTreno().equals("")) {
 
                             jt.append("Richiesta prenotazione ricevuta da: " + utente + "\n");
@@ -88,29 +92,23 @@ public class TrainServer extends Thread {
                                 }
 
                             }
-                            
                             prenotazioniEff = archivio.prenotaMultipla(p.getPostoPrenotato(), p, trenino);
-                            
-                            // invio di una arraylist in risposta alla richiesta di prenotazione
                             obOs = new ObjectOutputStream(socket.getOutputStream());
                             obOs.writeObject(prenotazioniEff);
 
                             obOs.flush();
-                        }
-                        
-                        // salva il nome dell'operatore
-                        if (!p.getCodicePrenotazione().equals("")
+
+
+                        } else if (!p.getCodicePrenotazione().equals("")
                                 && p.getCodicePrenotazione().equals(p.getNomeCliente())) {
 
-                           
+
                             utente = p.getCodicePrenotazione();
-                            jt.append("Connesso con: "+utente+"\n");
-                          
+                            jt.append("Connesso con: " + utente + "\n");
 
-                        }
 
-                        // richiesta di visualizzazio di una prenotazione
-                        if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")) {
+                        } // richiesta di visualizzazio di una prenotazione
+                        else if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("prenota")) {
 
 
                             jt.append("Richiesta visualizzazione prenotazione effettuata da: " + utente + "\n");
@@ -123,8 +121,7 @@ public class TrainServer extends Thread {
                             obOs.flush();
 
 
-                        }
-                        if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("ConfermaInvio")) {
+                        } else if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("ConfermaInvio")) {
                             // finalizza una prenotazione, la rende effettiva
                             archivio.finalizza(p.getCodicePrenotazione());
 
@@ -133,24 +130,28 @@ public class TrainServer extends Thread {
                             jt.append(socket + "\n");
 
 
-                        }
-                        
-                        // eliminazione in caso di mancata conferma
-                        if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")) {
+                        } // eliminazione in caso di mancata conferma
+                        else if (!p.getCodicePrenotazione().equals("") && p.getNomeCliente().equals("conferma")) {
 
-                            jt.append("Prenotazione eliminata da: " + utente + "\n");
-                            jt.append(socket + "\n");
-                            eliminaPrenotazioni = archivio.eliminaPrenotazione(p);
-                            
-                            obOs = new ObjectOutputStream(socket.getOutputStream());
-                            obOs.writeObject(eliminaPrenotazioni);
+                            if (p.getNomeTreno().equals("temp")) {
+                                archivio.eliminaPrenotazione(p);
+                                jt.append("Prenotazione non confermata da: " + utente + "\n");
+                                jt.append(socket + "\n");
 
-                            obOs.flush();
+                            } else {
+                                eliminaPrenotazioni = archivio.eliminaPrenotazione(p);
+                                jt.append("Prenotazione eliminata da: " + utente + "\n");
+                                jt.append(socket + "\n");
 
 
-                        }
 
-                        if (p.getCodicePrenotazione().equals("alive") && p.getNomeCliente().equals("") && p.getPostoPrenotato() == 100) {
+                                obOs = new ObjectOutputStream(socket.getOutputStream());
+                                obOs.writeObject(eliminaPrenotazioni);
+
+                                obOs.flush();
+                            }
+
+                        } else if (p.getCodicePrenotazione().equals("alive") && p.getNomeCliente().equals("") && p.getPostoPrenotato() == 100) {
                             // istruzione per testare se la connessione è attiva
 
                             p = new Prenotazione(
@@ -177,10 +178,8 @@ public class TrainServer extends Thread {
 
 
 
-                    }
-
-                    if (p == null) {
-                        // disconnessione di un client
+                    } else if (p == null) {
+                        
                         run = false;
 
                     }

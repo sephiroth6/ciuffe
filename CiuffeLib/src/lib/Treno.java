@@ -11,13 +11,14 @@ package lib;
  * @author albyreturns
  */
 import java.io.*;
+
 public class Treno implements Serializable {
 
     private String nomeTreno;
     private String codiceTreno;
     private String stazionePartenza;
     private String stazioneArrivo;
-    private Data dataPartenza; // data ed ora di partenza
+    private Data dataPartenza; 
     private int postiTotali;
     private int postiDisponibili;
 

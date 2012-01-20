@@ -23,11 +23,11 @@ public class Archivio {
     private FileReader prenotazioni; // = new FileReader("archivio/Prenotazioni.txt");
     private FileOutputStream archivioW;  // stream per la scrittura sul file
     private FileOutputStream prenoW;   // stream per la scrittura sul file
-    String arch = "";  
+    String arch = "";
     String pren = "";
     boolean treno = false;    // verifica la riuscita della creazione dell'archivio dei treni
     boolean prenotazione = false;  // verifica la riuscita della creazione dell'archivio delle prenotazioni
-    int letture;   // numero di volte che viene aperta l'archivio di prenotazione
+    
 
     public Archivio(String a, String p) throws FileNotFoundException {
 
@@ -35,7 +35,7 @@ public class Archivio {
         prenotazioni = new FileReader(p);
         archivioTreni = new ArrayList();
         archivioPrenotazioni = new ArrayList();
-        letture = 0;
+        
     }
 
     public void creaArchivioTreni() throws FileNotFoundException, NoSuchElementException {
@@ -115,8 +115,7 @@ public class Archivio {
             // scorrimento del database per popolare l'arraylist di prenotazioni
             if (temp.equals("DATABASE PRENOTAZIONI")) {
                 temp = archivioL.readLine();
-                temp = archivioL.readLine();
-                letture = Data.convertiStringa(temp);
+         
 
                 while (!"FINE DATABASE".equals(temp)) {
                     temp = archivioL.readLine();
@@ -141,12 +140,12 @@ public class Archivio {
                                 t.getStazioneArrivo(), t.getDataPartenza(),
                                 t.getPostiTotali(), t.getPostiDisponibili(), confermatoB);
 
-                        if (confermatoB == true || letture % 3 != 0) {
+                        if (confermatoB == true ) {
                             archivioPrenotazioni.add(p);
                         } else {
-                            decrementaPosto(t,-1);
-                        
-                        
+                            decrementaPosto(t, -1);
+
+
                         }
 
 
@@ -164,9 +163,7 @@ public class Archivio {
 
     }
 
-    public void incrementaLetture() {
-        letture++;
-    }
+  
 
     public boolean isArchivioTreno() {
         return treno;
@@ -184,9 +181,8 @@ public class Archivio {
         return archivioPrenotazioni;
     }
 
-    
     // genera un codice di prenotazione unico poiché partendo da 1000
-        // scorre tutte le prenotazioni presenti fino a trovare un valore valido
+    // scorre tutte le prenotazioni presenti fino a trovare un valore valido
     public String generaCodicePrenotazione() {
 
         int start = 1000;
@@ -228,29 +224,31 @@ public class Archivio {
         return t;
 
     }
-    
-    
+
 // Prenotazione di una quantità di posti
-    
-    public synchronized ArrayList<Prenotazione> prenotaMultipla(int posti, Prenotazione p, Treno t) {
+    public synchronized ArrayList<Prenotazione> prenotaMultipla(int posti,
+            Prenotazione p, Treno t) {
         ArrayList<Prenotazione> out = new ArrayList();
         String codicePrenotazione = generaCodicePrenotazione();
         int posto = 0;
 
-        for (int i = 0; i < posti; i++) {
-            posto = verificaDisponibilitàPosto(t);
+        if (verificaDisponibilitàPosti(t, posti)) {
 
-            int pDis = t.getPostiDisponibili() - posti;
-            Prenotazione p2 = new Prenotazione(codicePrenotazione, p.getNomeCliente(), posto, t.getNomeTreno(), t.getCodiceTreno(), t.getStazionePartenza(), t.getStazioneArrivo(), t.getDataPartenza(), t.getPostiTotali(), pDis, false);
+            for (int i = 0; i < posti; i++) {
+                posto = verificaDisponibilitàPosto(t);
 
-            out.add(p2);
-            archivioPrenotazioni.add(p2);
+                int pDis = t.getPostiDisponibili() - posti;
+                Prenotazione p2 = new Prenotazione(codicePrenotazione, p.getNomeCliente(), posto, t.getNomeTreno(), t.getCodiceTreno(), t.getStazionePartenza(), t.getStazioneArrivo(), t.getDataPartenza(), t.getPostiTotali(), pDis, false);
 
+                out.add(p2);
+                archivioPrenotazioni.add(p2);
+
+            }
+            decrementaPosto(t, posti);
+            return out;
+        } else {
+            return out;
         }
-        decrementaPosto(t, posti);
-
-
-        return out;
     }
 
     // finalizzazione delle prenotazioni
@@ -265,6 +263,7 @@ public class Archivio {
 
 
     }
+
 // decrementa i posti presenti in un treno a seguito di una prenotazione
     public synchronized void decrementaPosto(Treno t, int posti) {
         for (int i = 0; i < archivioTreni.size(); i++) {
@@ -278,6 +277,7 @@ public class Archivio {
 
     }
 // crea un'arraylist contenente le prenotazioni desiderate
+
     public ArrayList<Prenotazione> visualizzaPrenotazione(Prenotazione p) {
 
         ArrayList<Prenotazione> out = new ArrayList();
@@ -292,7 +292,7 @@ public class Archivio {
         return out;
 
     }
-    
+
     // elimina una prenotazione e la ritorna al cliente per la visualizzazione
     public synchronized ArrayList<Prenotazione> eliminaPrenotazione(Prenotazione p) {
 
@@ -339,7 +339,8 @@ public class Archivio {
 
     // ritorna un'arraylist contenente tutti i treni per una determinata tratta ad un determinato orario e con
     // un determinato numero di posti disponibili
-    public synchronized ArrayList<Treno> getArrayListTratta(String partenza, String arrivo, Data data, int posti) {
+    public synchronized ArrayList<Treno> getArrayListTratta(String partenza,
+            String arrivo, Data data, int posti) {
 
 
         ArrayList<Treno> out = new ArrayList();
@@ -387,7 +388,8 @@ public class Archivio {
         return out;
 
     }
-// ritorna una prenotazione
+
+    // ritorna una prenotazione
     public ArrayList<Prenotazione> getPrenotazione(String codice) {
         Prenotazione p = null;
         ArrayList<Prenotazione> listaPrenotazione = new ArrayList();
@@ -409,9 +411,9 @@ public class Archivio {
         }
         return true;
     }
- 
+
     // verifica la disponibilità di un determinato posto
-    public synchronized int verificaDisponibilitàPosto(Treno t) {   
+    public synchronized int verificaDisponibilitàPosto(Treno t) {
 
 
         int posto = 1;
@@ -430,8 +432,6 @@ public class Archivio {
 
     }
 
-    
-   
 // crea il path assoluto per l'archivio dei treni
     protected static FileReader createDB(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
@@ -444,6 +444,7 @@ public class Archivio {
         }
     }
 // crea il path assoluto per l'archivio delle prenotazioni
+
     protected static FileOutputStream createDBW(String path) throws FileNotFoundException {
         java.net.URL imgURL = Archivio.class.getResource(path);
         if (imgURL != null) {
@@ -482,9 +483,7 @@ public class Archivio {
         scrivi = null;
         scrivi = new PrintStream(prenoW);
         scrivi.println("DATABASE PRENOTAZIONI");
-        incrementaLetture();
-        scrivi.println("NUMERO LETTURE");
-        scrivi.println(letture);
+        
         for (int i = 0; i < archivioPrenotazioni.size(); i++) {
             scrivi.println("PRENOTAZIONE");
 
@@ -510,7 +509,7 @@ public class Archivio {
             prenotazioni = new FileReader(pren);
             this.arch = arch;
             this.pren = pren;
-           
+
             return true;
         } catch (FileNotFoundException ex) {
             return false;

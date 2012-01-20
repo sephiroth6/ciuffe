@@ -152,8 +152,8 @@ public class guiServ extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jLabel47 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        jTextField6 = new javax.swing.JTextField();
         jButton18 = new javax.swing.JButton();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -871,7 +871,7 @@ public class guiServ extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TrainServer Gui");
 
-        jLabel44.setFont(new java.awt.Font("Dialog", 1, 18));
+        jLabel44.setFont(new java.awt.Font("Dialog", 1, 24));
         jLabel44.setText("Server");
 
         jLabel45.setText("Logs:");
@@ -919,35 +919,35 @@ public class guiServ extends javax.swing.JFrame {
                 jButton18MouseClicked(evt);
             }
         });
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel45, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel47)
-                                .addGap(4, 4, 4)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(73, 73, 73)
-                                .addComponent(jButton18)))
-                        .addGap(125, 125, 125))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton19)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton20)
-                        .addGap(32, 32, 32))))
+                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton20, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                    .addComponent(jLabel44)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel47)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                    .addComponent(jLabel45)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -958,17 +958,17 @@ public class guiServ extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton20)
                     .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton18))
-                .addGap(12, 12, 12)
+                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel45)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton3.setEnabled(false);
@@ -1059,27 +1059,19 @@ public class guiServ extends javax.swing.JFrame {
     //start server doppio metodo (non si elimina)
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         if (jButton3.isEnabled()) {
-            
-            
             int port = Data.convertiStringa(jTextField6.getText());
-        
-            if (port>1024&& port<49152) {
-                 
-
+            if (port > 1024 && port < 49152) {
                 try {
-
                     start2();
-
                     jButton18.setEnabled(true);
                     jButton3.setEnabled(false);
                 } catch (Exception ex) {
                     Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
                     jTextArea3.append("Impossibile avviare il server\n");
                 }
-            }
-            else {
-            JOptionPane.showMessageDialog(jPanel1, "Porta inserita non corretta", "Error", JOptionPane.ERROR_MESSAGE);
-            
+            } else {
+                JOptionPane.showMessageDialog(jPanel1, "Porta inserita non corretta",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked
@@ -1093,7 +1085,7 @@ public class guiServ extends javax.swing.JFrame {
                 jButton19.setEnabled(true);
                 jButton20.setEnabled(true);
                 jTextField6.setEditable(true);
-        
+
                 pathArch = "";
                 pathPren = "";
             } catch (IOException ex) {
@@ -1107,26 +1099,25 @@ public class guiServ extends javax.swing.JFrame {
     //avvio del server tramite bottone
     private void jButton3MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked1
         if (jButton3.isEnabled()) {
-           int port = Data.convertiStringa(jTextField6.getText());
-            if (port>1024 && port<49152) {
-                
-            try {
+            int port = Data.convertiStringa(jTextField6.getText());
+            if (port > 1024 && port < 49152) {
 
-                start2();
+                try {
 
-                jButton18.setEnabled(true);
-                jButton3.setEnabled(false);
-                jTextField6.setEditable(false);
-        
+                    start2();
 
-            } catch (Exception ex) {
-                Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
-                jTextArea3.append("Impossibile avviare il server\n");
-            }
-        }
-            else {
-            JOptionPane.showMessageDialog(jPanel1, "Porta inserita non corretta", "Error", JOptionPane.ERROR_MESSAGE);
-            
+                    jButton18.setEnabled(true);
+                    jButton3.setEnabled(false);
+                    jTextField6.setEditable(false);
+
+
+                } catch (Exception ex) {
+                    Logger.getLogger(guiServ.class.getName()).log(Level.SEVERE, null, ex);
+                    jTextArea3.append("Impossibile avviare il server\n");
+                }
+            } else {
+                JOptionPane.showMessageDialog(jPanel1, "Porta inserita non corretta", "Error", JOptionPane.ERROR_MESSAGE);
+
             }
         }
     }//GEN-LAST:event_jButton3MouseClicked1
@@ -1198,6 +1189,10 @@ public class guiServ extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton20MouseClicked
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1379,19 +1374,15 @@ public class guiServ extends javax.swing.JFrame {
 
     //avvio effettivo del server con apertura socket e ascolto porta
     private void start2() throws IOException {
-
-
         int port = Data.convertiStringa(jTextField6.getText());
-       
         s = new ServerSocket(port);
-
         l = new guiSrv.Listener(this.s, jTextArea3, pathArch, pathPren);
         t = new Thread(l);
         t.start();
         archivio = l.getArch(pathArch, pathPren);
-
         if (archivio.isArchioPrenotazione() == false || archivio.isArchivioTreno() == false) {
-            JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(jPanel1, "Errore caricamento Archivio",
+                    "Error", JOptionPane.ERROR_MESSAGE);
             s.close();
             t.interrupt();
             l.closeAll();
@@ -1402,25 +1393,18 @@ public class guiServ extends javax.swing.JFrame {
             jButton20.setEnabled(true);
             pathArch = "";
             pathPren = "";
-
-
         } else if (archivio == null) {
             jButton18MouseClicked(null);
-
         }
-
-        
     }
 
     //stop server e chiusura connessione
+    
     private void stopSrv() throws IOException {
-
         archivio.stampaSuFile();
-
         s.close();
         t.interrupt();
         l.closeAll();
-
         jTextArea3.append("Server disconnesso" + "\n");
     }
 
