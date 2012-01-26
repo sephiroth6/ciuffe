@@ -1878,6 +1878,74 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
     }
 
     //avvia comunicazione con server con relativi check di controllo ed eventuali messaggi di errori
+//    private void startC() throws IOException {
+//        if (jToggleButton1.isEnabled()) {
+//            s = null;
+//            if (!jTextField2.getText().equals("")) {
+//
+//                try {
+//                    jTextField6.setEditable(false);
+//                    port = Data.convertiStringa(jTextField2.getText());
+//                    s = new Socket(jTextField6.getText(), port);
+//                } catch (UnknownHostException ex) {
+//                    //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+//                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: Controllare l'indirizzio del server", "Error", JOptionPane.ERROR_MESSAGE);
+//                    jTextArea2.append("Host sconosciuto: controllare l'indirizzo del server.\n");
+//
+//                    jTextField6.setEditable(true);
+//                } catch (IOException ex) {
+//                    // Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+//                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto. Controllare il numero "
+//                            + "della porta", "Error", JOptionPane.ERROR_MESSAGE);
+//                    jTextArea2.append("Server non raggiungibile\n");
+//                    jTextField6.setEditable(true);
+//
+//                }
+//                if (s != null) {
+//                    jTextArea2.append("Client connesso a: " + s + "\n");
+//
+//
+//
+//                    p = new Prenotazione(
+//                            User, //codice preno 
+//                            User, //nome cliente
+//                            0, //posti prenotato
+//                            "",//t.getNomeTreno(), //nome treno
+//                            "", //codice treno
+//                            "",//t.getStazionePartenza(), //stazione partenza
+//                            "",//t.getStazioneArrivo(), //stazione arrivo
+//                            null,//t.getDataPartenza(), //data
+//                            0, //posti totali
+//                            0, //posti dispo
+//                            true);
+//
+//                    versoServer = new ObjectOutputStream(s.getOutputStream());
+//                    versoServer.writeObject(p);
+//                    versoServer.flush();
+//
+//                    User = jTextField7.getText();
+//                    setEditableP();
+//                    jTextField7.setEditable(false);
+//                    jToggleButton1.setEnabled(false);
+//                    jToggleButton1.setSelected(true);
+//                    jToggleButton8.setEnabled(true);
+//                    jToggleButton8.setSelected(false);
+//                } else {
+//                    jToggleButton1.setEnabled(true);
+//                    jToggleButton1.setSelected(false);
+//                }
+//
+//            } else {
+//                JOptionPane.showMessageDialog(jPanel1, "Inserire una porta dove connettersi",
+//                        "Errore!", JOptionPane.WARNING_MESSAGE);
+//
+//            }
+//
+//
+//
+//        }
+//    }
+    
     private void startC() throws IOException {
         if (jToggleButton1.isEnabled()) {
             s = null;
@@ -1886,28 +1954,33 @@ private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:ev
                 try {
                     jTextField6.setEditable(false);
                     port = Data.convertiStringa(jTextField2.getText());
-                    s = new Socket(jTextField6.getText(), port);
-                } catch (UnknownHostException ex) {
-                    //Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: Controllare l'indirizzio del server", "Error", JOptionPane.ERROR_MESSAGE);
-                    jTextArea2.append("Host sconosciuto: controllare l'indirizzo del server.\n");
+                    SocketAddress sa = new InetSocketAddress(jTextField6.getText(), port);
+                    s = new Socket();
+                    s.connect(sa, 5000);
+// s = new Socket(jTextField6.getText(), port);
 
+                } catch (UnknownHostException ex) {
+//Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+
+                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: Controllare l'indirizzio del server", "Error", JOptionPane.ERROR_MESSAGE);
+
+
+                    jTextArea2.append("Server non raggiungibile\n");
                     jTextField6.setEditable(true);
                 } catch (IOException ex) {
-                    // Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
-                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto. Controllare il numero "
-                            + "della porta", "Error", JOptionPane.ERROR_MESSAGE);
+// Logger.getLogger(guiCLI.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(jPanel1, "Host sconosciuto: Controllare lo stato del server\n", "Error", JOptionPane.ERROR_MESSAGE);
                     jTextArea2.append("Server non raggiungibile\n");
                     jTextField6.setEditable(true);
 
                 }
-                if (s != null) {
+                if (s.isConnected() == true) {
                     jTextArea2.append("Client connesso a: " + s + "\n");
 
 
 
                     p = new Prenotazione(
-                            User, //codice preno 
+                            User, //codice preno
                             User, //nome cliente
                             0, //posti prenotato
                             "",//t.getNomeTreno(), //nome treno
